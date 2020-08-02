@@ -18,8 +18,13 @@ Advanced Labs Topic List
     5. Linked List
     6. Node and Edge
     7. Arrays
+    8. Graphs
+    9. Trees (Generally)
 6. Efficiently reading input
 7. Dynamic programming
 8. Bredth first Vs. Depth first
 9. Recursion
+10. Backtracking
+11. Hashing
+12. Greedy Algorithms
 
