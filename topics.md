@@ -17,5 +17,9 @@ Advanced Labs Topic List
     4. Circular Buffer
     5. Linked List
     6. Node and Edge
+    7. Arrays
 6. Efficiently reading input
+7. Dynamic programming
+8. Bredth first Vs. Depth first
+9. Recursion
 
