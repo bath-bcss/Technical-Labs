@@ -2,6 +2,16 @@
 Advanced Labs Topic List
 =======================
 
+General computing tools
+-----------------------
+
+1. Git basics
+2. Command line basics
+    1. Dot files
+
+Computing fundamentals
+----------------------
+
 1. Big O notation
     1. Example Summing up to nth Item in array,
     2. Example Different Sorting algorithms
