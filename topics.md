@@ -8,6 +8,7 @@ General computing tools
 1. Git basics
 2. Command line basics
     1. Dot files
+3. Jetbrains development environement basics
 
 Computing fundamentals
 ----------------------
