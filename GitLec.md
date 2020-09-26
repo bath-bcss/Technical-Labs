@@ -63,16 +63,32 @@ Staging files
 Before git does anything to your files you need to "stage" them to make git
 aware of them.
 
-So if you add a file, say "text.txt", then run the command `git add text.txt`
+So if you make a file, say "text.txt", then run the command `git add text.txt`
 and git will start tracking that file.
 
 Git Commits
 -----------
 
+Once you've staged a file you need to commit it.
+This will make git aware of the a few changes:
 
+- The addition of "text.txt"
+- The addition of text into "text.txt"
+
+To commit the changes to the repository run `git commit -m "Added text.txt"`, where "Added test.txt" 
+is a message describing the changes youve made in this commit.
+
+Git status
+----------
+
+To see whats happening in your local repository you can run `git status`.
+This lists the commits you've made and what happened in each commit along with the 
 
 Git Diff
 -----------
+
+Git Checkout
+------------
 
 Git Branching
 ----------------
