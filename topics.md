@@ -1,5 +1,4 @@
-
-Advanced Labs Topic List
+Technical Labs Topic List
 =======================
 
 General computing tools
