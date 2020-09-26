@@ -23,23 +23,26 @@ back. Also they can be used for working with other people.
 Installing git
 -----------------
 
-- Windows:
-    Download git bash from the link below, and follow the install process. When selecting the 'default text editor' for git bash, select 'nano' or your preferred text editor. The default (vim) is powerful, but has a very steep learning curve and so we don't recommend it for beginners.
-    https://git-scm.com/download/win
+### Windows:
+Download git bash from the link below, and follow the install process. When selecting the 'default text editor' for git bash, select 'nano' or your preferred text editor. The default (vim) is powerful, but has a very steep learning curve and so we don't recommend it for beginners.
+
+https://git-scm.com/download/win
     
-    Once installed, you should be able to open the "Git Bash" application, or right click on any folder and click "Git Bash Here" to open a git bash terminal at that location.
+Once installed, you should be able to open the "Git Bash" application, or right click on any folder and click "Git Bash Here" to open a git bash terminal at that location.
     
-- macOS:
-    From macOS version 10.9 onwards, running the command "git --version" in Terminal should prompt you to install git if you don't already have it installed, and give you a version number if you do. Follow the prompts, and git should be installed on your system within minutes.
+### macOS:
+From macOS version 10.9 onwards, running the command "git --version" in Terminal should prompt you to install git if you don't already have it installed, and give you a version number if you do. Follow the prompts, and git should be installed on your system within minutes.
     
-    If this does not work, there is an installer linked below.
-    https://sourceforge.net/projects/git-osx-installer/
+If this does not work, there is an installer linked below.
+
+https://sourceforge.net/projects/git-osx-installer/
     
-    Once installed, open Terminal and run the command "git --version" to confirm that git is installed successfully.
+Once installed, open Terminal and run the command "git --version" to confirm that git is installed successfully.
     
-- Linux/Unix:
-    These instructions are highly dependent on your distro of Linux, so have a google around for platform-specific instructions. The link below contains commands for many of the most common Linux distros.
-    https://git-scm.com/download/linux
+### Linux/Unix:
+These instructions are highly dependent on your distro of Linux, so have a google around for platform-specific instructions. The link below contains commands for many of the most common Linux distros.
+
+https://git-scm.com/download/linux
 
 Making a git repository
 -----------------------
