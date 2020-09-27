@@ -1,2 +1,1 @@
-# technicallabs.github.io
-Planning advanced labs
+# Technical Labs
