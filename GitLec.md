@@ -45,6 +45,7 @@ These instructions are highly dependent on your distro of Linux, so have a googl
 
 [Linux Install Commands](https://git-scm.com/download/linux)
 
+
 Making a git repository
 -----------------------
 
@@ -60,6 +61,7 @@ The repository is a folder with a .git folder in it, which stores all the
 information git needs.
 
 You can then run `git status` to see the status of your empty repository.
+
 
 Staging files
 -------------
@@ -102,6 +104,7 @@ Git Merging
 
 .git folder
 -----------
+
 
 
 
