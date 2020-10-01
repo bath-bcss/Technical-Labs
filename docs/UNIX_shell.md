@@ -67,29 +67,29 @@ The where is what directory are you in? In a unix shell you are always have a wo
 find your current working directory use the command "print working directory" which is abbreviated 
 to `pwd`.
 
-![PWDImage](/Assets/UNIX_Shell/PWDCommand.png)
+![PWDImage](Assets/UNIX_Shell/PWDCommand.png)
 
 Then you can see the shell returns the current directory.
 
 To change the working directory use the `cd` (change directory) command followed by where you want 
 to go.
 
-![CDCommandImage](/Assets/UNIX_Shell/CDCommand.png)
+![CDCommandImage](Assets/UNIX_Shell/CDCommand.png)
 
 You can also either use local file paths, from your current directory, or use the absolute path from 
 the base directory.
 
-![CDRelativeCommandImage](/Assets/UNIX_Shell/CDRelativeCommand.png)
+![CDRelativeCommandImage](Assets/UNIX_Shell/CDRelativeCommand.png)
 
 To list all the directories and files in the working directory use the `ls` command, short for 
 "list".
 
-![LSCommandImage](/Assets/UNIX_Shell/LSCommand.png)
+![LSCommandImage](Assets/UNIX_Shell/LSCommand.png)
 
 In unix any directories starting with a full-stop are hidden by default, to show these hidden files 
 add the `-a` flag to the `ls` command.
 
-![LSACommand](/Assets/UNIX_Shell/LSACommand.png)
+![LSACommand](Assets/UNIX_Shell/LSACommand.png)
 
 There you can see some unexpected entries, what are `,` and `..`? (`.DS_STORE` and `.git` are normal 
 hidden directories in this file). In UNIX in every directory there is `.` to represent the current 
@@ -97,7 +97,7 @@ directory, and `..` to represent the parent directory.
 
 Combining this with relative paths we can use `cd ..` to mavigate to the parent directory.
 
-![CDUPCommand](/Assets/UNIX_Shell/cdupCommand.png)
+![CDUPCommand](Assets/UNIX_Shell/cdupCommand.png)
 
 ### Who
 
@@ -105,4 +105,5 @@ UNIX has a user system, and different users can access different files and diffe
 
 You can check what user you are with the `who` command.
 
-![WhoCommand](/Assets/UNIX_Shell/whoCommand.png)
+![WhoCommand](Assets/UNIX_Shell/whoCommand.png)
+
