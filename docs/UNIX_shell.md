@@ -103,7 +103,13 @@ Combining this with cd and relative paths we can use `cd ..` to mavigate to the 
 
 UNIX has a user system, and different users can access different files and different commands.
 
-You can check what user you are with the `who` command.
+You can check what user you are with the `whoami` command.
 
 ![WhoCommand](Assets/UNIX_Shell/whoCommand.png)
+
+You can then change users by using the `su` command followed by the user you want to switch to 
+("root" is the super user in unix sho has all privaledges, you shouldnt normally work as root 
+because you might do something destructive by accident).
+
+![WhoCommand](Assets/UNIX_Shell/suCommand.png)
 
