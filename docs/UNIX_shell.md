@@ -91,11 +91,11 @@ add the `-a` flag to the `ls` command.
 
 ![LSACommand](Assets/UNIX_Shell/LSACommand.png)
 
-There you can see some unexpected entries, what are `,` and `..`? (`.DS_STORE` and `.git` are normal 
-hidden directories in this file). In UNIX in every directory there is `.` to represent the current 
-directory, and `..` to represent the parent directory.
+There you can see some unexpected entries, what are `,` and `..`? (There may be other hidden folders 
+also). In UNIX in every directory there is `.` to represent the current directory, and `..` to 
+represent the parent directory.
 
-Combining this with relative paths we can use `cd ..` to mavigate to the parent directory.
+Combining this with cd and relative paths we can use `cd ..` to mavigate to the parent directory.
 
 ![CDUPCommand](Assets/UNIX_Shell/cdupCommand.png)
 
