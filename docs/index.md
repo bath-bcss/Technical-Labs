@@ -21,6 +21,7 @@ We aim to introduce:
 - ssh
 - Build automation software and 'make'
 - Continuious intigration tools
+- Deployment tools like docker, AWS, Azure, Heroku
 
 ### Going beyond this series
 
