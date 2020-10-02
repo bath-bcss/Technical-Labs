@@ -1,8 +1,3 @@
----
-layout: page
-title: The Unix Shell
----
-
 UNIX Shell
 ==========
 
