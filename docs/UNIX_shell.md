@@ -217,6 +217,7 @@ make use of variables. The command `export <variable name>="<data>"` defines a v
 Then by writing `$<variable name>` you can retrieve the value and put it in a string.
 
 ![ExportingVariables](Assets/UNIX_Shell/exportCommand.png)
+
 The `echo <argument>` command simply returns the parameter given.
 
 Then finally we can look at the "PATH variables"
@@ -227,7 +228,7 @@ And you see a big list of file directories, this is where the shell goes looking
 you want to run. You can go lookin the directories themselves but if you need to find one particular 
 executable you can use the `which <command>` command.
 
-![WhichCommand](Assets/UNIX_Shell/WhichCommand.png)
+![WhichCommand](Assets/UNIX_Shell/whichCommand.png)
 
 You can run executables directly with their absolute path or local path also, this is how you could 
 run executables you make yourself without putting them in the path directories!
