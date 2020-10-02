@@ -95,7 +95,7 @@ There you can see some unexpected entries, what are `,` and `..`? (There may be 
 also). In UNIX in every directory there is `.` to represent the current directory, and `..` to 
 represent the parent directory.
 
-Combining this with cd and relative paths we can use `cd ..` to mavigate to the parent directory.
+Combining this with cd and relative paths we can use `cd ..` to navigate to the parent directory.
 
 ![CDUPCommand](Assets/UNIX_Shell/cdupCommand.png)
 
@@ -112,4 +112,43 @@ You can then change users by using the `su` command followed by the user you wan
 because you might do something destructive by accident).
 
 ![WhoCommand](Assets/UNIX_Shell/suCommand.png)
+
+
+Basics of UNIX
+--------------
+
+Now you know the basics of getting around and how to change user lets start using some commands!
+
+In the UNIX-shell a command is structured with the name of the command, then some arguments,
+
+![UnixCommandExample](Assets/UNIX_Shell/CommandExample.png)
+
+Ignore the contenst of the command for now,
+
+Here in red you can see the "Command", this speies what you want the kernal to do or what executable 
+you want to run. The parts in blue are the "Arguments" or "parameters";
+
+Thge shell takes the command string and if its not a kernal command checks through the "PATH 
+variable" directories for a binary with the matching name. when it finds the executable it runs it 
+with the parameters you gave.
+
+What are the "PATH variables"
+-----------------------------
+
+Earlier we said the shall was a scripting langage, and like any other programming language it can 
+make use of variables. The command `export <variable name>="<data>"` defines a variable.
+
+Then by writing `$<variable name>` you can retrieve the value and put it in a string.
+The `echo` command takes a string and outputs it straight back.
+
+![UnixCommandExample](Assets/UNIX_Shell/echoCommand.png)
+
+Then with the echo command we can print the value of our variables!
+
+![UnixCommandExample](Assets/UNIX_Shell/CommandExample.png)
+
+
+
+
+
 
