@@ -1,8 +1,3 @@
----
-layout: page
-title: Technical Labs
----
-
 Technical labs is a series of labs being run by Bath Computer Science Society (BCSS) intended to 
 introduce useful technical skills.
 
