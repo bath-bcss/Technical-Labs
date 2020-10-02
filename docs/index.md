@@ -43,3 +43,9 @@ checked by a variety of sources to try make them as factual and useful as poossi
 The notes for this series have been researched and checked, we are aiming to have each note be 
 checked by at least 1 lecturer.
 
+Source Code
+-----------
+
+The code for this website is available [here](https://github.com/bath-bcss/Technical-Labs).
+
+Licensed under [CC BY-NC-SA](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode).
