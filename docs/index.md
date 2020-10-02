@@ -11,8 +11,8 @@ MIT.
 
 We aim to introduce:
 
+- [The UNIX shell](UNIX_shell.md)
 - Version control and Git
-- Using command line tools and 'the shell'
 - Integrated development environment tools
 - Debugging
 - ssh
