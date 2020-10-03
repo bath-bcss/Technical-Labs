@@ -13,13 +13,8 @@ Android dominating the mobile market.
 UNIX-like systems are characterised by a modular design where functionality is made up of simple 
 tools. Each tool performs a well defined function, and can be combined with other tools to together 
 become more complex. UNIX-like operating systems consist of many libraries and utilities along with
-<<<<<<< HEAD
 a master control program - the kernel. The kernel handles starting and stopping programs, the file 
 system, and other low level tasks that programs share.
-=======
-a master control program (the kernel), which handles starting and stopping programs, file system, 
-and other low level tasks that programs share.
->>>>>>> origin/main
 
 UNIX was instrumental in the development of the internet and still comprises the vast majority of
 the machines that make up the internet.
@@ -28,15 +23,9 @@ What is the shell?
 ------------------
 
 The shell is the command line interpreter for UNIX-like operating systems. Users can control the 
-<<<<<<< HEAD
 operating system through the shell. The shell is both a command language and scripting language. 
 Users tend to interact with the shell through a terminal emulator. As the name suggests, this 
 emulates old style computer terminals. This is normally the "Terminal" app on your computer.
-=======
-operating system through the shell which is both a command language and a scripting language. Users 
-tend to interact with the shell through a terminal emulator. As the name suggests, this emulates 
-old style computer terminals. This is normally the "Terminal" app on your computer.
->>>>>>> origin/main
 
 In essence, the shell is the language and syntax you use to input commands and scripts into the 
 terminal emulator. The terminal emulator then sends those commands to the UNIX operating system 
@@ -44,21 +33,13 @@ which either runs installed libraries or utilities from the kernel. The output i
 back to the terminal emulator and displayed.
 
 The most common shell is the **B**ourne **A**gain **Sh**ell, or bash for short, but shells like the 
-<<<<<<< HEAD
 **Z Sh**ell (zsh) and the **F**riendly **I**nteractive **Sh**ell (fish) are gaining popularity. 
-=======
-**Z Sh**ell (zsh) and the **F**riendly **I**nteractive **Sh**ell (fish) are gaining in popularity. 
->>>>>>> origin/main
 We'll be using bash.
 
 How to install a UNIX-like command line on your computer
 --------------------------------------------------------
 
-<<<<<<< HEAD
 For Mac and Linux users this answer is very simple. You are already running a UNIX-like operating 
-=======
-For Mac and Linux users this answer is very simple. You are already running on a UNIX-like operating 
->>>>>>> origin/main
 system! Install the terminal emulator of your choice (or use the pre-installed options) and you're 
 ready.
 
