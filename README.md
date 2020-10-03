@@ -3,7 +3,7 @@
 This is the repo with the source code for the BCSS Technical Labs ran 2020 - 2021.
 
 To run this on `localhost` you first need to [install ruby](), [install jekyll](), then [install bundler]().
-You should then be able to run the website locally with the command `$ bundle exec jekyll serve`.
+You should then be able to run the website locally, by navigating to `/docs` and running the command `$ bundle exec jekyll serve`.
 
 This is distrobuted under [CC BY-NC-SA](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode).
 This work was inspired by the [Missing Semester Series](https://missing.csail.mit.edu)
