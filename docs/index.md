@@ -1,11 +1,11 @@
-Advanced Labs is a series of labs that are designed to teach people (specifically freshers) about
-data structures and algorithms. 
+Technical labs is a series of labs being run by Bath Computer Science Society (BCSS) intended to 
+introduce useful technical skills.
 
-This is being led by [Samuel Guard](mailto:sg2268@bath.ac.uk) and [Joe 
+This is being led by [Alfie Richards](mailto:ar2227@bath.ac.uk) and [Joe 
 Cryer](mailto:jjc82@bath.ac.uk) email us if you have any questions or want to get involved!
 
-We are both students currently in our second year of the Computer Science course, we we're inspired
-by Arthur Baker when he ran the labs in the past year
+It has been heavily inspired by the [Missing Semester](https://missing.csail.mit.edu) series ran by 
+MIT.
 
 ### What were covering
 
