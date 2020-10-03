@@ -4,19 +4,17 @@ UNIX Shell
 What is UNIX
 ------------
 
-When people say UNIX they noramlly mean the family of UNIX-like operating systems that derive from 
-the original AT&T UNIX operating system. The original UNIX was written, along with the C programming 
-language, in the 1970's by Ken Thompson, Dennic Ritchie and others. There are a lot of UNIX-like 
-operating systems, MacOS and Linux being the two most popular for dektop along with iOS and Android 
-for mobile.
+When people say UNIX they normally mean the family of UNIX-like operating systems that derive from the original AT&T UNIX operating system. The original UNIX was written (along with the C programming 
+language) in the 1970s by Ken Thompson, Dennis Ritchie and others. There are many UNIX-like operating systems - macOS and Linux being the two most popular for desktop, with iOS and Android 
+dominating the mobile market.
 
-UNIX is characterised by its modular design where functionality is made up by simple tools, each of 
+UNIX systems are characterised by a modular design where functionality is made up by simple tools, each of 
 which perform well defined functions, and can be combined to together become more complex.
 UNIX operating systems consist of many librarys and utilities along with a master control program, 
 the kernal, which handles starting and stopping programs, handles the file system, and other low 
 level tasks that programs share.
 
-UNIX was instrumental in the development of the intenet and still makes up the vast majority of the 
+UNIX was instrumental in the development of the internet and still makes up the vast majority of the 
 machines that make up the internet.
 
 What is the shell?
