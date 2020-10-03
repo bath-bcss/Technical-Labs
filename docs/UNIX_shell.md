@@ -4,53 +4,56 @@ UNIX Shell
 What is UNIX
 ------------
 
-When people say UNIX they normally mean the family of UNIX-like operating systems that derive from the original AT&T UNIX operating system. The original UNIX was written (along with the C programming 
-language) in the 1970s by Ken Thompson, Dennis Ritchie and others. There are many UNIX-like operating systems - macOS and Linux being the two most popular for desktop, with iOS and Android 
-dominating the mobile market.
+When people say UNIX they normally mean the family of UNIX-like operating systems that derive from 
+the original AT&T UNIX operating system. The original UNIX was written (along with the C
+programming language) in the 1970s by Ken Thompson, Dennis Ritchie and others. There are many 
+UNIX-like operating systems - macOS and Linux being the two most popular for desktop, with iOS and 
+Android dominating the mobile market.
 
-UNIX systems are characterised by a modular design where functionality is made up by simple tools, each of 
-which perform well defined functions, and can be combined to together become more complex.
-UNIX operating systems consist of many librarys and utilities along with a master control program, 
-the kernal, which handles starting and stopping programs, handles the file system, and other low 
-level tasks that programs share.
+UNIX-like systems are characterised by a modular design where functionality is made up of simple 
+tools. Each tool performs a well defined function, and can be combined with other tools to together 
+become more complex. UNIX-like operating systems consist of many libraries and utilities along with
+a master control program (the kernel), which handles starting and stopping programs, file system, 
+and other low level tasks that programs share.
 
-UNIX was instrumental in the development of the internet and still makes up the vast majority of the 
-machines that make up the internet.
+UNIX was instrumental in the development of the internet and still comprises the vast majority of
+the machines that make up the internet.
 
 What is the shell?
 ------------------
 
-The shell is the command-line interpreter for UNIX-like operating systems. Users can control the 
+The shell is the command line interpreter for UNIX-like operating systems. Users can control the 
 operating system through the shell which is both a command language and a scripting language. Users 
-tend to interact with the ith shell through a terminal emulator. Which, as the name suggests, 
-emulate old style computer terminals. This is normally the "Terminal" app on your computer.
+tend to interact with the shell through a terminal emulator. As the name suggests, this emulates 
+old style computer terminals. This is normally the "Terminal" app on your computer.
 
-In essense, the shell is the language and syntax you use to input commands and scripts into the 
-terminal emulator. The terminal emulator then sends those commands to the unix operating system 
-which either runs librarys installled or runs utilities from the kernal. then the output is sent 
+In essence, the shell is the language and syntax you use to input commands and scripts into the 
+terminal emulator. The terminal emulator then sends those commands to the UNIX operating system 
+which either runs installed libraries or utilities from the kernel. The output is then sent 
 back to the terminal emulator and displayed.
 
-The most common shell is the Bourne Again SHell, or bash for short, but shells like the Z SHell 
-(zsh) and the Friendly Interactive SHell (fish) are gaining in popularity. We'll be using bash.
+The most common shell is the **B**ourne **A**gain **Sh**ell, or bash for short, but shells like the 
+**Z Sh**ell (zsh) and the **F**riendly **I**nteractive **Sh**ell (fish) are gaining in popularity. 
+We'll be using bash.
 
-How to install a UNIX like command line on your computer
+How to install a UNIX-like command line on your computer
 --------------------------------------------------------
 
-For mac and linux users this answer is very simble. You are already running on a UNIX-like operating 
-system, Install the terminal emulator of your choice (or use the pre installed options) and you're 
+For Mac and Linux users this answer is very simple. You are already running on a UNIX-like operating 
+system! Install the terminal emulator of your choice (or use the pre-installed options) and you're 
 ready.
 
-For Windows the answer is more complicated. As windows is not a UNIX-like operating system it doesnt 
-use a UNIX shell, instead it uses powershell, which isnt very widely used and is incompatible with 
-most UNIX tools.
+For Windows the answer is more complicated. As Windows is not a UNIX-like operating system it 
+doesn't use a UNIX shell. Instead, it uses PowerShell, which isn't very widely used and is 
+incompatible with most UNIX tools.
 
-However all is not lost! With Windows 10 Microsoft added a full Windows subsystem for Linux, which 
-allows Windows users to use a UNIX shell, like bash, and most all of the GNU utilities that make up 
-linux, just without the linux kernal! 
+However, all is not lost! With Windows 10 Microsoft added a full Windows subsystem for Linux, which 
+allows Windows users to use a UNIX shell (like bash) and almost all of the GNU utilities that make 
+up Linux, just without the Linux kernel. 
 
 To install go to [this 
 page](https://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/) 
-which gives instructions on installing a bash shell, then most everything should be the same from 
+which gives instructions on installing a bash shell, then almost everything should be the same from 
 there on out.
 
 How to use the UNIX shell
