@@ -6,4 +6,4 @@ To run this on `localhost` you first need to [install ruby](https://www.ruby-lan
 You should then be able to run the website locally, by navigating to `/docs` and running the command `$ bundle exec jekyll serve`.
 
 This is distrobuted under [CC BY-NC-SA](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode).
-This work was inspired by the [Missing Semester Series](https://missing.csail.mit.edu)
+This work was inspired by the [Missing Semester Series](https://missing.csail.mit.edu).
