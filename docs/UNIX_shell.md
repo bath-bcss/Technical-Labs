@@ -1,6 +1,18 @@
 UNIX Shell
 ==========
 
+Why learn UNIX?
+---------------
+
+Command line interfaces are old, and a lot less intuitive than graphical interfaces, so you'd be 
+forgiven for asking why you should spend time to learn UNIX. A lot of developer tools exist only as 
+UNIX command line programs or are primarily a command line program with a UI as an after thought. A 
+basic understanding of UNIX is essential for a computer scientist, it's better to learn it the right 
+way than to muddle through.
+
+Additionally, once you get past the learning curve many people work faster in a UNIX development 
+environment than a UI based environment.
+
 What is UNIX
 ------------
 
