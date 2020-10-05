@@ -165,8 +165,8 @@ should be input? You can loook at the `man` pages.
 Man Pages
 ---------
 
-Man is short for manual, and indeed the man pages are the manual for each command, listing how to 
-use it and what it does.
+Man is short for manual, and indeed the man pages are the manual for each command. Man paes contain 
+information like how to use it, what it does, parameters, and flags.
 
 To look up the man page for a command use the command: 
 
@@ -174,13 +174,13 @@ To look up the man page for a command use the command:
 man <command>
 ```
 
-Then scroll with the arrow keys, or `d` and `u` for down and up, and the `q` key to exit the man 
-page.
+Then scroll with the arrow keys, or `d` and `u` for down and up, and press the `q` key to exit the 
+man page.
 
 Man pages are an essential resource for learning UNIX, and a great quick refrence if you forget 
 parameters or flags for a command.
 
-You can also use man pages to find commands, by unsing the command
+You can also use man pages to find commands, by using the command:
 
 ```bash
 man -k <keyword>
