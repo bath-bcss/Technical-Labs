@@ -342,8 +342,9 @@ If you want to work on your UNIX skills here are some good practise exercises:
 Credit
 ======
 
-Written by Alfie Richards
-Editing by Joe Cryer
+Written by [Alfie Richards](mailto:alfierchrds@gmail.com).
+
+Editing by Joe Cryer.
 
 Thanks to:
 
@@ -352,3 +353,4 @@ Thanks to:
 
 For additional help
 
+Please sent any corrections [here](mailto:alfierchrds@gmail.com).
