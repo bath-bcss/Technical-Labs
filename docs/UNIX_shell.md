@@ -252,7 +252,7 @@ Environment Variables
 Earlier we said the shell was a scripting language, and like any other programming language it can 
 make use of variables. The command `export <variable name>="<data>"` defines a variable.
 
-Then by writing `$<variable name>` bash unpacks the variable to its data.
+Then by writing `$<variable name>` bash unpacks the variable to it's string.
 
 ![ExportingVariables](Assets/UNIX_Shell/exportCommand.png)
 
