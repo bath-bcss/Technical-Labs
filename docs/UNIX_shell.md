@@ -170,7 +170,7 @@ information like how to use it, what it does, parameters, and flags.
 
 To look up the man page for a command use the command: 
 
-```bash 
+```bash
 man <command>
 ```
 
