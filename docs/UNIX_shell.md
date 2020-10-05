@@ -159,9 +159,37 @@ Parameters are separated by spaces, unless multiple are surrounded in speech mar
 they are treated as one parameter. One common style of parameter is a "flag". Flags look like the 
 `-a` and `-m` above and generally alter the command's behaviour in some way.
 
-Different commands take different parameters in different orders. You can find a manual and a list 
-of parameters for any command on the "man" page, by running `man <command name>` and then exiting 
-the page by pressing the `q` key.
+Different commands take different parameters in different orders. How can you possibly know how they 
+should be input? You can loook at the `man` pages.
+
+Man Pages
+---------
+
+Man is short for manual, and indeed the man pages are the manual for each command, listing how to 
+use it and what it does.
+
+To look up the man page for a command use the command: 
+
+```bash 
+man <command>
+```
+
+Then scroll with the arrow keys, or `d` and `u` for down and up, and the `q` key to exit the man 
+page.
+
+Man pages are an essential resource for learning UNIX, and a great quick refrence if you forget 
+parameters or flags for a command.
+
+You can also use man pages to find commands, by unsing the command
+
+```bash
+man -k <keyword>
+```
+
+Then you will get a list of commands that use that keyword in their description.
+
+Additionally, bash has `help` pages for built in commands, for example `help pwd` to get help on the 
+`pwd` comamnd.
 
 File management in UNIX
 -----------------------
@@ -302,3 +330,4 @@ If you want to work on your UNIX skills here are some good practise exercises:
 7. Look into UNIX permission system and change some permissions!
 8. Try playing around with `<`, `>`, and `|`.
 9. Look at your PATH variables and try to find the executable of a command you know.
+
