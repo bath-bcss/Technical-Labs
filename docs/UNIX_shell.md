@@ -245,19 +245,26 @@ it is gone.
 Copying is handled by the `cp` command, which is the same as the `mv` command but moves a copy of 
 the file or directory to the new file path.
 
-What are the "PATH variables"
------------------------------
+Environment Variables
+---------------------
 
 Earlier we said the shell was a scripting language, and like any other programming language it can 
 make use of variables. The command `export <variable name>="<data>"` defines a variable.
 
-Then by writing `$<variable name>` you can retrieve the value and put it in a string.
+Then by writing `$<variable name>` bash unpacks the variable to its data.
 
 ![ExportingVariables](Assets/UNIX_Shell/exportCommand.png)
 
-The `echo <argument>` command simply returns the parameter given.
+The `echo <argument>` command simply prints the parameter given to `stdout`.
 
-Then finally we can look at the "PATH variables" using the command `echo $PATH`.
+All the variables together make up the "environment". As well as values to be passed in as 
+parameters programs can also read the environment variables, you can then change them to change 
+their behaviour.
+
+### Path Variables
+
+The "PATH variable" is a special variable in the environment. We can get the value with `echo 
+$PATH`.
 
 ![PATHVariables](Assets/UNIX_Shell/PathVariables.png)
 
@@ -330,4 +337,17 @@ If you want to work on your UNIX skills here are some good practise exercises:
 7. Look into UNIX permission system and change some permissions!
 8. Try playing around with `<`, `>`, and `|`.
 9. Look at your PATH variables and try to find the executable of a command you know.
+
+Credit
+======
+
+Written by Alfie Richards
+Editing by Joe Cryer
+
+Thanks to:
+
+- Dr Russell Bradford
+- Bence Babrián
+
+For additional help
 
