@@ -165,8 +165,9 @@ should be input? You can loook at the `man` pages.
 Man Pages
 ---------
 
-Man is short for manual, and indeed the man pages are the manual for each command. Man paes contain 
-information like how to use it, what it does, parameters, and flags.
+Man is short for manual, and indeed the man pages are the manual for each command. Man pages contain 
+information like how to use a command, what it does, what parameters it requires, along with 
+optional parameters and flags.
 
 To look up the man page for a command use the command: 
 
@@ -186,7 +187,7 @@ You can also use man pages to find commands, by using the command:
 man -k <keyword>
 ```
 
-Then you will get a list of commands that use that keyword in their description.
+You will be presented with a list of commands that use that keyword in their description.
 
 Additionally, bash has `help` pages for built in commands, for example `help pwd` to get help on the 
 `pwd` comamnd.
