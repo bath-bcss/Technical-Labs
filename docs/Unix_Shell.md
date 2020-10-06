@@ -1,8 +1,6 @@
-Unix Shell
-==========
+# Unix Shell
 
-What is Unix
-------------
+## What is Unix
 
 When people say Unix they normally mean the family of Unix-like operating systems that derive from 
 the original AT&T Unix operating system. The original Unix was written (along with the C
@@ -19,25 +17,23 @@ system, and other low level tasks that programs share.
 Unix was instrumental in the development of the internet and still comprises the vast majority of
 the machines that make up the internet.
 
-What is the shell?
-------------------
+## What is the shell?
 
-The shell is the command line interpreter for Unix-like operating systems. Users can control the 
-operating system through the shell. The shell is both a command language and scripting language. 
+The shell is the command line interpreter for Unix-like operating systems, used to control the 
+computer. The name "shell" refers both to the language you use to input commands and write scripts, 
+and the program that runs those commands or scripts.
+
 Users tend to interact with the shell through a terminal emulator. As the name suggests, this 
-emulates old style computer terminals. This is normally the "Terminal" app on your computer.
-
-In essence, the shell is the language and syntax you use to input commands and scripts into the 
-terminal emulator. The terminal emulator then sends those commands to the Unix operating system 
-which either runs installed libraries or utilities from the kernel. The output is then sent 
-back to the terminal emulator and displayed.
+emulates old style computer terminals. This is normally the "Terminal" app on your computer. When 
+you enter commands into a terminal emulator, it passes those commands to the shell to run. Those 
+commands might be requests to run built-in functionality of the shell, shell scripts, or installed 
+programs. The output of the command is then sent back to the terminal emulator and displayed.
 
 The most common shell is the **B**ourne **A**gain **Sh**ell, or bash for short, but shells like the 
 **Z Sh**ell (zsh) and the **F**riendly **I**nteractive **Sh**ell (fish) are gaining popularity. 
 We'll be using bash.
 
-How to install a Unix-like command line on your computer
---------------------------------------------------------
+## How to install a Unix-like command line on your computer
 
 For Mac and Linux users this answer is very simple. You are already running a Unix-like operating 
 system! Install the terminal emulator of your choice (or use the pre-installed options) and you're 
@@ -47,17 +43,17 @@ For Windows the answer is more complicated. As Windows is not a Unix-like operat
 doesn't use a Unix shell. Instead, it uses PowerShell, which isn't very widely used and is 
 incompatible with most Unix tools.
 
-However, all is not lost! With Windows 10 Microsoft added a full Windows subsystem for Linux, which 
-allows Windows users to use a Unix shell (like bash) and almost all of the GNU utilities that make 
-up Linux, just without the Linux kernel. 
+However, all is not lost! With Windows 10, Microsoft added a feature called Windows Subsystem for 
+Linux (WSL), which allows Windows users to use a Unix shell (like bash) and almost all of the GNU 
+utilities that make up Linux, just without the Linux kernel (or, since WSL 2, through a Linux kernel 
+running in a virtual machine).
 
 To install go to [this 
-page](https://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/) 
+page](https://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/), 
 which gives instructions on installing a bash shell, then almost everything should be the same from 
 there on out.
 
-How to use the Unix shell
--------------------------
+## How to use the Unix shell
 
 When you open the terminal you will be presented with a **prompt**, which will look something like:
 
@@ -73,12 +69,11 @@ There are a few things to be aware of when using a Unix shell: where you are and
 ### Where
 
 The **where** is what directory you are in. In a Unix shell you always have a working directory. To 
-find your current working directory use the command "print working directory" which is abbreviated 
-to `pwd`.
+find your current working directory use the command `pwd` (short for "print working directory").
 
 ![PWDImage](Assets/Unix_Shell/PWDCommand.png)
 
-You can see the shell returns the current directory. If you've just started the shell you'll be 
+You can see the shell prints out the current directory. If you've just started the shell you'll be 
 in your user's **home directory**. In Unix you can always find the home directory, as `~` represents 
 the current user's home directory - that's why it's in the prompt (`user:~$`).
 
@@ -87,8 +82,10 @@ to go.
 
 ![CDCommandImage](Assets/Unix_Shell/CDCommand.png)
 
-You can either use local file paths (from your current directory), or use the absolute path from 
-the base directory.
+You can give `cd` either a relative or an absolute path. The difference is that absolute paths start 
+with a leading `/`, pronounced "root", which represents the absolute top-level folder on your hard 
+drive. Any path that doesn't start with `/` is a relative path, so instead of starting from `/` it 
+starts from your current folder.
 
 ![CDRelativeCommandImage](Assets/Unix_Shell/CDRelativeCommand.png)
 
@@ -97,8 +94,8 @@ To list all the directories and files in the working directory use the `ls` comm
 
 ![LSCommandImage](Assets/Unix_Shell/LSCommand.png)
 
-In Unix any directories starting with a fullstop are hidden by default. To show these hidden files 
-add the `-a` flag to the `ls` command.
+In Unix any directories starting with a `.` are hidden by default. To show these hidden files add 
+the `-a` flag to the `ls` command.
 
 ![LSACommand](Assets/Unix_Shell/LSACommand.png)
 
@@ -126,11 +123,10 @@ replaced by a `#`, and the prompt may change also.
 ![WhoCommand](Assets/Unix_Shell/suCommand.png)
 
 If you want to run just one command as the `root` user (a very common occurence), you can use the 
-`sudo` command followed by the command you want to run. This will normally prompt you for an 
-administrator's password or the root user password.
+`sudo` command (short for "super user do") followed by the command you want to run. This will 
+normally prompt you for an administrator's password or the root user password.
 
-Basics of Unix
---------------
+## Basics of Unix
 
 Now you know the basics of getting around and how to change user, let's start using some commands!
 
@@ -163,8 +159,7 @@ Different commands take different parameters in different orders. You can find a
 of parameters for any command on the "man" page, by running `man <command name>` and then exiting 
 the page by pressing the `q` key.
 
-File management in Unix
------------------------
+## File management in Unix
 
 One of the first things you may want to do is manage files and directories. This can be done with 
 the Unix shell.
@@ -180,17 +175,20 @@ Making a directory is as simple as `mkdir <directory name>`
 The `mv` command has multiple uses. It allows you to move a file or directory from one file path to 
 another. 
 
-You can change the directory a file is in: 
+You can change the directory a file is in:
+
 ```bash
 mv <current directory path>/<file name> <new directory path>
 ```
 
 You can also move a directory to another directory: 
+
 ```bash
 mv <current directory path> <path of directory to move it to>
 ```
 
-You can also use it to rename a file or directory: 
+You can also use it to rename a file or directory:
+
 ```bash
 mv <file name> <new file name>
 ```
@@ -217,8 +215,7 @@ it is gone.
 Copying is handled by the `cp` command, which is the same as the `mv` command but moves a copy of 
 the file or directory to the new file path.
 
-What are the "PATH variables"
------------------------------
+## What are the "PATH variables"
 
 Earlier we said the shell was a scripting language, and like any other programming language it can 
 make use of variables. The command `export <variable name>="<data>"` defines a variable.
@@ -227,7 +224,7 @@ Then by writing `$<variable name>` you can retrieve the value and put it in a st
 
 ![ExportingVariables](Assets/Unix_Shell/exportCommand.png)
 
-The `echo <argument>` command simply returns the parameter given.
+The `echo <argument>` command simply prints out the input it was given, with variables expanded.
 
 Then finally we can look at the "PATH variables" using the command `echo $PATH`.
 
@@ -244,24 +241,24 @@ run executables you make yourself without putting them in the path directories!
 
 ![RunningExecutablesWithPath](Assets/Unix_Shell/RunningBinaries.png)
 
-Connecting programs together
-----------------------------
+## Connecting programs together
 
-Unix programs can take input and return output through two primary streams: the input 
-stream and the output stream. By default, the input stream is what you type into the terminal 
-emulator and the output stream is printed to the terminal emulator. 
+Unix programs can take input and return output through two primary streams: the input stream 
+(standard input, normally "stdin") and the output stream (stdout). By default, stdin is what you 
+type into the terminal emulator and stdout is printed to the terminal emulator. 
 
-If you've ever written a Python program the `input()` statement reads the input stream and the 
-`print()` statement writes to the output stream. 
+If you've ever written a Python program the `input()` statement reads from stdin and the `print()` 
+statement writes to stdout. 
 
-The streams don't need to be the standard input and output streams.
-You can use the `>` operator after a command to save the result to a file.
+Stdout doesn't have to simply be printed out, though, and stdin doesn't always have to come from 
+keyboard input. You can use the `>` operator after a command to redirect stdout from that command 
+somewhere else, like to a file.
 
 ![SaveToFileOperator](Assets/Unix_Shell/SaveToFileOperator.png)
 
-The `cat <file path>` command reads a file and outputs it to the standard output stream.
+The `cat <file path>` command reads a file and outputs it to stdout.
 
-You can use the `<` operator to read a file as the input stream for a command.
+Likewise, you can use the `<` operator to read a file into stdin for a command.
 
 ![ReadFromFileOperator](Assets/Unix_Shell/ReadFromFileOperator.png)
 
@@ -276,8 +273,7 @@ Here the `ip a` command lists lots of networking information, but I only want th
 address starting "127.". So, I can use the `grep <string>` command that lets you search the standard 
 input stream for strings and outputs the lines containing the strings.
 
-Going forwards
---------------
+## Going forwards
 
 Hopefully you now know how to move around the shell, change users, manage files, and accomplish 
 basic tasks with the Unix shell. Hopefully this introduction allows you to learn more from other 
@@ -287,8 +283,7 @@ There's a lot more you can do with the shell - if we covered it all it would tak
 Some more will be covered in future Technical Labs but this should give you a good base to work 
 from. Man pages are your friend - if you don't understand a command never be afraid to use them.
 
-Exercises
----------
+## Exercises
 
 If you want to work on your Unix skills here are some good practise exercises:
 
