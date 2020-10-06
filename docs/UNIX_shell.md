@@ -159,29 +159,29 @@ Parameters are separated by spaces, unless multiple are surrounded in speech mar
 they are treated as one parameter. One common style of parameter is a "flag". Flags look like the 
 `-a` and `-m` above and generally alter the command's behaviour in some way.
 
-Different commands take different parameters in different orders. How can you possibly know how they 
-should be input? You can loook at the `man` pages.
+Different commands take different parameters in different orders. How are you meant to know these 
+parameters? You can look at the `man` pages.
 
 Man Pages
 ---------
 
-Man is short for manual, and indeed the man pages are the manual for each command. Man pages contain 
-information like how to use a command, what it does, what parameters it requires, along with 
-optional parameters and flags.
+Man is short for manual, as the man pages are the manual for each command. Man pages contain 
+information like how to use a command, what it does, what parameters it requires, along with the 
+command's optional parameters and flags.
 
-To look up the man page for a command use the command: 
+To look up the man page for a command use: 
 
 ```bash
 man <command>
 ```
 
-Then scroll with the arrow keys, or `d` and `u` for down and up, and press the `q` key to exit the 
-man page.
+Scroll through the manual with the arrow keys (or `d` and `u` for down and up), and press the `q` 
+key to exit the man page.
 
-Man pages are an essential resource for learning UNIX, and a great quick refrence if you forget 
+Man pages are an essential resource for learning UNIX, and a great quick reference if you forget 
 parameters or flags for a command.
 
-You can also use man pages to find commands, by using the command:
+You can also use man pages to find commands, by using:
 
 ```bash
 man -k <keyword>
@@ -189,8 +189,8 @@ man -k <keyword>
 
 You will be presented with a list of commands that use that keyword in their description.
 
-Additionally, bash has `help` pages for built in commands, for example `help pwd` to get help on the 
-`pwd` comamnd.
+Additionally, bash has `help` pages for built-in commands, for example `help pwd` gives you help on 
+the `pwd` comamnd.
 
 File management in UNIX
 -----------------------
@@ -252,15 +252,15 @@ Environment Variables
 Earlier we said the shell was a scripting language, and like any other programming language it can 
 make use of variables. The command `export <variable name>="<data>"` defines a variable.
 
-Then by writing `$<variable name>` bash unpacks the variable to it's string.
+Then by writing `$<variable name>`, bash unpacks the variable to its string.
 
 ![ExportingVariables](Assets/UNIX_Shell/exportCommand.png)
 
 The `echo <argument>` command simply prints the parameter given to `stdout`.
 
-All the variables together make up the "environment". As well as values to be passed in as 
-parameters programs can also read the environment variables, you can then change them to change 
-their behaviour.
+All the variables together make up the "environment". Programs can read the environment variables 
+as well as any values passed into them. So, changing these environment variables can change the
+behaviour of programs.
 
 ### Path Variables
 
@@ -344,7 +344,7 @@ Credit
 
 Written by [Alfie Richards](mailto:alfierchrds@gmail.com).
 
-Editing by Joe Cryer.
+Editing by Joseph Cryer(mailto:jcryer1234@gmail.com).
 
 Thanks to:
 
