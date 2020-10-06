@@ -319,7 +319,8 @@ There's a lot more you can do with the shell - if we covered it all it would tak
 Some more will be covered in future Technical Labs but this should give you a good base to work
 from. Man pages are your friend - if you don't understand a command never be afraid to use them.
 
-## Exercises
+Exercises
+---------
 
 If you want to work on your Unix skills here are some good practise exercises:
 
