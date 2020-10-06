@@ -280,7 +280,7 @@ run executables you make yourself without putting them in the path directories!
 ## Connecting programs together
 
 Unix programs can take input and return output through two primary streams: the input stream
-(standard input, normally "stdin") and the output stream (stdout). By default, stdin is what you
+(standard input, normally "stdin") and the output stream ("stdout"). By default, stdin is what you
 type into the terminal emulator and stdout is printed to the terminal emulator.
 
 If you've ever written a Python program the `input()` statement reads from stdin and the `print()`
@@ -298,7 +298,7 @@ Likewise, you can use the `<` operator to read a file into stdin for a command.
 
 ![ReadFromFileOperator](Assets/Unix_Shell/ReadFromFileOperator.png)
 
-The `tail -n1` command returns the last line of the input stream.
+The `tail -n1` command returns the last line of the stdout.
 
 Lastly, you can connect one program to another with a pipe: `|`. With a pipe you can take the
 output of one program and feed it into another.
@@ -307,7 +307,7 @@ output of one program and feed it into another.
 
 Here the `ip a` command lists lots of networking information, but I only want the line about the IP
 address starting "127.". So, I can use the `grep <string>` command that lets you search the standard
-input stream for strings and outputs the lines containing the strings.
+stdin for strings and outputs the lines containing the strings to stdout.
 
 ## Going forwards
 
