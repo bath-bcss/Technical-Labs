@@ -12,7 +12,7 @@ on some of these concepts.
 
 We aim to introduce:
 
-- [The UNIX shell](UNIX_shell.md)
+- [The Unix shell](Unix_Shell.md)
 - Version control and Git
 - Integrated development environment tools
 - Debugging
