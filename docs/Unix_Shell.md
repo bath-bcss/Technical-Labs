@@ -139,9 +139,8 @@ by a list of arguments in blue.
 
 The command can fall into a few categories:
 
-1. **Internal commands** - Certain commands fall into the remit of the operating system, like
-   managing the file system. These commands are managed by the OS 'kernel' and don't rely on any
-   executables.
+1. **Internal commands** - Certain commands are build into the shell. The shell directly interacts 
+   with the OS and no other executables are required.
 2. **Included commands** - Some executables come included with and are considered part of the
    operating system.
 3. **External commands** - Executables the user has installed.
@@ -151,6 +150,8 @@ to handle. Otherwise, the shell has to find the command you want to run. To do t
 looks for executables with the name you specified in special directories. These directories are
 specified by the PATH variables, which will be covered later.
 
+You can find if any command is in the first category with the command `type <command name>`.
+
 Parameters are separated by spaces, unless multiple are surrounded in speech marks. In this case,
 they are treated as one parameter. One common style of parameter is a "flag". Flags look like the
 `-a` and `-m` above and generally alter the command's behaviour in some way.
@@ -158,8 +159,7 @@ they are treated as one parameter. One common style of parameter is a "flag". Fl
 Different commands take different parameters in different orders. How are you meant to know these
 parameters? You can look at the `man` pages.
 
-Man Pages
----------
+## Man Pages
 
 Man is short for manual, as the man pages are the manual for each command. Man pages contain
 information like how to use a command, what it does, what parameters it requires, along with the
@@ -174,7 +174,7 @@ man <command>
 Scroll through the manual with the arrow keys (or `d` and `u` for down and up), and press the `q`
 key to exit the man page.
 
-Man pages are an essential resource for learning UNIX, and a great quick reference if you forget
+Man pages are an essential resource for learning Unix, and a great quick reference if you forget
 parameters or flags for a command.
 
 You can also use man pages to find commands, by using:
@@ -319,7 +319,7 @@ There's a lot more you can do with the shell - if we covered it all it would tak
 Some more will be covered in future Technical Labs but this should give you a good base to work
 from. Man pages are your friend - if you don't understand a command never be afraid to use them.
 
-## Exercises
+## Exercises
 
 If you want to work on your Unix skills here are some good practise exercises:
 
