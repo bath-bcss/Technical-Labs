@@ -339,7 +339,7 @@ If you want to work on your Unix skills here are some good practise exercises:
 
 Written by [Alfie Richards](mailto:alfierchrds@gmail.com).
 
-Editing by Joseph Cryer(mailto:jcryer1234@gmail.com).
+Editing by [Joseph Cryer](mailto:jjc82@bath.ac.uk).
 
 Thanks to:
 
