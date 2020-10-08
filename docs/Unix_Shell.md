@@ -349,4 +349,4 @@ Thanks to:
 
 For additional help
 
-Please sent any corrections [here](mailto:alfierchrds@gmail.com).
+Please send any corrections [here](mailto:alfierchrds@gmail.com).
