@@ -411,3 +411,11 @@ Other recommended learning resources:
    arent comfortable with git do make perodic backups somewhere else, jsut so you dont lose your 
    work.
 4. Play [this game](https://learngitbranching.js.org/) intended to teach git branching.
+
+## Credit and thanks
+
+Written by [Alfie Richards](mailto:alfierchrds@gmail.com)
+
+Edited by [Joe Cryer](mailto: jcryer1234@gmail.com)
+
+Additional help from:
