@@ -170,7 +170,7 @@ children. So in a diagram representing a commit graph any arrows should flow fro
 their parents, which is counter intuative from the peerspective of the flow when developing. If you 
 see a diagram the arrows the other way around be very sceptical of that source of information.
 
-![A git dag diagram](Assets/Git/git_dag_draw.jpeg){:.smallImg}
+![A git dag diagram](assets/Git/git_dag_draw.jpeg){:.smallImg}
 
 It is also to note a way git differs from most other version control solutions. Each commit and its 
 associated snapshot store the entire content of the repository, not the changes from the parent 
