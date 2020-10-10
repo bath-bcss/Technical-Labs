@@ -8,12 +8,14 @@ It has been heavily inspired by the [Missing Semester](https://missing.csail.mit
 MIT. We highly recommend you watch these as a follow-up to these labs, as they go much more in-depth
 on some of these concepts.
 
-### What we're covering
+### What we have covered
 
-We aim to introduce:
+1. [The Unix shell](Unix_Shell.html)
+2. [Git](git.html)
 
-- [The Unix shell](Unix_Shell.md)
-- Version control and Git
+### What we aim to cover
+
+- Using remotes wth Git, like GitHub
 - Integrated development environment tools
 - Debugging
 - ssh
