@@ -56,4 +56,27 @@ def test1():
     print("Binary search average time: " + str((time.time() - startTime)/100) + " Seconds per search")
 
 
-test1()
+#test1()
+class BasicQueue:
+    def __init__(self):
+        self.data = []
+
+    def push(self, val):
+        self.data.append(val)
+
+    def pop(self):
+        val = min(self.data)
+        self.data.remove(val)
+        return val
+
+
+queue = BasicQueue()
+queue.push(11)
+queue.push(7)
+queue.push(1)
+queue.push(4)
+queue.push(5)
+
+for i in range(len(queue.data)):
+    print(queue.pop())
+
