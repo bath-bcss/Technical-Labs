@@ -9,12 +9,16 @@
     3. [Installing Git](#installing-git)
 2. [The Git Data Model](#the-git-data-model)
     1. [Objects](#objects)
-    2. [Data model and pseudocode](#data-model-as-pseudo-code)
-    3. [Data model diagramatically](#data-model-diagram)
+    2. [Data model as pseudocode](#data-model-as-pseudocode)
+    3. [Data model diagrammatically](#data-model-diagram)
     4. [Storing objects](#storing-objects)
-    5. [Repositories](#repositories)
-    6. [The Index](#the-index)
+    5. [Commit structure](#commit_structure)
+    6. [Repositories](#repositories)
+    7. [The Index](#the-index)
 3. [How to use Git](#how-to-use-git)
+    1. [The Git command line interface](#the-git-command-line-interface)
+    2. [Making a Git repository](#making-a-git-repository)
+    3. [Commands](#commands)
 
 ## Introduction
 
@@ -36,7 +40,7 @@ When working with other people, Git stops being useful and starts being vital. G
 
 Git can be very hard to learn properly, whether you're using a GUI or the command line. Git is a 'leaky abstraction', so learning it top-down by using it doesn't give you a great understanding of what is actually happening. These difficulties are magnified by the fact that misleading or incorrect information on Git is irritatingly common across the internet.
 
-In this lab we aim to intoduce Git from the ground up. Git itself is based on a very elegant data structure, there is just a rather ugly interface sitting on top of it that can be very confusing.
+In this lab we aim to introduce Git from the ground up. Git itself is based on a very elegant data structure, there is just a rather ugly interface sitting on top of it that can be very confusing.
 
 ### Installing Git
 
@@ -207,6 +211,9 @@ This creates the `.git` folder to store all the information Git requires.
 Note the `.git` directory has now appeared.
 
 ### Commands
+
+We will now run through some of the most common git commands, these commands make up a solid 
+workflow for working on a local repository.
 
 #### git status
 
