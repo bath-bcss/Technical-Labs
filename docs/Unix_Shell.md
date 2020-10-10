@@ -14,11 +14,11 @@
     1. [Making directories](#making-directories)
     2. [Moving and renaming files and directories](#moving-and-renaming-files-and-directories)
     3. [Deleting files and directories](#deleting-files-and-directories)
-    4. [Copyign files and directories](#copying-files-and-directories)
-8. [Environemnt variables](#environment-variables)
+    4. [Copying files and directories](#copying-files-and-directories)
+8. [Environment variables](#environment-variables)
     1. [Path variables](#path-variables)
 9. [Connecting programs together](#connecting-programs-together)
-10. [Going fowards](#going-forwards)
+10. [Going forwards](#going-forwards)
 11. [Exercises](#exercises)
 12. [Credit](#credit)
 
@@ -143,7 +143,7 @@ You can then change users by using the `su` command followed by the user you wan
 you might do something destructive by accident. The shell makes it clear you're root as the `$` is
 replaced by a `#`, and the prompt may change as well.
 
-![WhoCommand](Assets/Unix_Shell/suCommand.png)
+![Su Command](Assets/Unix_Shell/suCommand.png)
 
 If you want to run just one command as the `root` user (a very common occurrence), you can use the
 `sudo` command (short for "super user do") followed by the command you want to run. This will
@@ -342,8 +342,7 @@ There's a lot more you can do with the shell - if we covered it all it would tak
 Some more will be covered in future Technical Labs but this should give you a good base to work
 from. Man pages are your friend - if you don't understand a command never be afraid to use them.
 
-Exercises
----------
+## Exercises
 
 If you want to work on your Unix skills here are some good practice exercises:
 
