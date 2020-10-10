@@ -1,5 +1,28 @@
 # Unix Shell
 
+## Table of contents
+
+1. [What is Unix](#what-is-unix)
+2. [What is the shell?](#what-is-the-shell)
+3. [How to install a Unix-like command line](#how-to-install-a-unix-like-command-line)
+4. [How to use the Unix shell](#how-to-use-the-unix-shell)
+    1. [Where](#where)
+    2. [Who](#who)
+5. [Basics of Unix](#basics-of-unix)
+6. [Man pages](#man-pages)
+7. [File management in Unix](#file-management-in-unix)
+    1. [Making directories](#making-directories)
+    2. [Moving and renaming files and directories](#moving-and-renaming-files-and-directories)
+    3. [Deleting files and directories](#deleting-files-and-directories)
+    4. [Copyign files and directories](#copying-files-and-directories)
+8. [Environemnt variables](#environment-variables)
+    1. [Path variables](#path-variables)
+9. [Connecting programs together](#connecting-programs-together)
+10. [Going fowards](#going-forwards)
+11. [Exercises](#exercises)
+12. [Credit](#credit)
+
+
 ## What is Unix
 
 When people say Unix they normally mean the family of Unix-like operating systems that derive from
@@ -9,7 +32,7 @@ Unix-like operating systems - macOS and Linux being the two most popular for des
 Android dominating the mobile market.
 
 Unix-like systems are characterised by a modular design where functionality is made up of simple
-tools. Each tool performs a well defined function, and can be combined with other tools to together
+tools. Each tool performs a well-defined function, and can be combined with other tools to together
 become more complex. Unix-like operating systems consist of many libraries and utilities along with
 a master control program - the kernel. The kernel handles starting and stopping programs, the file
 system, and other low level tasks that programs share.
@@ -33,10 +56,10 @@ The most common shell is the **B**ourne **A**gain **Sh**ell, or bash for short, 
 **Z Sh**ell (zsh) and the **F**riendly **I**nteractive **Sh**ell (fish) are gaining popularity.
 We'll be using bash.
 
-## How to install a Unix-like command line on your computer
+## How to install a Unix-like command line
 
 For Mac and Linux users this answer is very simple. You are already running a Unix-like operating
-system! Install the terminal emulator of your choice (or use the pre-installed options) and you're
+system! Install the terminal emulator of your choice (or use the preinstalled options) and you're
 ready.
 
 For Windows the answer is more complicated. As Windows is not a Unix-like operating system it
@@ -74,7 +97,7 @@ find your current working directory use the command `pwd` (short for "print work
 ![PWDImage](Assets/Unix_Shell/PWDCommand.png)
 
 You can see the shell prints out the current directory. If you've just started the shell you'll be
-in your user's **home directory**. In Unix you can always find the home directory, as `~` represents
+in your user's **home directory**. In Unix, you can always find the home directory, as `~` represents
 the current user's home directory - that's why it's in the prompt (`user:~$`).
 
 To change the working directory use the `cd` ("change directory") command followed by where you want
@@ -118,11 +141,11 @@ You can check what user you are with the `whoami` command.
 You can then change users by using the `su` command followed by the user you want to switch to.
 "root" is the super user in Unix and so has all privileges. You shouldn't work as "root", because
 you might do something destructive by accident. The shell makes it clear you're root as the `$` is
-replaced by a `#`, and the prompt may change also.
+replaced by a `#`, and the prompt may change as well.
 
 ![WhoCommand](Assets/Unix_Shell/suCommand.png)
 
-If you want to run just one command as the `root` user (a very common occurence), you can use the
+If you want to run just one command as the `root` user (a very common occurrence), you can use the
 `sudo` command (short for "super user do") followed by the command you want to run. This will
 normally prompt you for an administrator's password or the root user password.
 
@@ -159,7 +182,7 @@ they are treated as one parameter. One common style of parameter is a "flag". Fl
 Different commands take different parameters in different orders. How are you meant to know these
 parameters? You can look at the `man` pages.
 
-## Man Pages
+## Man pages
 
 Man is short for manual, as the man pages are the manual for each command. Man pages contain
 information like how to use a command, what it does, what parameters it requires, along with the
@@ -186,7 +209,7 @@ man -k <keyword>
 You will be presented with a list of commands that use that keyword in their description.
 
 Additionally, bash has `help` pages for built-in commands, for example `help pwd` gives you help on
-the `pwd` comamnd.
+the `pwd` command.
 
 ## File management in Unix
 
@@ -244,7 +267,7 @@ it is gone.
 Copying is handled by the `cp` command, which is the same as the `mv` command but moves a copy of
 the file or directory to the new file path.
 
-## Environment Variables
+## Environment variables
 
 Earlier we said the shell was a scripting language, and like any other programming language it can
 make use of variables. The command `export <variable name>="<data>"` defines a variable.
@@ -259,7 +282,7 @@ All the variables together make up the "environment". Programs can read the envi
 as well as any values passed into them. So, changing these environment variables can change the
 behaviour of programs.
 
-### Path Variables
+### Path variables
 
 The "PATH variable" is a special variable in the environment. We can get the value with `echo
 $PATH`.
@@ -322,7 +345,7 @@ from. Man pages are your friend - if you don't understand a command never be afr
 Exercises
 ---------
 
-If you want to work on your Unix skills here are some good practise exercises:
+If you want to work on your Unix skills here are some good practice exercises:
 
 1. Install and open a Unix shell!
 2. Navigate to your home folder and then explore the file system. Use `cd`, `ls`, and `pwd` to get
