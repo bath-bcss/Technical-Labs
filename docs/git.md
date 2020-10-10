@@ -13,7 +13,7 @@
     3. [Data model diagramatically](#data-model-diagram)
     4. [Storing objects](#storing-objects)
     5. [Repositories](#repositories)
-    6. [The index](#the-index)
+    6. [The Index](#the-index)
 3. [How to use Git](#how-to-use-git)
 
 ## Introduction
@@ -170,12 +170,12 @@ Files in a Git repository fall under 3 categories:
 
 1. Ignored - If a file path is in the `.gitignore` file then Git will ignore it. A common use of this 
    is to ignore compiled files of your code.
-2. Tracked - A tracked file is a file already in previous commits or currently staged in the index.
+2. Tracked - A tracked file is a file already in previous commits or currently staged in the Index.
 3. Untracked - An untracked file falls into neither of the last two categories. Git will ignore 
    these files unless you add them, and will warn you about untracked files in the `git status` 
    response.
 
-## How to use git
+## How to use Git
 
 Now we've got the Git data structure, it's time to start using it!
 
@@ -195,7 +195,7 @@ git <command> [parameters...]
 Git takes the first parameter to specify the command you want to run, then passes the rest of the 
 parameters to that command.
 
-### Making a git repository
+### Making a Git repository
 
 To make a local repository make a folder for it then navigate to it in your
 terminal shell. Then run `git init`.
@@ -371,7 +371,7 @@ Other recommended learning resources:
 
 1. Read through the first few chapters of Pro Git.
 2. Make a repository and add some files and commits.
-3. If you have any small projects, like a CV or coursework, try using git for it. **Warning:** if you 
+3. If you have any small projects, like a CV or coursework, try using Git for it. **Warning:** if you 
    aren't comfortable with Git do make periodic backups somewhere else, just so you don't lose your 
    work.
 4. Play [this game](https://learngitbranching.js.org/) intended to teach Git branching.
