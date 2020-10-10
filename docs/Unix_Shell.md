@@ -9,7 +9,7 @@ Unix-like operating systems - macOS and Linux being the two most popular for des
 Android dominating the mobile market.
 
 Unix-like systems are characterised by a modular design where functionality is made up of simple
-tools. Each tool performs a well defined function, and can be combined with other tools to together
+tools. Each tool performs a well-defined function, and can be combined with other tools to together
 become more complex. Unix-like operating systems consist of many libraries and utilities along with
 a master control program - the kernel. The kernel handles starting and stopping programs, the file
 system, and other low level tasks that programs share.
@@ -36,7 +36,7 @@ We'll be using bash.
 ## How to install a Unix-like command line on your computer
 
 For Mac and Linux users this answer is very simple. You are already running a Unix-like operating
-system! Install the terminal emulator of your choice (or use the pre-installed options) and you're
+system! Install the terminal emulator of your choice (or use the preinstalled options) and you're
 ready.
 
 For Windows the answer is more complicated. As Windows is not a Unix-like operating system it
@@ -74,7 +74,7 @@ find your current working directory use the command `pwd` (short for "print work
 ![PWDImage](Assets/Unix_Shell/PWDCommand.png)
 
 You can see the shell prints out the current directory. If you've just started the shell you'll be
-in your user's **home directory**. In Unix you can always find the home directory, as `~` represents
+in your user's **home directory**. In Unix, you can always find the home directory, as `~` represents
 the current user's home directory - that's why it's in the prompt (`user:~$`).
 
 To change the working directory use the `cd` ("change directory") command followed by where you want
@@ -118,11 +118,11 @@ You can check what user you are with the `whoami` command.
 You can then change users by using the `su` command followed by the user you want to switch to.
 "root" is the super user in Unix and so has all privileges. You shouldn't work as "root", because
 you might do something destructive by accident. The shell makes it clear you're root as the `$` is
-replaced by a `#`, and the prompt may change also.
+replaced by a `#`, and the prompt may change as well.
 
 ![WhoCommand](Assets/Unix_Shell/suCommand.png)
 
-If you want to run just one command as the `root` user (a very common occurence), you can use the
+If you want to run just one command as the `root` user (a very common occurrence), you can use the
 `sudo` command (short for "super user do") followed by the command you want to run. This will
 normally prompt you for an administrator's password or the root user password.
 
@@ -186,7 +186,7 @@ man -k <keyword>
 You will be presented with a list of commands that use that keyword in their description.
 
 Additionally, bash has `help` pages for built-in commands, for example `help pwd` gives you help on
-the `pwd` comamnd.
+the `pwd` command.
 
 ## File management in Unix
 
@@ -322,7 +322,7 @@ from. Man pages are your friend - if you don't understand a command never be afr
 Exercises
 ---------
 
-If you want to work on your Unix skills here are some good practise exercises:
+If you want to work on your Unix skills here are some good practice exercises:
 
 1. Install and open a Unix shell!
 2. Navigate to your home folder and then explore the file system. Use `cd`, `ls`, and `pwd` to get
