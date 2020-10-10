@@ -6,33 +6,32 @@
 1. [Introduction](#introduction)
     1. [Version control generally](#version-control-generally)
     2. [Learning git](#learning-git)
-    3. [Installing git](#insalling-git)
+    3. [Installing git](#installing-git)
 2. [The Git Data Model](#the-git-data-model)
     1. [Objects](#objects)
     2. [Data model ad pseudo code](#data-model-as-pseudo-code)
     3. [Data model diagramatically](#data-model-diagramatically)
     4. [Storing objects](#storing-objects)
-    5. [Repositiories](#repostiories)
+    5. [Repositiories](#repositories)
     6. [The index](#the-index)
 3. [How to use git](#how-to-use-git)
 
 ## Introduction
 
 Git is the most popular version control tool for Computer Scientists and is
-used extremely widely. We're going to run through how git works and the basics of using git so you
-can use it for your own projects and can learn the more yourself!
+used extremely widely. We're going to run through the basics of how git works and how to use it, so you can effectively use git for your own projects!
 
-We will be covering git's data model and using git locally on your machine in this lab, using 
-remotes such as github will be covered in the next lab. Howver, I recommend you dont skip this lab 
-as the git remote lab will not make sense without lots of the knowledge from this lab.
+We will be covering git's data model and how to use git locally on your machine in this lab. Using 
+remotes such as GitHub will be covered in the next lab. However, I recommend you dont skip this session 
+as the git remote session will not make sense without lots of the knowledge from this one.
 
 ### Version control generally
 
 Version control systems are used to track changes in files as you work on them. These tools help 
-maintain a history of your changes and help keep your work organised.
+maintain a history of your changes and keep your work organised.
 
-This is useful if youre working by yourself, it lets you look at old snapshots of projects and 
-compare old changes. It also lets you maintain resons for each change and fascilitates parallel 
+This is useful if you're working by yourself - it lets you look at old snapshots of projects and 
+compare old changes you made. It also lets you maintain resons for each change and facilitates parallel 
 branches of development.
 
 Git changes from useful to vital in collaboration. Git allows for multiple people to have access to 
