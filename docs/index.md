@@ -1,6 +1,9 @@
 Technical Labs are a series of labs being run by Bath Computer Science Society (BCSS) intended to 
 introduce useful technical skills.
 
+These notes are coupled with a video series you can find 
+[here](https://www.youtube.com/playlist?list=PLT4sucrjsqF8kvZFcRvxfhWuTvjKrXYzE).
+
 This is being led by [Alfie Richards](mailto:ar2227@bath.ac.uk) and [Joseph 
 Cryer](mailto:jjc82@bath.ac.uk). Email us if you have any questions or want to get involved!
 

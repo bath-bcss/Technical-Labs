@@ -1,5 +1,7 @@
 # Unix Shell
 
+Watch the video that accompanies these notes [here](https://www.youtube.com/watch?v=KLWojfHJRYQ).
+
 ## Table of contents
 
 1. [What is Unix](#what-is-unix)
