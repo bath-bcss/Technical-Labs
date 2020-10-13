@@ -240,9 +240,17 @@ To add a file to the Index run `git add <file>`.
 Once you've staged a file you can commit them.
 
 To commit the changes to the repository run `git commit`. You will then be prompted to write a 
-message describing the commit. Alternatively use `git commit -m "<message>"` to commit with a message in one command.
+message describing the commit. Alternatively use `git commit -m "<message>"` to commit with a 
+message in one command.
 
 ![git commit example](assets/Git/git_commit.png)
+
+Git often prompts you for input and to do so it will use the text editor set in your configurations. 
+By default this is Vim, which is hard to use for beginners. To change the default text editor use 
+the command `git config --global core.editor <editor-of-choice>`. For beginners I suggest setting 
+`nano`. 
+
+**Note** To exit Vim press the `:` key then `Q`.
 
 You may be wondering what the `4c391f8` in the `git status` is. That is the first 7 hexadecimal digits 
 of the SHA1 hash that represents the commit in the object store. You can use these 7 digits as an 
@@ -352,6 +360,15 @@ You can also add your own tags to commits. Do this by using `git tag <tagname> <
 You can checkout tags with `git checkout <tagname>`.
 
 ![git tag example](assets/Git/git_tag.png)
+
+
+#### git help
+
+To find out more about any command, its available flags or a description of the command you can 
+always use the command `git help <command>`. This will display a manual page for that specific 
+command. Again exit the page with the `Q` key.
+
+In addition `git help` will list all available commands.
 
 ## Learn More!
 
