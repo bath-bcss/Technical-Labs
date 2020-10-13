@@ -148,7 +148,7 @@ can then be looked up in the object store.
 
 ### Commit structure
 
-There is some extra structure to how the commits relate to each other. Commits have to form a "Directed Acyclic Graph". This is a fancy way of saying all commits have parents they inherit from, and you can't form cycles.
+There is some extra structure to how the commits relate to each other. Commits have to form a "Directed Acyclic Graph". This is a fancy way of saying all commits have parents they inherit from, and they can't form a cycle (e.g. if A has parent B, B can't have parent A).
 
 **Note:** Each commit references its parents rather than the parent commits referencing their children. So, in a diagram representing a commit graph, all arrows should flow from the commits to 
 their parents. From the perspective of the development flow this is counterintuitive, but it makes sense once you understand how commits relate to each other in Git. If you 
@@ -250,7 +250,7 @@ By default this is Vim, which is hard to use for beginners. To change the defaul
 the command `git config --global core.editor <editor-of-choice>`. For beginners I suggest setting 
 `nano`. 
 
-**Note:** To exit Vim press the `:` key then `Q`.
+**Note:** To exit Vim press the `:` key, then `q`, then enter.
 
 You may be wondering what the `4c391f8` in the `git status` is. That is the first 7 hexadecimal digits 
 of the SHA1 hash that represents the commit in the object store. You can use these 7 digits as an 
@@ -366,7 +366,7 @@ You can checkout tags with `git checkout <tagname>`.
 
 To find out more about any command, its available flags or a description of the command, you can 
 always use the command `git help <command>`. This will display a manual page for that specific 
-command. Again exit the page with the `Q` key.
+command. Again exit the page with the `q` key.
 
 In addition `git help` will list all available commands.
 
