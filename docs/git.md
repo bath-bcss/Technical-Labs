@@ -2,6 +2,7 @@
 # [Git](https://git-scm.com/)
 
 The video for these notes can be found [here](https://www.youtube.com/watch?v=3jW4zNRrZJz)
+
 ## Table of Contents
 
 1. [Introduction](#introduction)
