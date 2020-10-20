@@ -1,5 +1,5 @@
 
-# Git, the sequel
+# Git pt 2, Git Forever After
 
 ## Table of Contents
 

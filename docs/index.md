@@ -14,7 +14,7 @@ on some of these concepts.
 ### What we have covered
 
 1. [The Unix shell](Unix_Shell.html)
-2. [Git](git.html)
+2. [Git pt 1, the basics](git.html)
 3. [Git pt 2, remotes and GitHub](git_pt_2.html)
 
 ### What we aim to cover
