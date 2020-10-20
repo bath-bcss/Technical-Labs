@@ -3,6 +3,13 @@
 
 ## Table of Contents
 
+1. [Git remotes](#git-remotes)
+2. [GitHub example](#github-example)
+3. [Collaboration best practices and techniques](#collaboration-best-practices-and-techniques)
+4. [Resolving merges](#resolving-merges)
+5. [Pull requests](#pull-requests)
+6. [Exercises](#exercises)
+
 ## Git remotes
 
 Having a repository for storing your work is only half the story - you may want
@@ -178,9 +185,10 @@ from as the `origin` remote.
 Now you have seen how to make a repository, push your changes to it, and pull 
 other people's changes into your repo.
 
-It's important to run through the following in order to keep everything organised and save you headaches:
- - Basic rules for 
-using Git remotes
+It's important to run through the following in order to keep everything 
+organised and save you headaches:
+
+- Basic rules for using Git remotes
 - Common techniques you can use in your repositories 
 
 ### Basic rules
