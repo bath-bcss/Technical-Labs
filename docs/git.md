@@ -406,7 +406,7 @@ Other recommended learning resources:
 
 Written by [Alfie Richards](mailto:alfierchrds@gmail.com)
 
-Edited by [Joe Cryer](mailto: jcryer1234@gmail.com)
+Edited by [Joe Cryer](mailto:jcryer1234@gmail.com)
 
 Additional help from:
 - Dr Russell Bradford
