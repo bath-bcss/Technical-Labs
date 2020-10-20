@@ -41,8 +41,8 @@ machine is downstream of the remote.
 ### How interacting with a remote works
 
 When you set up a remote for your local repository you give it a name, as the repository can have 
-multiple remotes). The most common name is **origin**. The state of the remote is then represented 
-on **remote tracking branches**. This is a one-way relationship where each local branch can be 
+multiple remotes. The most common name is **origin**. The state of the remote is then represented on 
+**remote tracking branches**. This is a one-way relationship where each local branch can be 
 associated with, or "track", a remote branch, which is the designated branch for it to push and pull 
 commits to and from. In almost all cases, the local branch and the remote branch will have the same 
 name.
