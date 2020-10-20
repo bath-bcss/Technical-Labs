@@ -238,6 +238,11 @@ Lastly, in many repositories it is encouraged that before you push to the
 remote you make sure your version of the codebase is in a functional state. You might want to avoid pushing 
 half finished work.
 
+### GitFlow
+
+Additionally there are git extensions that facilitate certain git management strategies. 
+[GitFlow](https://github.com/nvie/gitflow) is a popular example.
+
 ## Resolving merges
 
 You may have noticed we talked a lot about merges, and indeed in most Git 
@@ -279,6 +284,9 @@ After removing the conflict markers you can stage the file again with
 `git add <file>`. Once you have done this for all conflicting files just run 
 `git commit`, at which point Git will prompt you for a commit message. The merge 
 is now complete.
+
+There is specialised software to make resolving git merge conflict easier. Ofter IDEs come with 
+software preinstalled. For instance Visual Studio Code has a popular tool for resolving conflicts.
 
 ## Pull requests
 
@@ -350,4 +358,5 @@ Edited by [Joe Cryer](mailto:jcryer1234@gmail.com)
 With additional additions and corrections by:
 
 - [Søren Mortensen](https://neros.dev)
+- [Steven Borrie](https://backslash.build/)
 
