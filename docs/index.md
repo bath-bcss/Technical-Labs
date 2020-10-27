@@ -16,10 +16,10 @@ on some of these concepts.
 1. [The Unix shell](Unix_Shell.html)
 2. [Git pt 1, the basics](git.html)
 3. [Git pt 2, remotes and GitHub](git_pt_2.html)
+4. [Jetbrains IDEs and IntelliJ](jetbrains_ide.html)
 
 ### What we aim to cover
 
-- Integrated development environment tools
 - Debugging
 - ssh
 - Build automation software and 'make'
