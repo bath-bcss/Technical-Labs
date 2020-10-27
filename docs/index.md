@@ -23,8 +23,3 @@ is a brief overview of what we have planned:
 - Searching and Sorting
 - Dynamic Programming
 - Backtracking
-
-Source Code
------------
-
-Any resources for the labs can be found [here](https://github.com/bath-bcss/Technical-Labs).

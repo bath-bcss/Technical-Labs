@@ -1,1 +1,5 @@
 theme: jekyll-theme-primer
+
+exclude: [ GemFile ]
+
+markdown: kramdown
