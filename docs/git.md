@@ -1,5 +1,5 @@
 
-# [Git](https://git-scm.com/)
+# [Git pt 1](https://git-scm.com/)
 
 The video for these notes can be found [here](https://www.youtube.com/watch?v=3jW4zNRrZJA)
 
@@ -406,7 +406,7 @@ Other recommended learning resources:
 
 Written by [Alfie Richards](mailto:alfierchrds@gmail.com)
 
-Edited by [Joe Cryer](mailto: jcryer1234@gmail.com)
+Edited by [Joe Cryer](mailto:jcryer1234@gmail.com)
 
 Additional help from:
 - Dr Russell Bradford

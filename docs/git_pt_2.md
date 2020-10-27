@@ -1,27 +1,32 @@
 
-# Git, the sequel
+# Git pt 2, Git Forever After
 
 ## Table of Contents
 
+1. [Git remotes](#git-remotes)
+2. [GitHub example](#github-example)
+3. [Collaboration best practices and techniques](#collaboration-best-practices-and-techniques)
+4. [Resolving merges](#resolving-merges)
+5. [Pull requests](#pull-requests)
+6. [Exercises](#exercises)
+
 ## Git remotes
 
-Having a repository for storing your work is only half the story - you may want
-to backup or share your work with others. For this purpose Git has
+Having a repository for storing your work is only half the story; you may want 
+to back up your work, or share it with others. For this purpose Git has 
 "remotes". Any Git repository can be a remote or have remotes it connects to (or 
 both at the same time). Git's remote system is very flexible. 
 
 ### What is a remote
 
-A remote is simply a Git repository accessible from the current repository that 
-your local repository is configured to send and receive commits to and from. This 
-may be on the same system, on another computer on the local network, or (most commonly) 
-on a server accessed over the internet. 
+A remote is simply another git repository. Because git is a _distributed_ 
+version control system, each git repository is a full, independent copy that is 
+able to send and recieve commits to and from others. These may be other 
+repositories on the same system, or on another computer on the local network, or 
+(most commonly) on a server accessed over the internet.
 
-This is a one way relationship: the local keeps track of the remote but a remote 
-is completely oblivious of what locals are tracking it.
-
-A local repository can **push** commits to the remote, or **fetch** commits from the 
-remote.
+A local repository can "push" commits to a remote, or "fetch" and "pull" commits 
+from a remote.
 
 There are many methodologies for structuring remotes, but the most common is to 
 have each developer in a team have a local repository on their device and one 
@@ -35,9 +40,12 @@ machine is downstream of the remote.
 
 ### How interacting with a remote works
 
-When you set up a remote on your local repository you give it a name to 
-distinguish it, as the repository can have multiple remotes. The most common name 
-is **origin**. The state of the remote is then represented on **remote tracking branches**. 
+When you set up a remote for your local repository you give it a name, as the repository can have 
+multiple remotes. The most common name is **origin**. The state of the remote is then represented on 
+**remote tracking branches**. This is a one-way relationship where each local branch can be 
+associated with, or "track", a remote branch, which is the designated branch for it to push and pull 
+commits to and from. In almost all cases, the local branch and the remote branch will have the same 
+name.
 
 To get a local repository with a remote you must either clone an existing remote 
 repository or add a remote to an existing local repository. To clone a remote 
@@ -46,10 +54,10 @@ a new folder called `[name]` containing the copied repository. To add a remote
 to an existing local repository use the command 
 `git remote add <remote name> <remote URL>`. These will be expanded upon later, with the example of GitHub.
 
-To retrieve commits from a remote to your local repository you use 
-`git fetch [remote_name]`. The `remote` can be omitted if it's the only one 
-configured in the local repository. This command will retrieve the objects from 
-the remote repository and represent the commits on remote tracking branches. 
+To retrieve commits from a remote to your local repository you use `git fetch 
+[remote_name]`. The remote can be omitted if it's the only one configured in the 
+local repository. This command will retrieve the objects from the remote 
+repository and represent the commits on remote tracking branches.
 
 Remote tracking branches are functionally the same as remote branches except 
 they are named like `remotes/<remote name>/<remote branch name>`, and they are 
@@ -73,7 +81,7 @@ flag to your push command. This will add a refspec for your checked out local
 branch to a remote branch of the same name. The whole command is then 
 `git push -u <repository> <branch>`.
 
-After refpecs have been configured you can use the `git pull [remote]` command 
+After refspecs have been configured you can use the `git pull [remote]` command 
 which will fetch all commits from the remote, add them to the remote tracking 
 branches, then merge them into the local branches specified in the refspecs.
 
@@ -83,8 +91,8 @@ GitHub is the most popular host for remotes. GitHub hosts remote Git
 repositories and manages access to them. With GitHub you can control which users 
 can pull your repository and which can push changes to it.
 
-For example, let's use a local Technical Labs repository. Here you can see it with 
-a long history. 
+For example, let's use a local Technical Labs repository. Here you can see it 
+with a long history. 
 
 ![Technical Labs repo](assets/GitPt2/01GitRepo.png)
 
@@ -93,9 +101,9 @@ no current remotes (I removed them for this example).
 
 ![No initial remotes](assets/GitPt2/02NoRemotes.png)
 
-We then need to set up a repository on GitHub. To do this, first setup an account 
-if you don't already have one. Then you need to click the **+** button at the top 
-right, and then "New Repository" in the dropdown menu. 
+We then need to set up a repository on GitHub. To do this first set up an 
+account if you don't already have one. Then you need to click the **+** button 
+at the top right, and then "New Repository" in the drop down.
 
 You will be presented with some options for setting up a new repository. Here 
 I'm going to enter details for a new GitHub repository for Technical Labs.
@@ -119,8 +127,8 @@ thankfully, Git can do easily and efficiently.
 ![Initial push](assets/GitPt2/06initialPush.png)
 
 If we now look at the remote on GitHub we will now see the files of our most 
-recent commit on the main branch, and we can go through and see all of the commits 
-making up our history.
+recent commit on the main branch, and we can go through and see all of the 
+commits making up our history.
 
 ![GitHub repo initialised](assets/GitPt2/07InitialisedRepo.png)
 
@@ -159,10 +167,10 @@ changes](assets/GitPt2/12GitMergeOtherDevelopersWork.png)
 ### Cloning a repository
 
 If a remote repository already exists you may want to clone that repository, to 
-get a local repository copy of that repository.
+get a local copy of that repository.
 
 To do this we will need to issue the command 
-`git clone <Git url> [directory name]`. Where the Git URL is the same as before, 
+`git clone <git url> [directory name]`. Where the Git URL is the same as before, 
 and the directory name is the name of the directory you want the repository to 
 be put into.
 
@@ -178,34 +186,35 @@ from as the `origin` remote.
 Now you have seen how to make a repository, push your changes to it, and pull 
 other people's changes into your repo.
 
-It's important to run through the following in order to keep everything organised and save you headaches:
- - Basic rules for 
-using Git remotes
+It's important to run through the following in order to keep everything 
+organised and save you headaches:
+
+- Basic rules for using Git remotes
 - Common techniques you can use in your repositories 
 
 ### Basic rules
 
-1. Don't work on the same branch as other people -
-    If you and a collaborator work on the same remote branch you will quickly 
-    start having issues. This is because one of you will submit some commits, 
-    then another will try to submit commits, but they will get rejected because 
-    their commits were supposed to attach to an earlier commit. Thus they must 
-    pull the changes before they can commit. This leads to them having to do a 
-    merge almost every time they want to push changes, which is tiresome.
-2. Don't alter history already committed - It is possible to change commits in 
+1. Don't work on the same branch as other people. If you and a collaborator work 
+   on the same remote branch you will quickly start having issues. This is 
+   because one of you will push some commits, then another will try to push 
+   commits, but they will get rejected because their commits were supposed to 
+   attach to an earlier commit. Thus they must pull the changes before they can 
+   commit. This leads to them having to do a merge almost every time they want 
+   to push changes, which is tiresome.
+2. Don't alter history already committed. It is possible to change commits in 
    your history. Some common ways are `git commit --amend` to add changes to 
-   your last commit, or `git rebase` which isn't covered in this series. 
+   your last commit, or `git rebase`, which isn't covered in this series. 
    However, if you do this after having pushed those changes it is possible 
    another developer could have fetched your changes already. Then you are 
-   changing the history they have already pulled, and when they next try to push,
-   all sorts of conflicts will happen and headaches will follow.
-3. No development on the main (or master) branch - The majority of repos keep 
-   the main branch strictly for working commits. This means you can always 
-   find a working version of the project in the main branch. If someone were to 
-   work on the main branch it is likely they would have a few commits with bugs 
-   and unfinished code, which would mean other developers wouldn't have any 
-   version they could use if they needed to deploy a working version or check 
-   something.
+   changing the history they have already pulled, and when they next try to 
+   push, all sorts of conflicts will happen and headaches will follow.
+3. Don't commit directly to the main (or master) branch. The majority of repos 
+   keep the main branch strictly for known working commits. This means you can 
+   always find a working version of the project in the main branch. If someone 
+   were to work on the main branch it is likely they would have a few commits 
+   with bugs and unfinished code, which would mean other developers wouldn't 
+   have any version they could use if they needed to deploy a working version or 
+   check something.
 
 ### Basic techniques
 
@@ -228,27 +237,33 @@ Lastly, in many repositories it is encouraged that before you push to the
 remote you make sure your version of the codebase is in a functional state. You might want to avoid pushing 
 half finished work.
 
+### GitFlow
+
+Additionally there are git extensions that facilitate certain git management strategies. 
+[GitFlow](https://github.com/nvie/gitflow) is a popular example.
+
 ## Resolving merges
 
-You may have noticed we talked a lot about merges, and indeed in most Git work 
-flows merges are common. So let's briefly cover how to do a merge and how to 
+You may have noticed we talked a lot about merges, and indeed in most Git 
+workflows merges are common. So let's briefly cover how to do a merge and how to 
 resolve them.
 
-Ideally with merges the two sets of changes will be disjointed (i.e. not in the same location), and Git will 
-be able to automatically combine them. However this is often not the case - if 
-the two sets of changes have edited the same lines (or the areas around them) this 
-will result in merge conflicts. 
+Ideally with merges the two sets of changes will be independent from each other 
+(i.e. not changing the same lines), and Git will be able to automatically 
+combine them. However, this is often not the case: if the two sets of changes 
+have edited the same lines, this will result in "merge conflicts". 
 
 Start a merge with the command `git merge <branch_name>`, and if it can be 
-completed automatically Git will give a success message and prompt you for a 
-message for the new commit merging the two branches. However, instead it 
-will often return a message stating the commit can't be completed. Git will have added 
-"conflict markers" to the conflicting files. At this point you have two options: Either you can use 
-the command `git merge --abort` to abort the commit and return to your previous 
-commit, or you can go into the conflicting files and resolve the 
-conflicts.
+completed automatically, Git will give a success message and prompt you for a 
+message for the new commit merging the two branches. However, instead it will 
+often return a message stating the commit can't be completed. Git will have 
+added "conflict markers" to the conflicting files. At this point you have two 
+options: either you can use the command `git merge --abort` to abort the commit 
+and return to your previous commit, or you can go into the conflicting files and 
+resolve the conflicts.
 
-Conflict markers will look something like this: 
+Conflict markers will look something like this:
+
 ```
 <<<<<<< HEAD
 The lines from the branch currently checked out
@@ -257,36 +272,44 @@ The lines from the branch being merged in
 >>>>>>> branch_being_merged_in
 ```
 
-Where the lines with the `>`, `=`, and `<` are the conflict markers. 
-
-Here you must choose to remove the lines with the markers and change the resulting lines 
-to have the desired behaviour. Most of the time that means accepting one set of changes or the other, but sometimes both changes are needed.
+Where the lines with the `>`, `=`, and `<` are the conflict markers. Git is 
+asking you to manually merge the two sets of changes, because it couldn't figure 
+out how to automatically. Whether that means just keeping one or the other of 
+the two blocks that are separated by markers, or manually editing them to 
+combine changes made in both, you should remove the markers themselves and 
+ensure the file is in a working state.
 
 After removing the conflict markers you can stage the file again with 
 `git add <file>`. Once you have done this for all conflicting files just run 
-`git commit`, at which point Git will prompt you for a commit message. The merge is now complete.
+`git commit`, at which point Git will prompt you for a commit message. The merge 
+is now complete.
+
+There is specialised software to make resolving git merge conflict easier. Ofter IDEs come with 
+software preinstalled. For instance Visual Studio Code has a popular tool for resolving conflicts.
 
 ## Pull requests
 
 With GitHub in particular there is a very popular system for managing 
-collaboration - Forks and Pull Requests. In this system there will be a remote 
+collaboration: forks and pull requests. In this system there will be a remote 
 repository on GitHub which someone maintains. 
 
 If you wanted to make some changes to the repo, the repo owner could 
-add you as a contributor. This allows you to submit changes directly to the repository, and isn't always recommended. Alternatively (and more often), you will "fork" the repository, which means GitHub will make 
-an identical repository in your account. You can then make any changes in this 
-repository. 
+add you as a contributor. This allows you to submit changes directly to the 
+repository, and isn't always recommended. Alternatively (and more often), you 
+will "fork" the repository, which means GitHub will make an identical repository 
+in your account. You can then make any changes in this repository. 
 
-When you have finished your changes on your fork you can submit a "Pull Request" in the main repository, 
-which is a request for the main repository to pull from your forked repository.
-If accepted, this will add all of your changes to the main repository. The 
-maintainers of the main repository can then look through the changes, alter them 
-if they need, and add them in as they desire. 
+When you have finished your changes on your fork you can submit a "pull 
+request", which is a request for the main repository to pull from your forked 
+repository. If accepted, this will add all of your changes to the main 
+repository. The maintainers of the main repository can then look through the 
+changes, alter them if they need, and add them in as they desire. 
 
-You can also submit a "Pull Request" to request a merge of one branch into another within the same repository.
+You can also submit a pull request to request a merge of one branch into another 
+within the same repository.
 
-The system of Forks and Pull Requests is a very common workflow in Git and is how we handled getting 
-collaborators to suggest changes to these notes.
+The system of forks and pull requests is a very common workflow in Git and is 
+how we handled getting collaborators to suggest changes to these notes.
 
 ## Exercises
 
@@ -332,4 +355,7 @@ These notes were written by [Alfie Richards](https://www.alfierichards.com).
 Edited by [Joe Cryer](mailto:jcryer1234@gmail.com)
 
 With additional additions and corrections by:
+
+- [Søren Mortensen](https://neros.dev)
+- [Steven Borrie](https://backslash.build/)
 
