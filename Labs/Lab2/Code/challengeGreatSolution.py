@@ -17,14 +17,22 @@ def main():
     equalNum = 1
     index = 0
     while N > 0:
-        if N >= equalNum * (rows[index] - rows[index + 1]):
+        if index < M - 1 and N >= equalNum * (rows[index] - rows[index + 1]):
             money += equalNum * ( sumOfN(rows[index]) - sumOfN(rows[index + 1]) )
             N -= equalNum * (rows[index] - rows[index + 1])
             index += 1
             equalNum += 1
         else:
-            money += N * ( sumOfN(rows[index]) - sumOfN(rows[index + 1]) )
-            N -= N * (rows[index] - rows[index + 1])
+            if N >= equalNum:
+                money += equalNum * rows[index]
+                N -= equalNum
+                rows[index] -= 1
+                if(index < M - 1 and rows[index] == rows[index + 1]):
+                    index += 1
+                    equalNum += 1
+            else:
+                money += N * rows[index]
+                N = 0
 
     print(int(money))
 
