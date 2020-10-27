@@ -1,52 +1,25 @@
-Technical Labs are a series of labs being run by Bath Computer Science Society (BCSS) intended to 
-introduce useful technical skills.
+Advanced Labs is a series of labs that are designed to teach people (specifically freshers) about
+data structures and algorithms. 
 
-These notes are coupled with a video series you can find 
-[here](https://www.youtube.com/playlist?list=PLT4sucrjsqF8kvZFcRvxfhWuTvjKrXYzE).
+This is being led by [Samuel Guard](mailto:sg2268@bath.ac.uk) and [Joe 
+Cryer](mailto:jjc82@bath.ac.uk) email us if you have any questions or want to get involved!
 
-This is being led by [Alfie Richards](mailto:ar2227@bath.ac.uk) and [Joseph 
-Cryer](mailto:jjc82@bath.ac.uk). Email us if you have any questions or want to get involved!
+We are both students currently in our second year of the Computer Science course, we we're inspired
+by Arthur Baker to carry on these labs as we really enjoyed them.
 
-It has been heavily inspired by the [Missing Semester](https://missing.csail.mit.edu) series ran by 
-MIT. We highly recommend you watch these as a follow-up to these labs, as they go much more in-depth
-on some of these concepts.
+### Who is this for
 
-### What we have covered
+This is for anyone who wants to challenge themselves, although some information will be assumed such
+as (these are NOT requirements, so if you're unsure come along anyways):
+- Knowing how to program in Python, C, Java or any widely used language
+- A level computer science knowledge or something similar
 
-1. [The Unix shell](Unix_Shell.html)
-2. [Git pt 1, the basics](git.html)
-3. [Git pt 2, remotes and GitHub](git_pt_2.html)
-4. [Jetbrains IDEs and IntelliJ](jetbrains_ide.html)
+### What were covering
 
-### What we aim to cover
-
-- Debugging
-- ssh
-- Build automation software and 'make'
-- Continuous integration tools
-- Deployment tools like Docker, AWS, Azure, Heroku
-
-### Going beyond this series
-
-This series is only meant as an introduction to these concepts. The goal is to give an initial 
-starting point, so that you can learn about them yourself and use them for your work!
-
-Additionally, if you are a student at the University of Bath there are a lot of very knowledgable 
-people on the [Bath Computer Science Discord server](https://discord.gg/gDYbrpK) who are always 
-happy to help with any CS questions you may have!
-
-Many of these tools have incredible communities who write very in-depth tutorials and manuals 
-which can normally be found easily.
-
-### Trusting this series
-
-We want you to feel confident in the information we are teaching. To accomplish this, our notes for 
-these labs are being fact-checked by a variety of sources, including higher year students and 
-lecturers.
-
-Source Code
------------
-
-The code for this website is available [here](https://github.com/bath-bcss/Technical-Labs).
-
-Licensed under [CC BY-NC-SA](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode).
+As this is early on we do not have a complete list of all the topics we would like to cover but here
+is a brief overview of what we have planned:
+- Big O and Complexity
+- Data structures
+- Searching and Sorting
+- Dynamic Programming
+- Backtracking
