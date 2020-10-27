@@ -1,4 +1,0 @@
-Nice article on heuristics:
-http://theory.stanford.edu/~amitp/GameProgramming/Heuristics.html#breaking-ties
-Small article on types of priority queues
-https://datastructures.maximal.io/priority-queues/
