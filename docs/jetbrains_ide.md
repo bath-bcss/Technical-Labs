@@ -3,6 +3,24 @@
 
 ## Table of Contents
 
+1. [Introduction](#introduction)
+    1. [Installing IntelliJ](#installing-intellij)
+2. [IntelliJ](#intellij)
+3. [IntelliJ Basics](#intellij-basics)
+    1. [Making a project and project templates](#making-a-project-and-project-templates)
+    2. [IntelliJ Layout](#intellij-layout)
+    3. [Navigation](#navigation)
+    4. [Editing](#editing)
+    5. [File Management](#file-management)
+    6. [Building, Compiling and running](#building-compiling-and-running)
+    7. [Java docs](#java-docs)
+4. [Plugins](#plugins)
+5. [Debugging](#debugging)
+6. [`.idea` folder](#idea-folder)
+7. [Summary](#summary)
+8. [Exercises](#exercises)
+9. [Thanks and Credit](#thanks-and-credit)
+
 ## Introduction 
 
 An IDE (or **I**ntegrated **D**evelopment **E**nvironment) is a GUI application 
