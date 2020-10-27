@@ -35,24 +35,25 @@ class Heap:
         
         return returnValue
 
-
-
 def main():
+    n = int(input())
+    h = Heap(1000000)
     line = input().split()
-    M = int(line[0])
-    N = int(line[1])
+    for i in range(n):
+        h.push(int(line[i]))
 
-    pQ = Heap(10)
-    line = input().split()
-    for i in range(M):
-        pQ.push(int(line[i]))
+    m = int(input())
+    for i in range(m):
+        line = input().split()
 
-    totalMoney = 0
-    for i in range(N):
-        nextVal = pQ.pop()
-        totalMoney += nextVal
-        pQ.push(nextVal - 1)
+        if line[0] == "1":
+            h.push(int(line[1]))
+        else:
+            print(h.pop())
 
-    print(totalMoney)
+
+        
+
+
 
 main()
