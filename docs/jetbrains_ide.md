@@ -332,4 +332,5 @@ Written by [Alfie Richards](https://www.alfierichards.com/).
 Edited by [Joe Cryer](mailto:jcryer1234@gmail.com)
 
 Additional thanks to:
+- [Søren Mortensen](https://neros.dev)
 
