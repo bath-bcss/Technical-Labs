@@ -386,7 +386,9 @@ a lot of time and headaches by learning Git the right way!
 Other recommended learning resources:
 
 - [Pro Git](https://git-scm.com/book/en/v2) is an often recommended introduction to Git.
-- [Oh shit, Git!?!](https://ohshitgit.com/) is a short guide on how to recover from some common Git mistakes.
+- [Git crash course by Søren Mortensen](https://neros.dev/blog/git-crash-course-part-1/)
+- [Oh shit, Git!?!](https://ohshitgit.com/) is a short guide on how to recover from some common Git 
+- mistakes.
 - [Git for Computer Scientists](https://eagain.net/articles/git-for-computer-scientists/) is a short
     explanation of Git's data model.
 - [Git from the bottom up](https://jwiegley.github.io/git-from-the-bottom-up/) is a detailed 
