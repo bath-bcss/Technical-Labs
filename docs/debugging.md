@@ -65,80 +65,90 @@ table`. In brief the symbols table correlates commands and addresses in the
 compiled binary with lines of source code and the names of variables in the 
 source code. To do this specify the `-g` flag in the compiler.
 
+![Compiling C for debug](assets/debugging/01Compiling_C_with_object_table.png)
+
 To open a binary with GDB use the command `gdb [binary file]`. GDB will open and 
 present a prompt for your commands. The prompt will normally look like `(gdb)`.
+
+![Opening GDB](assets/debugging/02Starting_GDB.png)
 
 In these examples I will be using this C file: 
 
 `detab.c`:
 
 ```C
+
 #include <stdio.h>
 
 #define TAB_WIDTH 4
 
-#define IN_SPACES 1
-#define NOT_SPACES 0
+char currentCharacter;
+
+int spacesBeforeChar();
+int processLine();
 
 int main() {
-    
-    int curLineLength = 0;
-    int curChar;
-    int spaceLength = 0;
-    int state = 0;
-    
-    while((curChar = getchar()) != EOF) {
-        curLineLength++;
-        if (state == NOT_SPACES) {
-            if (curChar == ' ') {
-                state = IN_SPACES;
-                spaceLength = 1;
-            } else if (curChar == '\n') {
-                curLineLength = 0;
-                printf("\n");
-            } else {
-                printf("%c", curChar);
-            }
+
+   while(processLine() != -1);
+
+   return 0;
+}
+
+int processLine() {
+    int spacesNum;
+    if((spacesNum = spacesBeforeChar()) != -1) {
+        int tabs = spacesNum / TAB_WIDTH;
+        int spaces = spacesNum % TAB_WIDTH;
+
+        for (int i = 0; i < tabs; i++) 
+            printf("\t");
+
+        for (int i = 0; i < spaces; i++) 
+            printf(" ");
+
+        do {
+            printf("%c", currentCharacter);
+            if(currentCharacter == '\n')
+                return 0;
+        } while ((currentCharacter = getchar()) != EOF);
+
+        // While loop exited, thus EOF recieved
+        return -1;
+        
+
+    } else {
+        // Reached EOF while reading in spaces
+        return  -1;
+    }
+}
+
+int spacesBeforeChar() {
+    int counter = 0;
+    while( (currentCharacter = getchar()) != EOF) {
+        if(currentCharacter == ' ') {
+            counter++;
         } else {
-            if (curChar == ' ') {
-                spaceLength++;
-            } else {
-                int curIndex = curLineLength - spaceLength;
-                int numTabs = 0;
-                int numSpaces = spaceLength;
-                
-                spaceLength = 0;
-                state = NOT_SPACES;
-
-                while (numSpaces > (TAB_WIDTH - curIndex % TAB_WIDTH)) {
-                    numSpaces -= (TAB_WIDTH - curIndex % TAB_WIDTH);
-                    curIndex += (TAB_WIDTH - curIndex % TAB_WIDTH);
-                    numTabs++;
-                }
-
-                for (int i = 0; i < numTabs; i++) {
-                    printf("\t");
-                } 
-
-                for (int i = 0; i < numSpaces; i++) {
-                    printf(" ");
-                }
-                printf("%c", curChar);
-            }
+            return counter;
         }
     }
-    return 0;
+    return -1;
 }
+
 ```
 
 This program converts input with spaces for indentation to one that uses tabs. I 
 wrote it a long time ago while learning C. As a result it's not very well 
 written, but it will work as an example here.
 
+You can download the file [here](assets/debugging/detab.c) if you wish to play 
+with it yourself.
+
 ### `r(un)` command`
 
 After loading a binary into GDB the `r [arguments]` command will start the 
 program.
+
+![Run command](assets/debugging/03Running_program.png)
 
 ## Break points
 
@@ -154,32 +164,38 @@ at the list of current break points with `info breakpoints`.
 You can also enable and disable the break point with 
 `enable [break point number]` and `disable [break pint numebr]` respectively.
 
-When you next call `r` and the program gets to this line it will halt and the 
-GDB prompt will open up, and it will let you know it's hit the break point.
+When you call `run` and the program gets to this line it will halt and the GDB 
+prompt will open up, and it will let you know it's hit the break point.
 
 You can look at the code around the break point with the `l` command, which 
 lists 11 lines of code centred on the current line.
+
+![Breakpoints](assets/debugging/04Breakpoints.png)
 
 ## Resuming execution
 
 Once in a break point you may want to continue some execution, and there are 
 option for ways to do this.
 
-The `r` command will run until the next break point is hit.
+The `c` command will resume execution until the next break point is hit.
 
-The `n` (/`next`) command will run until the line below the current line runs in 
-the code. Often called *step over*.
+The `n` command will run until the line below the current line runs in the code. 
+Often called *step over*.
 
-The `s` (`/skip`) command will run until the next line of code is reached. If 
-the current line contains a function this will then stop on the first line of 
-that function. That is why this is often called *step into* as it will go into 
-functions.
+![Stepping over](assets/debugging/06Next.png)
+
+The `s` command will run until the next line of code is reached. If the current 
+line contains a function this will then stop on the first line of that function. 
+That is why this is often called *step into* as it will go into functions.
+
+![Stepping in](assets/debugging/05Stepping.png)
 
 The `f` (/`finish`) command will run until the end of the current function, then 
 will break and print the result.
 
 The `until [line number]` command will run until execution reaches a certain 
 line.
+
 
 ## Examining the stack
 
@@ -209,6 +225,8 @@ The `frame` command with no parameters prints a description of the frame.
 
 `info frame` prints a more verbose description.
 
+![Examining the stack](assets/debugging/07Backtrace.png)
+
 ### Finding variable values
 
 You can also inspect the contents of variables at any point with 
@@ -229,6 +247,11 @@ line and resume execution there.
 
 With the command `return [value]` GDB will return from the current function with 
 `value`. 
+
+![Return command](assets/debugging/08Returning.png)
+
+Here you can see I returned -1 from the function, indicating that the function 
+recieved an `EOF` character, resulting in the program exiting early.
 
 ### Assigning values to variables
 
