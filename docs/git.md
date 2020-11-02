@@ -1,5 +1,7 @@
 
-# [Git](https://git-scm.com/)
+# [Git pt 1](https://git-scm.com/)
+
+The video for these notes can be found [here](https://www.youtube.com/watch?v=3jW4zNRrZJA)
 
 ## Table of Contents
 
@@ -9,12 +11,16 @@
     3. [Installing Git](#installing-git)
 2. [The Git Data Model](#the-git-data-model)
     1. [Objects](#objects)
-    2. [Data model and pseudocode](#data-model-as-pseudo-code)
-    3. [Data model diagramatically](#data-model-diagram)
+    2. [Data model as pseudocode](#data-model-as-pseudocode)
+    3. [Data model diagrammatically](#data-model-diagram)
     4. [Storing objects](#storing-objects)
-    5. [Repositories](#repositories)
-    6. [The index](#the-index)
+    5. [Commit structure](#commit-structure)
+    6. [Repositories](#repositories)
+    7. [The Index](#the-index)
 3. [How to use Git](#how-to-use-git)
+    1. [The Git command line interface](#the-git-command-line-interface)
+    2. [Making a Git repository](#making-a-git-repository)
+    3. [Commands](#commands)
 
 ## Introduction
 
@@ -36,7 +42,7 @@ When working with other people, Git stops being useful and starts being vital. G
 
 Git can be very hard to learn properly, whether you're using a GUI or the command line. Git is a 'leaky abstraction', so learning it top-down by using it doesn't give you a great understanding of what is actually happening. These difficulties are magnified by the fact that misleading or incorrect information on Git is irritatingly common across the internet.
 
-In this lab we aim to intoduce Git from the ground up. Git itself is based on a very elegant data structure, there is just a rather ugly interface sitting on top of it that can be very confusing.
+In this lab we aim to introduce Git from the ground up. Git itself is based on a very elegant data structure, there is just a rather ugly interface sitting on top of it that can be very confusing.
 
 ### Installing Git
 
@@ -144,7 +150,7 @@ can then be looked up in the object store.
 
 ### Commit structure
 
-There is some extra structure to how the commits relate to each other. Commits have to form a "Directed Acyclic Graph". This is a fancy way of saying all commits have parents they inherit from, and you can't form cycles.
+There is some extra structure to how the commits relate to each other. Commits have to form a "Directed Acyclic Graph". This is a fancy way of saying all commits have parents they inherit from, and they can't form a cycle (e.g. if A has parent B, B can't have parent A).
 
 **Note:** Each commit references its parents rather than the parent commits referencing their children. So, in a diagram representing a commit graph, all arrows should flow from the commits to 
 their parents. From the perspective of the development flow this is counterintuitive, but it makes sense once you understand how commits relate to each other in Git. If you 
@@ -170,12 +176,12 @@ Files in a Git repository fall under 3 categories:
 
 1. Ignored - If a file path is in the `.gitignore` file then Git will ignore it. A common use of this 
    is to ignore compiled files of your code.
-2. Tracked - A tracked file is a file already in previous commits or currently staged in the index.
+2. Tracked - A tracked file is a file already in previous commits or currently staged in the Index.
 3. Untracked - An untracked file falls into neither of the last two categories. Git will ignore 
    these files unless you add them, and will warn you about untracked files in the `git status` 
    response.
 
-## How to use git
+## How to use Git
 
 Now we've got the Git data structure, it's time to start using it!
 
@@ -195,7 +201,7 @@ git <command> [parameters...]
 Git takes the first parameter to specify the command you want to run, then passes the rest of the 
 parameters to that command.
 
-### Making a git repository
+### Making a Git repository
 
 To make a local repository make a folder for it then navigate to it in your
 terminal shell. Then run `git init`.
@@ -207,6 +213,9 @@ This creates the `.git` folder to store all the information Git requires.
 Note the `.git` directory has now appeared.
 
 ### Commands
+
+We will now run through some of the most common git commands, these commands make up a solid 
+workflow for working on a local repository.
 
 #### git status
 
@@ -233,9 +242,17 @@ To add a file to the Index run `git add <file>`.
 Once you've staged a file you can commit them.
 
 To commit the changes to the repository run `git commit`. You will then be prompted to write a 
-message describing the commit. Alternatively use `git commit -m "<message>"` to commit with a message in one command.
+message describing the commit. Alternatively use `git commit -m "<message>"` to commit with a 
+message in one command.
 
 ![git commit example](assets/Git/git_commit.png)
+
+Git often prompts you for input and to do so it will use the text editor set in your configurations. 
+By default this is Vim, which is hard to use for beginners. To change the default text editor use 
+the command `git config --global core.editor <editor-of-choice>`. For beginners I suggest setting 
+`nano`. 
+
+**Note:** To exit Vim press the `:` key, then `q`, then enter.
 
 You may be wondering what the `4c391f8` in the `git status` is. That is the first 7 hexadecimal digits 
 of the SHA1 hash that represents the commit in the object store. You can use these 7 digits as an 
@@ -346,6 +363,15 @@ You can checkout tags with `git checkout <tagname>`.
 
 ![git tag example](assets/Git/git_tag.png)
 
+
+#### git help
+
+To find out more about any command, its available flags or a description of the command, you can 
+always use the command `git help <command>`. This will display a manual page for that specific 
+command. Again exit the page with the `q` key.
+
+In addition `git help` will list all available commands.
+
 ## Learn More!
 
 This was a very brief introduction to Git. If you want to learn more I recommend you read 
@@ -360,7 +386,9 @@ a lot of time and headaches by learning Git the right way!
 Other recommended learning resources:
 
 - [Pro Git](https://git-scm.com/book/en/v2) is an often recommended introduction to Git.
-- [Oh shit, Git!?!](https://ohshitgit.com/) is a short guide on how to recover from some common Git mistakes.
+- [Git crash course by Søren Mortensen](https://neros.dev/blog/git-crash-course-part-1/)
+- [Oh shit, Git!?!](https://ohshitgit.com/) is a short guide on how to recover from some common Git 
+- mistakes.
 - [Git for Computer Scientists](https://eagain.net/articles/git-for-computer-scientists/) is a short
     explanation of Git's data model.
 - [Git from the bottom up](https://jwiegley.github.io/git-from-the-bottom-up/) is a detailed 
@@ -371,7 +399,18 @@ Other recommended learning resources:
 
 1. Read through the first few chapters of Pro Git.
 2. Make a repository and add some files and commits.
-3. If you have any small projects, like a CV or coursework, try using git for it. **Warning:** if you 
+3. If you have any small projects, like a CV or coursework, try using Git for it. **Warning:** if you 
    aren't comfortable with Git do make periodic backups somewhere else, just so you don't lose your 
    work.
-4. Play [this game](https://learngitbranching.js.org/) intended to teach Git branching.
+4. Play [this game](https://learngitbranching.js.org/) intended to teach git branching.
+
+## Credit and thanks
+
+Written by [Alfie Richards](mailto:alfierchrds@gmail.com)
+
+Edited by [Joe Cryer](mailto:jcryer1234@gmail.com)
+
+Additional help from:
+- Dr Russell Bradford
+- Bence Babrián
+- [Søren Mortensen](https://neros.dev)

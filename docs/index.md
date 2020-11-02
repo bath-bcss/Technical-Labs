@@ -1,6 +1,9 @@
 Technical Labs are a series of labs being run by Bath Computer Science Society (BCSS) intended to 
 introduce useful technical skills.
 
+These notes are coupled with a video series you can find 
+[here](https://www.youtube.com/playlist?list=PLT4sucrjsqF8kvZFcRvxfhWuTvjKrXYzE).
+
 This is being led by [Alfie Richards](mailto:ar2227@bath.ac.uk) and [Joseph 
 Cryer](mailto:jjc82@bath.ac.uk). Email us if you have any questions or want to get involved!
 
@@ -11,12 +14,13 @@ on some of these concepts.
 ### What we have covered
 
 1. [The Unix shell](Unix_Shell.html)
-2. [Git](git.html)
+2. [Git pt 1, the basics](git.html)
+3. [Git pt 2, remotes and GitHub](git_pt_2.html)
+4. [Jetbrains IDEs and IntelliJ](jetbrains_ide.html)
+5. [Debuggers and GDB](debugging.html)
 
 ### What we aim to cover
 
-- Using remotes wth Git, like GitHub
-- Integrated development environment tools
 - Debugging
 - ssh
 - Build automation software and 'make'

@@ -1,5 +1,30 @@
 # Unix Shell
 
+Watch the video that accompanies these notes [here](https://www.youtube.com/watch?v=KLWojfHJRYQ).
+
+## Table of contents
+
+1. [What is Unix](#what-is-unix)
+2. [What is the shell?](#what-is-the-shell)
+3. [How to install a Unix-like command line](#how-to-install-a-unix-like-command-line)
+4. [How to use the Unix shell](#how-to-use-the-unix-shell)
+    1. [Where](#where)
+    2. [Who](#who)
+5. [Basics of Unix](#basics-of-unix)
+6. [Man pages](#man-pages)
+7. [File management in Unix](#file-management-in-unix)
+    1. [Making directories](#making-directories)
+    2. [Moving and renaming files and directories](#moving-and-renaming-files-and-directories)
+    3. [Deleting files and directories](#deleting-files-and-directories)
+    4. [Copying files and directories](#copying-files-and-directories)
+8. [Environment variables](#environment-variables)
+    1. [Path variables](#path-variables)
+9. [Connecting programs together](#connecting-programs-together)
+10. [Going forwards](#going-forwards)
+11. [Exercises](#exercises)
+12. [Credit](#credit)
+
+
 ## What is Unix
 
 When people say Unix they normally mean the family of Unix-like operating systems that derive from
@@ -33,7 +58,7 @@ The most common shell is the **B**ourne **A**gain **Sh**ell, or bash for short, 
 **Z Sh**ell (zsh) and the **F**riendly **I**nteractive **Sh**ell (fish) are gaining popularity.
 We'll be using bash.
 
-## How to install a Unix-like command line on your computer
+## How to install a Unix-like command line
 
 For Mac and Linux users this answer is very simple. You are already running a Unix-like operating
 system! Install the terminal emulator of your choice (or use the preinstalled options) and you're
@@ -120,7 +145,7 @@ You can then change users by using the `su` command followed by the user you wan
 you might do something destructive by accident. The shell makes it clear you're root as the `$` is
 replaced by a `#`, and the prompt may change as well.
 
-![WhoCommand](Assets/Unix_Shell/suCommand.png)
+![Su Command](Assets/Unix_Shell/suCommand.png)
 
 If you want to run just one command as the `root` user (a very common occurrence), you can use the
 `sudo` command (short for "super user do") followed by the command you want to run. This will
@@ -159,7 +184,7 @@ they are treated as one parameter. One common style of parameter is a "flag". Fl
 Different commands take different parameters in different orders. How are you meant to know these
 parameters? You can look at the `man` pages.
 
-## Man Pages
+## Man pages
 
 Man is short for manual, as the man pages are the manual for each command. Man pages contain
 information like how to use a command, what it does, what parameters it requires, along with the
@@ -244,7 +269,7 @@ it is gone.
 Copying is handled by the `cp` command, which is the same as the `mv` command but moves a copy of
 the file or directory to the new file path.
 
-## Environment Variables
+## Environment variables
 
 Earlier we said the shell was a scripting language, and like any other programming language it can
 make use of variables. The command `export <variable name>="<data>"` defines a variable.
@@ -259,7 +284,7 @@ All the variables together make up the "environment". Programs can read the envi
 as well as any values passed into them. So, changing these environment variables can change the
 behaviour of programs.
 
-### Path Variables
+### Path variables
 
 The "PATH variable" is a special variable in the environment. We can get the value with `echo
 $PATH`.
@@ -319,8 +344,7 @@ There's a lot more you can do with the shell - if we covered it all it would tak
 Some more will be covered in future Technical Labs but this should give you a good base to work
 from. Man pages are your friend - if you don't understand a command never be afraid to use them.
 
-Exercises
----------
+## Exercises
 
 If you want to work on your Unix skills here are some good practice exercises:
 
