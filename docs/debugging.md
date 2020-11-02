@@ -2,7 +2,7 @@
 
 ## Table of Contents
 
-## Introduction
+## Intrduction
 
 Debugging is the process of fixing bugs in software. It may sound uninteresting 
 but developers and computer scientists often spend the same amount of time 
