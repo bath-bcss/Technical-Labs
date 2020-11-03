@@ -69,6 +69,9 @@ the `-g` flag in the compiler.
 
 ![Compiling C for debug](assets/debugging/01Compiling_C_with_object_table.png)
 
+**Note:** If you compile without the symbols table you will get an error and gdb 
+won't work correctly. 
+
 To open a binary with GDB use the command `gdb [binary file]`. GDB will open and 
 present a prompt for your commands. The prompt will normally look like `(gdb)`.
 
@@ -141,10 +144,10 @@ written, but it will work as an example here.
 You can download the file [here](assets/debugging/detab.c) if you wish to play 
 with it yourself.
 
-### `r(un)` command`
+### `run` command`
 
-After loading a binary into GDB the `r [arguments]` command will start the 
-program.
+After loading a binary into GDB the `run [arguments]` command (or `r 
+[arguments]`) runs the program.
 
 ![Run command](assets/debugging/03Running_program.png)
 
@@ -154,7 +157,8 @@ To get GDB to halt at a certain line you need to insert a **breakpoint**. A
 breakpoint tells GDB to stop whenever it reaches a certain line. Once GDB has 
 halted, you can enter commands to inspect or alter the program.
 
-To insert a breakpoint use the command `b [line number]`.
+To insert a breakpoint use the command `break [line number]` 
+(or `b [linenumber]`).
 
 GDB will then print the name of the new breakpoint you've created. You can look 
 at the list of current break points with `info breakpoints`.
@@ -165,8 +169,8 @@ and `disable [breakpoint number]` respectively.
 When you call `run` and the program gets to this line it will halt and the GDB 
 prompt will open up to let you know it has hit the breakpoint.
 
-You can look at the code around the breakpoint with the `l` command, which lists 
-11 lines of code centred on the current line.
+You can look at the code around the breakpoint with the `list` command (or `l`), 
+which lists 11 lines of code centred on the current line.
 
 ![Breakpoints](assets/debugging/04Breakpoints.png)
 
@@ -175,21 +179,22 @@ You can look at the code around the breakpoint with the `l` command, which lists
 Once in a breakpoint you may want to continue execution of the program. You have 
 a few ways to do this:
 
-The `c` command will resume execution until the next breakpoint is hit.
+The `continue` (or `c`) command will resume execution until the next breakpoint 
+is hit.
 
-The `n` command will run until the line below the current line runs in the code. 
-Often called **step over**.
+The `next` command (or `n`) will run until the line below the current line runs 
+in the code. Often called **step over**.
 
 ![Stepping over](assets/debugging/06Next.png)
 
-The `s` command will run until the next line of code is reached. If the current 
-line contains a function, this will then stop on the first line of that 
-function. That is why this is often called **step into** as it will go into 
+The `step` command (or `s`) will run until the next line of code is reached. If 
+the current line contains a function, this will then stop on the first line of 
+that function. That is why this is often called **step into** as it will go into 
 functions.
 
 ![Stepping in](assets/debugging/05Stepping.png)
 
-The `f` (or `finish`) command will run until the end of the current function, 
+The `finish` (or `f`) command will run until the end of the current function, 
 then will break and print the result.
 
 The `until [line number]` command will run until execution reaches a certain 
@@ -207,8 +212,8 @@ make up **the stack**.
 
 After you've halted in GDB you probably want to know where you are and how you 
 got there. When you reach a breakpoint GDB will automatically select the 
-executing stack frame. The `bt` command will then print all the stack frames up 
-until the main stack frame.
+executing stack frame. The `backtrace` command (or `bt`) will then print all the 
+stack frames up until the main stack frame.
 
 You can specify a `-[number]` flag to only print `number` stack frames.
 
@@ -238,8 +243,8 @@ execution in your program.
 
 ### `j(ump)` command
 
-The first way is with the `j [line number]` command, which will jump to another 
-line and resume execution there.
+The first way is with the `jump [line number]` command (or `j`), which will jump 
+to another line and resume execution there.
 
 ### `return` command
 
@@ -320,4 +325,5 @@ Edited by [Joe Cryer](mailto:jcryer1234@gmail.com)
 Additional help from:
 
 - [Søren Mortensen](https://neros.dev)
+- Dr Russell Bradford
 

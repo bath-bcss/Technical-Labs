@@ -21,7 +21,6 @@ on some of these concepts.
 
 ### What we aim to cover
 
-- Debugging
 - ssh
 - Build automation software and 'make'
 - Continuous integration tools
