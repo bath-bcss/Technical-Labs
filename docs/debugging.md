@@ -4,10 +4,10 @@
 
 ## Introduction
 
-Debugging is the process of fixing bugs in software. It may sound uninteresting 
-but developers and computer scientists often spend just as much time 
-debugging as they do writing code, so getting proficient and comfortable with 
-debugging and the tools for doing it is important.
+Debugging is the process of finding and fixing bugs in software. It may sound 
+uninteresting but developers and computer scientists often spend just as much 
+time debugging as they do writing code, so getting proficient and comfortable 
+with debugging and the tools for doing it is important.
 
 Debugging techniques fall into two categories. The first and most common is 
 logging.
@@ -17,12 +17,13 @@ already familiar with. It involves littering your code with print statements,
 running the program over and over again, until eventually you track down your 
 issue.
 
-Logging is tried and tested, and always works.
+Logging is tried and tested, and nearly always works.
 
 "The most effective debugging tool is still careful thought, coupled with 
 judiciously placed print statements” — Brian Kernighan, Unix for Beginners.
 
-But when logging isn't enough, you can turn to debuggers, which will be the subject of this lab.
+But when logging isn't enough, you can turn to debuggers, which will be the 
+subject of this lab.
 
 ### What is a debugger
 
@@ -37,30 +38,34 @@ trying to test or debug, allowing you to:
 As well as many more advanced features.
 
 There is a massive selection of debuggers, and many languages provide their own. 
-However, most debuggers have a similar command line interface. Most 
-languages supported by a Jetbrains IDE have an almost identical GUI within the IDE.
+However, most debuggers have a similar command line interface. Most languages 
+supported by a Jetbrains IDE have an almost identical GUI within the IDE.
 
-To show you both the command line and the JetBrains interfaces, we are going to cover the command line in 
-the notes and the JetBrains interface in the recorded live session.
+To show you both the command line and the JetBrains interfaces, we are going to 
+cover the command line in the notes and the JetBrains interface in the recorded 
+live session.
 
 For this lab we're going to be using [The GNU Project 
-Debugger](https://www.gnu.org/software/gdb/) (**GDB** for short). GDB works with a 
-number of languages - C, C++, Pascal, and Rust being some of the most 
-popular. Here we will be using C as it is part of the Bath CS course.
+Debugger](https://www.gnu.org/software/gdb/) (**GDB** for short). GDB works with 
+a number of languages - C, C++, Pascal, and Rust being some of the most popular. 
+Here we will be using C as it is part of the Bath CS course.
 
 ### Installing GDB
 
-Due to the privileges debuggers require in order to control another 
-program, installation can be complicated. For Python and Java, debuggers come with the language development kits upon install, which no doubt you 
-will have done already. For C debuggers it's more complicated. I recommend 
-searching for instructions for your OS and desired debugger. However, CLion (the JetBrains C IDE) will 
-come with one installed already.
+Due to the privileges debuggers require in order to control another program, 
+installation can be complicated. For Python and Java, debuggers come with the 
+language development kits upon install, which no doubt you will have done 
+already. For C debuggers it's more complicated. I recommend searching for 
+instructions for your OS and desired debugger. However, CLion (the JetBrains C 
+IDE) will come with one installed already.
 
 ## Opening GDB
 
-Before you start up GDB you need to compile the C code of your program to be debugged, and include the `symbols 
-table`. In brief, the `symbols table` correlates commands and addresses in a program's compiled binary with lines of source code and the names of variables in the 
-source code. To do this specify the `-g` flag in the compiler.
+Before you start up GDB you need to compile the C code of your program to be 
+debugged, and include the `symbols table`. In brief, the `symbols table` 
+correlates commands and addresses in a program's compiled binary with lines of 
+source code and the names of variables in the source code. To do this specify 
+the `-g` flag in the compiler.
 
 ![Compiling C for debug](assets/debugging/01Compiling_C_with_object_table.png)
 
@@ -74,7 +79,6 @@ In these examples I will be using this C file:
 `detab.c`:
 
 ```C
-
 #include <stdio.h>
 
 #define TAB_WIDTH 4
@@ -97,11 +101,9 @@ int processLine() {
         int tabs = spacesNum / TAB_WIDTH;
         int spaces = spacesNum % TAB_WIDTH;
 
-        for (int i = 0; i < tabs; i++) 
-            printf("\t");
+        for (int i = 0; i < tabs; i++) printf("\t");
 
-        for (int i = 0; i < spaces; i++) 
-            printf(" ");
+        for (int i = 0; i < spaces; i++) printf(" ");
 
         do {
             printf("%c", currentCharacter);
@@ -130,7 +132,6 @@ int spacesBeforeChar() {
     }
     return -1;
 }
-
 ```
 
 This program converts input with spaces for indentation to one that uses tabs. I 
@@ -149,7 +150,8 @@ program.
 
 ## Breakpoints
 
-To get GDB to halt at a certain line you need to insert a **breakpoint**. A breakpoint tells GDB to stop whenever it reaches a certain line. Once GDB has 
+To get GDB to halt at a certain line you need to insert a **breakpoint**. A 
+breakpoint tells GDB to stop whenever it reaches a certain line. Once GDB has 
 halted, you can enter commands to inspect or alter the program.
 
 To insert a breakpoint use the command `b [line number]`.
@@ -157,20 +159,21 @@ To insert a breakpoint use the command `b [line number]`.
 GDB will then print the name of the new breakpoint you've created. You can look 
 at the list of current break points with `info breakpoints`.
 
-You can also enable and disable the breakpoint with 
-`enable [breakpoint number]` and `disable [breakpoint number]` respectively.
+You can also enable and disable the breakpoint with `enable [breakpoint number]` 
+and `disable [breakpoint number]` respectively.
 
 When you call `run` and the program gets to this line it will halt and the GDB 
 prompt will open up to let you know it has hit the breakpoint.
 
-You can look at the code around the breakpoint with the `l` command, which 
-lists 11 lines of code centred on the current line.
+You can look at the code around the breakpoint with the `l` command, which lists 
+11 lines of code centred on the current line.
 
 ![Breakpoints](assets/debugging/04Breakpoints.png)
 
 ## Resuming execution
 
-Once in a breakpoint you may want to continue execution of the program. You have a few ways to do this:
+Once in a breakpoint you may want to continue execution of the program. You have 
+a few ways to do this:
 
 The `c` command will resume execution until the next breakpoint is hit.
 
@@ -180,17 +183,17 @@ Often called **step over**.
 ![Stepping over](assets/debugging/06Next.png)
 
 The `s` command will run until the next line of code is reached. If the current 
-line contains a function, this will then stop on the first line of that function. 
-That is why this is often called **step into** as it will go into functions.
+line contains a function, this will then stop on the first line of that 
+function. That is why this is often called **step into** as it will go into 
+functions.
 
 ![Stepping in](assets/debugging/05Stepping.png)
 
-The `f` (or `finish`) command will run until the end of the current function, then 
-will break and print the result.
+The `f` (or `finish`) command will run until the end of the current function, 
+then will break and print the result.
 
 The `until [line number]` command will run until execution reaches a certain 
 line.
-
 
 ## Examining the stack
 
@@ -202,8 +205,8 @@ make up **the stack**.
 
 ### `bt (backtrace)` command
 
-After you've halted in GDB you probably want to know where you are and how 
-you got there. When you reach a breakpoint GDB will automatically select the 
+After you've halted in GDB you probably want to know where you are and how you 
+got there. When you reach a breakpoint GDB will automatically select the 
 executing stack frame. The `bt` command will then print all the stack frames up 
 until the main stack frame.
 
@@ -224,8 +227,8 @@ The `frame` command with no parameters prints a description of the frame.
 
 ### Finding variable values
 
-You can also inspect the contents of variables at any point with 
-`print [variable]`.
+You can also inspect the contents of variables at any point with `print 
+[variable]`.
 
 ## Altering execution
 
@@ -240,8 +243,8 @@ line and resume execution there.
 
 ### `return` command
 
-With the command `return [value]`, GDB will return from the current function with 
-`value`. 
+With the command `return [value]`, GDB will return from the current function 
+with `value`. 
 
 ![Return command](assets/debugging/08Returning.png)
 
@@ -258,9 +261,12 @@ variable. For instance, you could use the command `call foo=2` to set `foo` to
 ## Checkpoints
 
 A more advanced feature that not all debuggers have is the ability to use 
-checkpoints. The concept of checkpoints may be familiar from video games. Essentially, you can save the state of the program and can then later return to that state at any point to re-run something. In this way if you have a specific part of the program you wish to debug, 
-you can save a checkpoint before it occurs, try something - if it fails return to the 
-checkpoint, change some state, and try again.
+checkpoints. The concept of checkpoints may be familiar from video games. 
+Essentially, you can save the state of the program and can then later return to 
+that state at any point to re-run something. In this way if you have a specific 
+part of the program you wish to debug, you can save a checkpoint before it 
+occurs, try something - if it fails return to the checkpoint, change some state, 
+and try again.
 
 To save a checkpoint use the command `checkpoint`. You can see a list of 
 checkpoints with `info checkpoint` and restore to a checkpoint with `restart 
@@ -268,9 +274,10 @@ checkpoints with `info checkpoint` and restore to a checkpoint with `restart
 
 ## Watchpoints
 
-Another more advanced feature some debuggers support is the concept of **watchpoints**. Watchpoints are similar to breakpoints but instead of breaking whenever 
-a execution reaches a line of code, a watchpoint breaks every time a variable is 
-changed.
+Another more advanced feature some debuggers support is the concept of 
+**watchpoints**. Watchpoints are similar to breakpoints but instead of breaking 
+whenever a execution reaches a line of code, a watchpoint breaks every time a 
+variable is changed.
 
 To set a watchpoint use the command `watch [variable]`. Watchpoints can be 
 enabled, disabled and deleted in the same way as breakpoints.
@@ -278,10 +285,10 @@ enabled, disabled and deleted in the same way as breakpoints.
 ## Exceptions and crashes
 
 One of the main uses of GDB and other C debuggers more generally is to allow a 
-little more insight into C's errors and crashes. If your 
-program receives a signal when running in GDB (for example, a `segfault` signal), the program will 
-halt execution allowing you to examine where execution is at the point which 
-your program is erroring. 
+little more insight into C's errors and crashes. If your program receives a 
+signal when running in GDB (for example, a `SIGSEGV`, or segmentation fault 
+signal), the program will halt execution allowing you to examine where execution 
+is at the point which your program is erroring. 
 
 ## Summary
 
@@ -289,7 +296,8 @@ Hopefully, you've seen some features of GDB that would have been useful in your
 debugging, or that you could imagine being useful in future debugging. On top of 
 that, GDB has a massive number of features we couldn't cover here. I want to 
 emphasise that while this lab used GDB, most languages have a variety of 
-debuggers that work with them, and they will have a similar feature set - normally with a similar interface and commands.
+debuggers that work with them, and they will have a similar feature set - 
+normally with a similar interface and commands.
 
 Additionally, in the video for this week I have gone through the same feature 
 set using the Jetbrains GUI in CLion, which may be easier if this is your first 
@@ -310,3 +318,6 @@ Written by [Alfie Richards](https://www.alfierichards.com)
 Edited by [Joe Cryer](mailto:jcryer1234@gmail.com)
 
 Additional help from:
+
+- [Søren Mortensen](https://neros.dev)
+
