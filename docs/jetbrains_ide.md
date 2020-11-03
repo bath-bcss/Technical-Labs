@@ -1,6 +1,8 @@
 
 # IDEs and Jetbrains
 
+Find the video accompanyment for these notes [here](https://www.youtube.com/watch?v=rMIogNFi-D8)
+
 ## Table of Contents
 
 1. [Introduction](#introduction)
