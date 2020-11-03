@@ -17,10 +17,10 @@ on some of these concepts.
 2. [Git pt 1, the basics](git.html)
 3. [Git pt 2, remotes and GitHub](git_pt_2.html)
 4. [Jetbrains IDEs and IntelliJ](jetbrains_ide.html)
+5. [Debuggers and GDB](debugging.html)
 
 ### What we aim to cover
 
-- Debugging
 - ssh
 - Build automation software and 'make'
 - Continuous integration tools
