@@ -1,6 +1,8 @@
 
 # Git pt 2, Git Forever After
 
+Find the video accompanyment for these notes [here](https://www.youtube.com/watch?v=rlYJ7WfZgYE)
+
 ## Table of Contents
 
 1. [Git remotes](#git-remotes)
