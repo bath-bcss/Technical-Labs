@@ -19,6 +19,7 @@ on some of these concepts.
 4. [Jetbrains IDEs and IntelliJ](jetbrains_ide.html)
 5. [Debuggers and GDB](debugging.html)
 6. [SSH and remote management](ssh_lab.html)
+7. [Build automation and Continuous integration](build_systems_and_cont_int)
 
 ### What we aim to cover
 
