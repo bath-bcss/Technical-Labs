@@ -18,10 +18,11 @@ on some of these concepts.
 3. [Git pt 2, remotes and GitHub](git_pt_2.html)
 4. [Jetbrains IDEs and IntelliJ](jetbrains_ide.html)
 5. [Debuggers and GDB](debugging.html)
+6. [SSH and remote management](ssh_lab.html)
+7. [Build automation and Continuous integration](build_systems_and_cont_int)
 
 ### What we aim to cover
 
-- ssh
 - Build automation software and 'make'
 - Continuous integration tools
 - Deployment tools like Docker, AWS, Azure, Heroku

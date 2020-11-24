@@ -1,7 +1,19 @@
 
 # SSH
 
+Find the video for these notes 
+[here](https://www.youtube.com/watch?v=RGatj96-ooc)
+
 ## Table of Contents
+
+1. [Introduction](#introduction)
+2. [What is SSH](#what-is-ssh)
+3. [Using SSH](#using-ssh)
+4. [How does SSH work?](#how-does-ssh-work)
+5. [Configuring SSH](#configuring-ssh)
+6. [Connecting to `linux.bath` with SSH](#connecting-to-linuxbath-with-ssh)
+7. [Exercises](#exercises)
+8. [Credit](#credit)
 
 ## Introduction
 
@@ -18,7 +30,8 @@ line access, login, remote command execution and file transfer. These are what
 we will focus on here.
 
 Put more simply, SSH can do many things, but we're going to use it to open and 
-access a commandline shell on a remote computer, usually a server. This will typically be a Unix-shell which was covered in a previous lab you can access 
+access a commandline shell on a remote computer, usually a server. This will 
+typically be a Unix-shell which was covered in a previous lab you can access 
 [here](Unix_Shell.md).
 
 SSH is now supported by all the major desktop operating systems (Windows 10, 
@@ -26,37 +39,18 @@ macOS, the majority of Linux distros) and the vast majority of networking
 equipment supports SSH for remote management. Indeed most servers are controlled
 via SSH.
 
-## How does SSH work
-
-SSH is a protocol which many tools use. The protocol is structured into different layers, 
-where each layer uses the previous layer to communicate.
-
-The first layer is the **Transport Layer**. When you start an SSH connection this 
-layer connects to the remote computer and sets up an encrypted secure 
-connection between the two computers.
-
-Next is the **User Authentication Layer**, which handles client authentication. This
-can either be with a password or with cryptographic private and public keys.
-
-The last layer is the **Connection Layer**. This layer carries the `channels` of 
-information. You could have a shell channel, carrying input and output back and 
-forth, or it could be a file transfer channel, or many other types.
-
-SSH also defaults to connecting over port 22. This can be changed if 
-needed.
-
 ## Using SSH
 
 The most common SSH client is `OpenSSH`. It comes installed by default on 
 Windows 10, macOS, and most Linux distros, so it is the tool we will be covering
 here.
 
-### Opening an SSH connection
-
-To open a SSH remote commandline connection in OpenSSH we use the command `ssh [address]` where `address` is the address of the server you want to connect to.
-Unless you have a configuration set for this address, OpenSSH will try to login with
-your current username. If that's not the behaviour you want you can specify what username to use to login with by using 
-the command `ssh [user]@[address]` where `user` is your username. When you connect you
+To open a SSH remote commandline connection in OpenSSH we use the command 
+`ssh [address]` where `address` is the address of the server you want to connect 
+to. Unless you have a configuration set for this address, OpenSSH will try to 
+login with your current username. If that's not the behaviour you want you can 
+specify what username to use to login with by using the command 
+`ssh [user]@[address]` where `user` is your username. When you connect you
 may be prompted for a password.
 
 Alternatively you can execute a single command on a remote computer with the 
@@ -78,6 +72,25 @@ from the remote computer and `path` is where you want to store it locally.
 For both directions of `scp` you can add the `-r` command and specify a 
 directory instead of a file - this will then recursively copy the directory and 
 all its contents.
+
+## How does SSH work
+
+SSH is a protocol which many tools use. The protocol is structured into different layers, 
+where each layer uses the previous layer to communicate.
+
+The first layer is the **Transport Layer**. When you start an SSH connection this 
+layer connects to the remote computer and sets up an encrypted secure 
+connection between the two computers.
+
+Next is the **User Authentication Layer**, which handles client authentication. This
+can either be with a password or with cryptographic private and public keys.
+
+The last layer is the **Connection Layer**. This layer carries the `channels` of 
+information. You could have a shell channel, carrying input and output back and 
+forth, or it could be a file transfer channel, or many other types.
+
+SSH also defaults to connecting over port 22. This can be changed if 
+needed.
 
 ## Configuring SSH
 
@@ -161,5 +174,10 @@ Written by [Alfie Richards](www.alfierichards.com).
 Edited by [Joe Cryer](mailto:jcryer1234@gmail.com)
 
 Additional help from:
+
+- Dr Russell Bradford
+- [Søren Mortensen](https://neros.dev)
+
+Please sent any corrections [here](mailto:main@alfierichards.com)
 
 
