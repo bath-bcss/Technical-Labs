@@ -96,7 +96,7 @@ There are a few things to be aware of when using a Unix shell: where you are and
 The **where** is what directory you are in. In a Unix shell you always have a working directory. To
 find your current working directory use the command `pwd` (short for "print working directory").
 
-![PWDImage](Assets/Unix_Shell/PWDCommand.png)
+![PWDImage](assets/Unix_Shell/PWDCommand.png)
 
 You can see the shell prints out the current directory. If you've just started the shell you'll be
 in your user's **home directory**. In Unix, you can always find the home directory, as `~` represents
@@ -105,31 +105,31 @@ the current user's home directory - that's why it's in the prompt (`user:~$`).
 To change the working directory use the `cd` ("change directory") command followed by where you want
 to go.
 
-![CDCommandImage](Assets/Unix_Shell/CDCommand.png)
+![CDCommandImage](assets/Unix_Shell/CDCommand.png)
 
 You can give `cd` either a relative or an absolute path. The difference is that absolute paths start
 with a leading `/`, pronounced "root", which represents the absolute top-level folder on your hard
 drive. Any path that doesn't start with `/` is a relative path, so instead of starting from `/` it
 starts from your current folder.
 
-![CDRelativeCommandImage](Assets/Unix_Shell/CDRelativeCommand.png)
+![CDRelativeCommandImage](assets/Unix_Shell/CDRelativeCommand.png)
 
 To list all the directories and files in the working directory use the `ls` command, short for
 "list".
 
-![LSCommandImage](Assets/Unix_Shell/LSCommand.png)
+![LSCommandImage](assets/Unix_Shell/LSCommand.png)
 
 In Unix any directories starting with a `.` are hidden by default. To show these hidden files add
 the `-a` flag to the `ls` command.
 
-![LSACommand](Assets/Unix_Shell/LSACommand.png)
+![LSACommand](assets/Unix_Shell/LSACommand.png)
 
 There you can see some unexpected entries. What are `.` and `..`? In every directory in Unix there
 is `.` to represent the current directory, and `..` to represent the parent directory.
 
 Combining this with `cd` and relative paths we can use `cd ..` to navigate to the parent directory.
 
-![CDUPCommand](Assets/Unix_Shell/cdupCommand.png)
+![CDUPCommand](assets/Unix_Shell/cdupCommand.png)
 
 ### Who
 
@@ -138,14 +138,14 @@ different commands.
 
 You can check what user you are with the `whoami` command.
 
-![WhoCommand](Assets/Unix_Shell/whoCommand.png)
+![WhoCommand](assets/Unix_Shell/whoCommand.png)
 
 You can then change users by using the `su` command followed by the user you want to switch to.
 "root" is the super user in Unix and so has all privileges. You shouldn't work as "root", because
 you might do something destructive by accident. The shell makes it clear you're root as the `$` is
 replaced by a `#`, and the prompt may change as well.
 
-![Su Command](Assets/Unix_Shell/suCommand.png)
+![Su Command](assets/Unix_Shell/suCommand.png)
 
 If you want to run just one command as the `root` user (a very common occurrence), you can use the
 `sudo` command (short for "super user do") followed by the command you want to run. This will
@@ -157,7 +157,7 @@ Now you know the basics of getting around and how to change user, let's start us
 
 In the Unix shell, a command is structured with the name of the command followed by some arguments.
 
-![UnixCommandExample](Assets/Unix_Shell/CommandExample.png)
+![UnixCommandExample](assets/Unix_Shell/CommandExample.png)
 
 Here in red you can see the **Command**, in this case `git` (the subject of a future lab), followed
 by a list of arguments in blue.
@@ -222,7 +222,7 @@ the Unix shell.
 
 Making a directory is as simple as `mkdir <directory name>`
 
-![mkdir example](Assets/Unix_Shell/mkdirExample.png)
+![mkdir example](assets/Unix_Shell/mkdirExample.png)
 
 ### Moving and renaming files and directories
 
@@ -247,7 +247,7 @@ You can also use it to rename a file or directory:
 mv <file name> <new file name>
 ```
 
-![mv example](Assets/Unix_Shell/mvExample.png)
+![mv example](assets/Unix_Shell/mvExample.png)
 
 ### Deleting files and directories
 
@@ -262,7 +262,7 @@ recursively.
 ***Warning:*** In Unix there is no "trash" directory where deleted files go. When you delete a file
 it is gone.
 
-![rm example](Assets/Unix_Shell/rmExample.png)
+![rm example](assets/Unix_Shell/rmExample.png)
 
 ### Copying files and directories
 
@@ -276,7 +276,7 @@ make use of variables. The command `export <variable name>="<data>"` defines a v
 
 Then by writing `$<variable name>`, bash unpacks the variable to its string.
 
-![ExportingVariables](Assets/Unix_Shell/exportCommand.png)
+![ExportingVariables](assets/Unix_Shell/exportCommand.png)
 
 The `echo <argument>` command simply prints the parameter given to `stdout`, with variables expanded.
 
@@ -289,18 +289,18 @@ behaviour of programs.
 The "PATH variable" is a special variable in the environment. We can get the value with `echo
 $PATH`.
 
-![PATHVariables](Assets/Unix_Shell/PathVariables.png)
+![PATHVariables](assets/Unix_Shell/PathVariables.png)
 
 Here you can see a big list of file directories. This is where the shell goes looking for the
 executables you want to run. You can look in the directories themselves to find a path, but if you
 need to find one particular executable you can use the `which <command>` command.
 
-![WhichCommand](Assets/Unix_Shell/whichCommand.png)
+![WhichCommand](assets/Unix_Shell/whichCommand.png)
 
 You can also run executables directly with their absolute path or local path - this is how you could
 run executables you make yourself without putting them in the path directories!
 
-![RunningExecutablesWithPath](Assets/Unix_Shell/RunningBinaries.png)
+![RunningExecutablesWithPath](assets/Unix_Shell/RunningBinaries.png)
 
 ## Connecting programs together
 
@@ -315,20 +315,20 @@ Stdout doesn't have to simply be printed out, though, and stdin doesn't always h
 keyboard input. You can use the `>` operator after a command to redirect stdout from that command
 somewhere else, like to a file.
 
-![SaveToFileOperator](Assets/Unix_Shell/SaveToFileOperator.png)
+![SaveToFileOperator](assets/Unix_Shell/SaveToFileOperator.png)
 
 The `cat <file path>` command reads a file and outputs it to stdout.
 
 Likewise, you can use the `<` operator to read a file into stdin for a command.
 
-![ReadFromFileOperator](Assets/Unix_Shell/ReadFromFileOperator.png)
+![ReadFromFileOperator](assets/Unix_Shell/ReadFromFileOperator.png)
 
 The `tail -n1` command returns the last line of the stdout.
 
 Lastly, you can connect one program to another with a pipe: `|`. With a pipe you can take the
 output of one program and feed it into another.
 
-![PipeExample](Assets/Unix_Shell/pipeExample.png)
+![PipeExample](assets/Unix_Shell/pipeExample.png)
 
 Here the `ip a` command lists lots of networking information, but I only want the line about the IP
 address starting "127.". So, I can use the `grep <string>` command that lets you search the standard
