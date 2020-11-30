@@ -33,8 +33,11 @@ jobs:
       - name: ls
         run: ls -A
       
-      - name: Jekyll build
+      - name: Install Jekyll 
         run: jekyll build
+      
+      - name: Jekyll build
+        run: gem install jekyll bundler
       
       - name: SCP to server
         uses: appleboy/scp-action@master
