@@ -30,14 +30,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       
-      - name: ls
-        run: ls -A
+      - name: cp and ls
+        run: cp docs/* .
       
-      - name: Install Jekyll 
-        run: gem install jekyll bundler
-      
-      - name: Jekyll build
-        run: jekyll build
+      - name: Jeckyll build
+        uses: lemonarc/jekyll-action@1.0.0
       
       - name: SCP to server
         uses: appleboy/scp-action@master
@@ -46,5 +43,5 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PUB_KEY }}
           passphrase: ${{ secrets.SSH_PASSKEY }}
-          source: docs/_site/
+          source: _site/
           target: /var/www/technical-labs.link/
