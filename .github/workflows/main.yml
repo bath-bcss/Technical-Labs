@@ -27,7 +27,7 @@ jobs:
         uses: actions/checkout@v2
       
       - name: cp
-        run: cp -r docs/ .
+        run: cp docs/* .
       
       - name: ls
         run: ls -A
