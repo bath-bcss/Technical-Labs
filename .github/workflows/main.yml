@@ -30,8 +30,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       
-      - name: cp and ls
-        run: cp docs/* .
+      - name: cp
+        run: cp -r docs/ .
+      
+      - name: ls
+        run: ls -A
       
       - name: Jeckyll build
         uses: lemonarc/jekyll-action@1.0.0
