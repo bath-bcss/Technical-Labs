@@ -25,9 +25,11 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          path: docs/
       
-      - name: cd
-        run: cd ./docs
+      - name: ls
+        run: ls -A
     
       - name: Jekyll Build
         uses: lemonarc/jekyll-action@1.0.0
