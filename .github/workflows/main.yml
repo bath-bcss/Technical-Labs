@@ -32,9 +32,6 @@ jobs:
       
       - name: ls
         run: ls -A
-    
-      - name: Gem install
-        run: gem install
       
       - name: Jekyll build
         run: jekyll build
