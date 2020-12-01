@@ -3,6 +3,15 @@
 
 ## Table of Contents
 
+1. [Metaprogramming](#metaprogramming)
+2. [Dependency management](#dependency-management)
+    1. [Programming language library 
+       dependencies](#programming-language-library-dependencies)
+    2. [Example](#example)
+3. [Unit testing](#unit-testing)
+    1. [Example](#example-1)
+4. [Credit](#credit)
+
 ## Metaprogramming
 
 This Lab is a continuation of the metaprogramming topics from last week.
