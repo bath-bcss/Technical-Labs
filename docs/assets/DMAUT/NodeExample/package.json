@@ -1,0 +1,9 @@
+{
+  "name": "TechnicalLabsExample",
+  "version": "1.0.0",
+  "description": "Example app",
+  "author": "Alfie Richards",
+  "dependencies": {
+    "mathjs": "8.0.1"
+  }
+}

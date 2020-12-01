@@ -22,12 +22,12 @@ on some of these concepts.
 5. [Debuggers and GDB](debugging.html)
 6. [SSH and remote management](ssh_lab.html)
 7. [Build automation and Continuous integration](build_systems_and_cont_int)
+8. [Dependency Management and Unit Testing](DepManAndUnitTests)
 
 ### What we aim to cover
 
-- Build automation software and 'make'
-- Continuous integration tools
 - Deployment tools like Docker, AWS, Azure, Heroku
+- Unix configuration
 
 ### Going beyond this series
 
