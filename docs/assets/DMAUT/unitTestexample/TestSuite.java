@@ -1,9 +1,11 @@
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TestSuite {
 
@@ -33,7 +35,7 @@ public class TestSuite {
     Arrays.sort(test2);
   }
  
-  @Test
+  @RepeatedTest(5)
   void testSelection() {
     Contact[] testArray1 = Arrays.copyOf(test1, test1.length);
     List<Contact> testList1 = Arrays.asList(testArray1);
@@ -52,7 +54,7 @@ public class TestSuite {
     assertTrue(Arrays.equals(testArray2, test2));
   }
 
-  @Test
+  @RepeatedTest(5)
   void testInsertion() {
     Contact[] testArray1 = Arrays.copyOf(test1, test1.length);
     List<Contact> testList1 = Arrays.asList(testArray1);
@@ -71,7 +73,7 @@ public class TestSuite {
     assertTrue(Arrays.equals(testArray2, test2));
   }
 
-  @Test
+  @RepeatedTest(5)
   void testQuick() {
     Contact[] testArray1 = Arrays.copyOf(test1, test1.length);
     List<Contact> testList1 = Arrays.asList(testArray1);
@@ -90,7 +92,7 @@ public class TestSuite {
     assertTrue(Arrays.equals(testArray2, test2));
   }
 
-  @Test
+  @RepeatedTest(5)
   void testMerge() {
     Contact[] testArray1 = Arrays.copyOf(test1, test1.length);
     List<Contact> testList1 = Arrays.asList(testArray1);

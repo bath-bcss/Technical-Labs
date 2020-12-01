@@ -38,9 +38,10 @@ problem - how can you get these libraries and modules into your projects.
 Sounds easy enough, but turns out to become one of the biggest headaches 
 Computer Scientists deal with.
 
-In an ideal world where each library was feature complete and bug-free when it was released this would be easy. Copy the code into your project 
-and use it. Simple. However, the world has an irritating resistance to being 
-simple and perfect. 
+In an ideal world where each library was feature complete and bug-free when it 
+was released this would be easy. Copy the code into your project and use it. 
+Simple. However, the world has an irritating resistance to being simple and 
+perfect. 
 
 All modules should be updated often, fixing bugs and adding features. This may 
 lead you to think you could just use one version and live with its bugs and feature 
@@ -57,15 +58,17 @@ What should become clear is that the complexity of the world causes spiralling
 complexity that would very quickly make any manual solution to this problem 
 untenable. 
 
-Thus we have dependency managers. Most languages and technologies have one or more, and how they work varies from one to another. Still, they can save you a lot of time 
-and headaches. 
+Thus we have dependency managers. Most languages and technologies have one or 
+more, and how they work varies from one to another. Still, they can save you a 
+lot of time and headaches. 
 
 Most dependency managers allow you to have a list of dependencies your project 
-needs, then will download them on command. This is useful when working with version control as
-the version control system doesn't have to deal with the library files, just the 
-file listing the dependencies. 
+needs, then will download them on command. This is useful when working with 
+version control as the version control system doesn't have to deal with the 
+library files, just the file listing the dependencies. 
 
-It is common that libraries will in turn require other libraries - most dependency managers have systems for dependencies defining their own 
+It is common that libraries will in turn require other libraries - most 
+dependency managers have systems for dependencies defining their own 
 dependencies and fetching them. Additionally it will avoid duplicates if 
 multiple dependencies require the same libraries.
 
@@ -111,8 +114,8 @@ more features, but we won't cover them in these labs.
 It would be great if everything always worked as intended, but it rarely does. 
 To ensure that your software does what it's supposed to, we test it. I'm sure 
 everyone has done manual testing - I spent a long time copying and pasting into 
-my SRPN coursework to check that it worked. But this testing can very quickly become 
-incredibly tiresome, so we can automate it!
+my SRPN coursework to check that it worked. But this testing can very quickly 
+become incredibly tiresome, so we can automate it!
 
 Unit testing is a type of testing that focuses on testing the smallest 
 components. For each component of your software solution, you make a collection 
@@ -127,9 +130,10 @@ Manual testing can be slow and time consuming, so making a suite of unit
 tests can often save a lot of time compared to the time it would take to test 
 everything manually.
 
-There are a lot of frameworks and libraries to make unit testing easier. Many platforms have their own unit tests also. For GUI projects you 
-can also make automated tests to test graphical components for many platforms. For 
-example [Android's UI 
+There are a lot of frameworks and libraries to make unit testing easier. Many 
+platforms have their own unit tests also. For GUI projects you can also make 
+automated tests to test graphical components for many platforms. For example 
+[Android's UI 
 Automator](https://developer.android.com/training/testing/ui-automator).
 
 ### Example
