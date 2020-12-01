@@ -215,7 +215,7 @@ public class TestSuite {
 ``` 
 
 Note I annotate the function with `@Test` to let JUnit know to run these 
-funciton when I run the tests. I then call the `assertTrue()` function. If the 
+functions when I run the tests. I then call the `assertTrue()` function. If the 
 value I pass in is false then the test will fail.
 
 Now as I change or implement algorithms I can always very quickly and reliably 
