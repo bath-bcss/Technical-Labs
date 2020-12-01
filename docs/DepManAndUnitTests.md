@@ -100,7 +100,7 @@ of its dependencies with the command `npm install`. `npm` will then fetch the
 module, and I can use it in the Node program. It stores them in the 
 `node_modules/` directory.
 
-```node 
+```js
 mathjs = require("mathjs")
 
 console.log(mathjs.round(mathjs.e, 3))
