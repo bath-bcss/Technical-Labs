@@ -1,15 +1,15 @@
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 
-Technical Labs are a series of labs being run by Bath Computer Science Society (BCSS) intended to 
+Technical Labs were a series of labs being ran by Bath Computer Science Society (BCSS) intended to 
 introduce useful technical skills.
 
 These notes are coupled with a video series you can find 
 [here](https://www.youtube.com/playlist?list=PLT4sucrjsqF8kvZFcRvxfhWuTvjKrXYzE).
 
-This is being led by [Alfie Richards](mailto:ar2227@bath.ac.uk) and [Joseph 
+This was led by [Alfie Richards](mailto:ar2227@bath.ac.uk) and [Joseph 
 Cryer](mailto:jjc82@bath.ac.uk). Email us if you have any questions or want to get involved!
 
-It has been heavily inspired by the [Missing Semester](https://missing.csail.mit.edu) series ran by 
+It was heavily inspired by the [Missing Semester](https://missing.csail.mit.edu) series ran by 
 MIT. We highly recommend you watch these as a follow-up to these labs, as they go much more in-depth
 on some of these concepts.
 
@@ -24,11 +24,6 @@ on some of these concepts.
 7. [Build automation and Continuous 
    integration](build_systems_and_cont_int.html)
 8. [Dependency Management and Unit Testing](DepManAndUnitTests.html)
-
-### What we aim to cover
-
-- Deployment tools like Docker, AWS, Azure, Heroku
-- Unix configuration
 
 ### Going beyond this series
 
