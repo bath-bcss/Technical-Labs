@@ -1,3 +1,5 @@
+# Technical Labs
+
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 
 Technical Labs were a series of labs being ran by Bath Computer Science Society (BCSS) intended to 

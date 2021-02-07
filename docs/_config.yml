@@ -1,5 +1,8 @@
-theme: jekyll-theme-primer
+theme: jekyll-theme-minimal
 
 exclude: [ GemFile, vendor]
 
 markdown: kramdown
+
+sass:
+  add_charset: true
