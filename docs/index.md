@@ -27,6 +27,10 @@ on some of these concepts.
    integration](build_systems_and_cont_int.html)
 8. [Dependency Management and Unit Testing](DepManAndUnitTests.html)
 
+In addition we have run a one off lab on webstacks for Launchpad 2021:
+
+- [A webstack in an hour](LP_Webstack.html)
+
 ### Going beyond this series
 
 This series is only meant as an introduction to these concepts. The goal is to give an initial 
