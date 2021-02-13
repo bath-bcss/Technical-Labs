@@ -29,7 +29,7 @@ on some of these concepts.
 
 In addition we have run a one off lab on webstacks for Launchpad 2021:
 
-- [A webstack in an hour](LP_Webstack.html)
+- [A webstack in an hour](LP_WebStack.html)
 
 ### Going beyond this series
 
