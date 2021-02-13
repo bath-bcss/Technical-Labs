@@ -1,0 +1,42 @@
+body {
+  font-family: 'Exo 2';
+  background-color: #F3F5F6;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 50px;
+  color: #2C3E50;
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: 1%;
+}
+
+.subtitle {
+  font-weight: 400;
+  font-size: 30px;
+  color: #2C3E50;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 10px;
+}
+
+#mainBlock {
+  text-align: center;
+  width: 60%;
+  border: black 1px;
+  margin: auto;
+}
+.btn {
+  cursor: pointer;
+  line-height: 1.5;
+  font: 700 1.2rem "Exo 2";
+  text-transform: uppercase;
+  padding: 1em 2em;
+  letter-spacing: 0.05rem;
+  width: 50%;
+  margin: 10px;
+}
+.btn:focus {
+  outline: none;
+}
