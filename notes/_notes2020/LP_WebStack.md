@@ -1,4 +1,8 @@
-# A web stack in an hour
+---
+layout: note
+title: A Webstack in an hour
+date: 2021-02-13
+---
 
 ## Table of Contents
 
@@ -232,7 +236,7 @@ strongly recommend [W3 Schools](https://www.w3schools.com).
 
 Heres the website these files make: 
 
-![Website Screenshot](assets/Launchpad/basicWebsite.png)
+![Website Screenshot](/assets/Launchpad/basicWebsite.png)
 
 ### What is a server
 
@@ -420,15 +424,15 @@ app.listen(port, () => {
 
 This is a bare-bones initial Node.js server. However, if we try to run this with the command `node app.js`, it will immediately fail, as we are using the **express** library. To install this, run the command `npm install express` in the folder. Once this has installed, we should be able to run the server with `node app.js`! 
 
-![CMD run Node](assets/Launchpad/cmd-1.png)
+![CMD run Node](/assets/Launchpad/cmd-1.png)
 
 If we go to the web address [localhost:3000](localhost:3000), we see an error message: **Cannot GET /**. This is fine, as we aren't yet providing any content, but still shows that the server is functioning.
 
-![GET Fail 1](assets/Launchpad/get-1.png)
+![GET Fail 1](/assets/Launchpad/get-1.png)
 
 **Postman** is an application that allows you to inspect HTTP web requests in detail. Let's see what the Node server is sending to the client when we go to [localhost:3000](localhost:3000).
 
-![GET Fail 2](assets/Launchpad/get-2.png) 
+![GET Fail 2](/assets/Launchpad/get-2.png) 
 
 The top section defines the request being made, while the bottom section shows the data that has been returned from the server.
 
@@ -444,11 +448,11 @@ app.get('/', (req, res) => {
 
 Now, whenever we navigate to [localhost:3000](localhost:3000), we should be served the content "Hello World! :)". 
 
-![Printing Hello World](assets/Launchpad/get-hello-1.png) 
+![Printing Hello World](/assets/Launchpad/get-hello-1.png) 
 
 All that is being sent by the server is the plain text. We can see this when checking the endpoint in Postman:
 
-![Printing Hello World 2](assets/Launchpad/get-hello-2.png) 
+![Printing Hello World 2](/assets/Launchpad/get-hello-2.png) 
 
 Now, let's start serving a HTML page. Below is a simple HTML example - the one that we went through earlier. I'm going to create a folder called **public** and save this inside as **test.html**. 
 
@@ -536,7 +540,7 @@ body {
 
 Our file structure should now look something like this:
 
-![File Structure](assets/Launchpad/file-structure.png) 
+![File Structure](/assets/Launchpad/file-structure.png) 
 
 Now that we've created some content to serve, let's serve it! We need to use the built-in **Path** library, so we need to import it at the top of **app.js**.
 
@@ -554,7 +558,7 @@ app.get('/test', (req, res) => {
 
 If we go to the [http://localhost:3000/test](http://localhost:3000/test) endpoint, we can see the page we created! However, upon a closer inspection, there is no CSS styling and the JavaScript isn't functioning properly. Here, I opened up the Chrome Developer Tools (by clicking F12) and went to the Console tab, to see the errors in the page. 
 
-![Developer Tools](assets/Launchpad/dev-tools-1.png) 
+![Developer Tools](/assets/Launchpad/dev-tools-1.png) 
 
 We can see that **main.js** and **main.css** aren't accessible by the page. That is because the **public** folder isn't actually public yet - Node is protecting it! Let's change that. Add this line to **app.js**:
 
@@ -566,7 +570,7 @@ This line tells Node to allow direct access to any files within the **public** d
 
 Now that we've done that, we can see that the page has no more errors, and is correctly styled!
 
-![Correct Test site](assets/Launchpad/dev-tools-2.png)
+![Correct Test site](/assets/Launchpad/dev-tools-2.png)
 
 Now that the **public** directory is directly available, we can access any of the files within it through the web browser, using relative URLs. For example, we can look at **main.css** with the URL [http://localhost:3000/css/main.css](http://localhost:3000/css/main.css) and **main.js** with the URL [http://localhost:3000/js/main.js](http://localhost:3000/js/main.js).
 
@@ -599,7 +603,7 @@ app.get('/api/getVal', (req, res) => {
 
 Whenever we visit [http://localhost:3000/api/getVal](http://localhost:3000/api/getVal), this code will create a JSON object containing the current value of the **counter** variable we just defined.
 
-![API GET](assets/Launchpad/getVal.png) 
+![API GET](/assets/Launchpad/getVal.png) 
 
 Next, let's create a simple POST endpoint: **/api/increment**
 
@@ -614,11 +618,11 @@ As this endpoint is a POST and not a GET, it requires that we send it data of so
 
 Here, I will simulate a POST request to the endpoint using Postman:
 
-![API POST 1](assets/Launchpad/postVal-1.png) 
+![API POST 1](/assets/Launchpad/postVal-1.png) 
 
 Here, I run the POST request and the **count** value is incremented from 3 to 4. If I run the call again, it will be incremented to 5: 
 
-![API POST 2](assets/Launchpad/postVal-2.png) 
+![API POST 2](/assets/Launchpad/postVal-2.png) 
 
 With these two calls, we can now implement some sort of state for this variable that survives the refreshing of a web page. Let's modify our JavaScript code in **main.js** to use these API calls.
 

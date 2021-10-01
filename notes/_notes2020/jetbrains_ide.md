@@ -1,7 +1,11 @@
+---
+layout: note
+title: IDE's
+date: 2020-10-27
+---
 
-# IDEs and Jetbrains
-
-Find the video accompanyment for these notes [here](https://www.youtube.com/watch?v=rMIogNFi-D8)
+Find the video accompanyment for these notes 
+[here](https://www.youtube.com/watch?v=rMIogNFi-D8)
 
 ## Table of Contents
 
@@ -92,7 +96,7 @@ and settings from the template chosen.
 With only the plugins I need installed and with no template installed my 
 IntelliJ looks like this.
 
-![Blank IntelliJ](assets/JetbrainsIDE/IntelliJ_blank.png)
+![Blank IntelliJ](/assets/JetbrainsIDE/IntelliJ_blank.png)
 
 If you have more plugins installed your IntelliJ may look significantly busier.
 
@@ -214,7 +218,7 @@ configurations as you like.
 
 Here we will set up a simple configuration to run this command line application.
 
-![Simple command line application](assets/JetbrainsIDE/Project_example.png)
+![Simple command line application](/assets/JetbrainsIDE/Project_example.png)
 
 We want to make a configuration to compile and run this code. To do this go to 
 the configuration plane again, and click the **Add** button in the top left. Here we 
@@ -225,7 +229,7 @@ the Java Virtual Machine, specify parameters for our program, and even specify
 environment variables. For this program we just need to specify the Main class 
 and add some program arguments.
 
-![IntelliJ run config](assets/JetbrainsIDE/Run_Config.png)
+![IntelliJ run config](/assets/JetbrainsIDE/Run_Config.png)
 
 You could also select "Allow parallel run" if we need to run the same program 
 multiple times. For example, if you were testing multiple clients for a server.

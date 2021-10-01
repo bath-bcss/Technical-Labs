@@ -1,6 +1,27 @@
-# Debugging
+---
+layout: note
+title: Debugging
+date: 2020-11-11
+---
 
 ## Table of Contents
+
+1. [Introduction](#introduction)
+    1. [What is a debugger](#what-it-a-debugger)
+    2. [Installing GDB](#installing-gdb)
+2. [Opening GDB](#opening-gdb)
+    2. [`run` command](#run-command)
+3. [Breakpoints](#breakpoints)
+4. [Resuming execution](#resuming-execution)
+5. [Examining the stack](#examining-the-stack)
+6. [Altering execution](#altering-execution)
+7. [Checkpoints](#checkpoints)
+8. [Watchpoints](#watchpoints)
+9. [Exceptions and crashes](#exceptions-and-crashes)
+10. [Summary](#summary)
+11. [Sources](#sources)
+12. [Credit and thanks](#credit-and-thanks)
+
 
 ## Introduction
 
@@ -67,7 +88,7 @@ correlates commands and addresses in a program's compiled binary with lines of
 source code and the names of variables in the source code. To do this specify 
 the `-g` flag in the compiler.
 
-![Compiling C for debug](assets/debugging/01Compiling_C_with_object_table.png)
+![Compiling C for debug](/assets/debugging/01Compiling_C_with_object_table.png)
 
 **Note:** If you compile without the symbols table you will get an error and gdb 
 won't work correctly. 
@@ -75,13 +96,13 @@ won't work correctly.
 To open a binary with GDB use the command `gdb [binary file]`. GDB will open and 
 present a prompt for your commands. The prompt will normally look like `(gdb)`.
 
-![Opening GDB](assets/debugging/02Starting_GDB.png)
+![Opening GDB](/assets/debugging/02Starting_GDB.png)
 
 In these examples I will be using this C file: 
 
 `detab.c`:
 
-```C
+```c
 #include <stdio.h>
 
 #define TAB_WIDTH 4
@@ -141,15 +162,15 @@ This program converts input with spaces for indentation to one that uses tabs. I
 wrote it a long time ago while learning C. As a result it's not very well 
 written, but it will work as an example here.
 
-You can download the file [here](assets/debugging/detab.c) if you wish to play 
+You can download the file [here](/assets/debugging/detab.c) if you wish to play 
 with it yourself.
 
-### `run` command`
+### `run` command
 
 After loading a binary into GDB the `run [arguments]` command (or `r 
 [arguments]`) runs the program.
 
-![Run command](assets/debugging/03Running_program.png)
+![Run command](/assets/debugging/03Running_program.png)
 
 ## Breakpoints
 
@@ -172,7 +193,7 @@ prompt will open up to let you know it has hit the breakpoint.
 You can look at the code around the breakpoint with the `list` command (or `l`), 
 which lists 11 lines of code centred on the current line.
 
-![Breakpoints](assets/debugging/04Breakpoints.png)
+![Breakpoints](/assets/debugging/04Breakpoints.png)
 
 ## Resuming execution
 
@@ -185,14 +206,14 @@ is hit.
 The `next` command (or `n`) will run until the line below the current line runs 
 in the code. Often called **step over**.
 
-![Stepping over](assets/debugging/06Next.png)
+![Stepping over](/assets/debugging/06Next.png)
 
 The `step` command (or `s`) will run until the next line of code is reached. If 
 the current line contains a function, this will then stop on the first line of 
 that function. That is why this is often called **step into** as it will go into 
 functions.
 
-![Stepping in](assets/debugging/05Stepping.png)
+![Stepping in](/assets/debugging/05Stepping.png)
 
 The `finish` (or `f`) command will run until the end of the current function, 
 then will break and print the result.
@@ -228,7 +249,7 @@ The `frame` command with no parameters prints a description of the frame.
 
 `info frame` prints a more verbose description.
 
-![Examining the stack](assets/debugging/07Backtrace.png)
+![Examining the stack](/assets/debugging/07Backtrace.png)
 
 ### Finding variable values
 
@@ -251,7 +272,7 @@ to another line and resume execution there.
 With the command `return [value]`, GDB will return from the current function 
 with `value`. 
 
-![Return command](assets/debugging/08Returning.png)
+![Return command](/assets/debugging/08Returning.png)
 
 Here you can see I returned `-1` from the function, indicating that the function 
 recieved an `EOF` character, resulting in the program exiting early.

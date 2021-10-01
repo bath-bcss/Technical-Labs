@@ -1,0 +1,112 @@
+#nav {
+  margin: 0;
+  padding: 0.25rem 1rem;
+  font-family: "Source Code Pro", "Menlo", "DejaVu Sans Mono", "Lucida Console", monospace;
+  background: #0c4bac;
+  color: #fff;
+  width: 100%;
+}
+
+#bar-nav {
+  display: flex;
+  align-items: center;
+}
+
+#nav a {
+  text-decoration: none;
+  padding: 5px;
+}
+
+.nav-link {
+  padding: 5px
+}
+
+.nav-link :hover {
+  background-color: #fff;
+}
+
+.nav-link a {
+  color: #fff;
+}
+
+.nav-link a:hover {
+  color: #222;
+}
+
+#logo {
+  color: #cfd6ff;
+  font-weight: bold;
+  font-size: x-large
+  
+}
+
+#logo:hover {
+  color: #fff;
+}
+
+#nav-spacer {
+  flex-grow: 1;
+}
+
+#menu-icon {
+  display: none;
+}
+
+#bar-nav {
+  display: none;
+}
+
+#dropdown-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#dropdown-nav-bar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.menu-label {
+  font-family: "Source Code Pro", "Menlo", "DejaVu Sans Mono", "Lucida Console", monospace;
+}
+
+input[type=checkbox] ~ #menu-label:after {
+  content: "(+)";
+}
+
+input[type=checkbox]:checked ~ #menu-label:after {
+  content: "(-)";
+}
+
+#dropdown-content {
+  display: none;
+  margin: auto;
+  flex-direction: column;
+}
+
+.nav-link {
+  width: max-content
+}
+
+.nav-link:before {
+  content: "- ";
+}
+
+/* in terms of our fixed-width layout; if smaller than this, we want to
+ * collapse the menu */
+@media (min-width: 40rem) {
+  #bar-nav {
+    display: flex;
+  }
+
+  #dropdown-nav {
+    display: none;
+  }
+
+  .nav-link:before {
+    //content: "| ";
+    display: none
+  }
+}

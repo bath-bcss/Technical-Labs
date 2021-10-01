@@ -1,8 +1,0 @@
-theme: jekyll-theme-minimal
-
-exclude: [ GemFile, vendor]
-
-markdown: kramdown
-
-sass:
-  add_charset: true

@@ -1,5 +1,8 @@
-
-# Git pt 2, Git Forever After
+---
+layout: note
+title: Git part 2
+date: 2020-10-20
+---
 
 Find the video accompanyment for these notes [here](https://www.youtube.com/watch?v=rlYJ7WfZgYE)
 
@@ -96,12 +99,12 @@ can pull your repository and which can push changes to it.
 For example, let's use a local Technical Labs repository. Here you can see it 
 with a long history. 
 
-![Technical Labs repo](assets/GitPt2/01GitRepo.png)
+![Technical Labs repo](/assets/GitPt2/01GitRepo.png)
 
 The command `git remote` lists the current remotes. Here you can see there are 
 no current remotes (I removed them for this example).
 
-![No initial remotes](assets/GitPt2/02NoRemotes.png)
+![No initial remotes](/assets/GitPt2/02NoRemotes.png)
 
 We then need to set up a repository on GitHub. To do this first set up an 
 account if you don't already have one. Then you need to click the **+** button 
@@ -110,38 +113,38 @@ at the top right, and then "New Repository" in the drop down.
 You will be presented with some options for setting up a new repository. Here 
 I'm going to enter details for a new GitHub repository for Technical Labs.
 
-![Technical labs new repo screen](assets/GitPt2/03GitHubMakeRepo.png)
+![Technical labs new repo screen](/assets/GitPt2/03GitHubMakeRepo.png)
 
 Click confirm and then you will be presented with the following screen showing 
 your new empty repository.
 
-![Technical labs new empty repository](assets/GitPt2/04NewRepoScreen.png)
+![Technical labs new empty repository](/assets/GitPt2/04NewRepoScreen.png)
 
 The address at the top is the address for the remote that has just been set up 
 that GitHub is now hosting. We can now add the remote to the local repo.
 
-![Adding new repo](assets/GitPt2/05AddRemote.png)
+![Adding new repo](/assets/GitPt2/05AddRemote.png)
 
 Now the Git remote is added. But the remote is empty so we need to push to the 
 remote, which means sending all the commits in our history to the remote, which, 
 thankfully, Git can do easily and efficiently.
 
-![Initial push](assets/GitPt2/06initialPush.png)
+![Initial push](/assets/GitPt2/06initialPush.png)
 
 If we now look at the remote on GitHub we will now see the files of our most 
 recent commit on the main branch, and we can go through and see all of the 
 commits making up our history.
 
-![GitHub repo initialised](assets/GitPt2/07InitialisedRepo.png)
+![GitHub repo initialised](/assets/GitPt2/07InitialisedRepo.png)
 
 If we now add some new changes to our local repository we can push the new 
 commit. 
 
-![Pushing new changes to remote](assets/GitPt2/08GitAddNewChanges.png)
+![Pushing new changes to remote](/assets/GitPt2/08GitAddNewChanges.png)
 
 And if we look at GitHub you will see the new file.
 
-![New changes in git repository](assets/GitPt2/09GitUpdatedRepo.png)
+![New changes in git repository](/assets/GitPt2/09GitUpdatedRepo.png)
 
 Now imagine we're working on this project with others. They may have have cloned 
 the repository and submitted changes of their own. Alternatively you may 
@@ -151,12 +154,12 @@ another clone I made.
 We can then use `git fetch` to pull the changes into the remote tracking 
 branches on our local repo.
 
-![Git fetch example](assets/GitPt2/10GitFetch.png)
+![Git fetch example](/assets/GitPt2/10GitFetch.png)
 
 And then we can look at the remote tracking branches to see what branches there 
 are.
 
-![Checking branches after a fetch](assets/GitPt2/11Gitbranches.png)
+![Checking branches after a fetch](/assets/GitPt2/11Gitbranches.png)
 
 Here you can see another developer did work on the branch `differentDeveloper` 
 and then pushed that branch to the remote. In this instance I want to merge the 
@@ -164,7 +167,7 @@ other developer's changes into my main branch, then push the merged branch with
 the changes to the remote.
 
 ![Git merge other developers 
-changes](assets/GitPt2/12GitMergeOtherDevelopersWork.png)
+changes](/assets/GitPt2/12GitMergeOtherDevelopersWork.png)
 
 ### Cloning a repository
 
@@ -178,7 +181,7 @@ be put into.
 
 Here we will clone the same remote into a new local repository.
 
-![Git clone example](assets/GitPt2/13CloneEx.png)
+![Git clone example](/assets/GitPt2/13CloneEx.png)
 
 With the `git clone` command Git automatically adds the remote it was copied 
 from as the `origin` remote.

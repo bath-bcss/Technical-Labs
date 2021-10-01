@@ -1,5 +1,8 @@
-
-# SSH
+---
+layout: note
+title: SSH
+date: 2020-11-17
+---
 
 Find the video for these notes 
 [here](https://www.youtube.com/watch?v=RGatj96-ooc)
@@ -129,25 +132,25 @@ Firstly, I want to create a directory on the server. To do this I can do the rem
 execution of a command - 
 `ssh ar2227@linux.bath.ac.uk "mkdir gcdFile"`
 
-![Remote execution example](assets/ssh_lab/01remote_command.png)
+![Remote execution example](/assets/ssh_lab/01remote_command.png)
 
 Note it's now prompting me for my password.
 
 Next, I'm going to use `scp` to copy my code to the server. To do this I use the
 command `scp Gcd.java ar2227@linux.bath.ac.uk:gcdFile`.
 
-![Send file to server example](assets/ssh_lab/02scp_send.png)
+![Send file to server example](/assets/ssh_lab/02scp_send.png)
 
 Then I need to open a remote shell on the server, compile my code, run it, 
 and save the output. To open the shell I'm going to run 
 `ssh ar2227@linux.bath.ac.uk`.
 
-![SSH to server example](assets/ssh_lab/03ssh_ex.png)
+![SSH to server example](/assets/ssh_lab/03ssh_ex.png)
 
 Then I'm going to copy the output file to my local computer with 
 `scp ar2227@linux.bath.ac.uk:gcdFile/output.txt .`.
 
-![Retrieve file from server example](assets/ssh_lab/04scp_retrieve.png)
+![Retrieve file from server example](/assets/ssh_lab/04scp_retrieve.png)
 
 And we're done! We successfully used the remote server to compile and run our code.
 
