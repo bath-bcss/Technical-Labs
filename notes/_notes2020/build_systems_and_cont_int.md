@@ -1,4 +1,8 @@
-# Build Systems and Continuous Integration
+---
+layout: note
+title: Build Systems and Continuous Integration
+date: 2020-11-24
+---
 
 ## Table of Contents
 
@@ -149,7 +153,7 @@ repo](https://github.com/bath-bcss/Technical-Labs/tree/main/docs/assets/BSACI/co
 When we run the `make paper.pdf` command for the first time it generates the 
 graph, and the document, as we wanted.
 
-![First build](assets/BSaCI/FirstBuild.png)
+![First build](/assets/BSaCI/FirstBuild.png)
 
 If we run `make` again then it will detect none of the files have changed and so 
 will skip all the steps.
@@ -158,9 +162,9 @@ If we change `paper.tex` to add a title and then run the program again, we will
 see that when we run `make paper.pdf` it will build the PDF but *not* the graph, 
 as it detects nothing has changed.
 
-![Rebuild build](assets/BSaCI/ReBuild.png)
+![Rebuild build](/assets/BSaCI/ReBuild.png)
 
-See the output PDF [here](assets/BSaCI/code/paper.pdf).
+See the output PDF [here](/assets/BSaCI/code/paper.pdf).
 
 For such a small project this doesn't save a lot of time, but for a large 
 project with a ton of dependencies, building every dependency each time would add 
@@ -191,7 +195,7 @@ this by creating a small virtual machine where you can run commands.
 
 Heres how the GitHub Actions workflow looks for my website repository.
 
-```
+```yaml
 name: Continuous Deployment
 
 # Controls when the action will run. 

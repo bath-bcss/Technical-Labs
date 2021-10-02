@@ -1,0 +1,53 @@
+
+@import "typography";
+@import "nav_bar";
+@import "dark_mode_main";
+
+* {
+  box-sizing: border-box;
+}
+
+#content {
+  width: 45rem;
+  max-width: 100%;
+  margin: 0 auto 4rem auto;
+}
+
+#note_container {
+  margin: 0 1rem;
+}
+
+body {
+  margin: 0;
+  background-color: #EFEFEF;
+}
+
+#footer {
+  display: flex;
+  margin: 0 auto;
+  max-width: 100%;
+  width: 100%;
+  border-top: 1px solid #50505070;
+  padding: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+#footer_content {
+  margin: 0 1rem;
+}
+
+#bcss_footer_logo {
+  width: 100px;
+  height: 100px;
+  margin: 0 1rem;
+}
+
+#note_container img {
+  width: 100%
+}
+
+#note_container img.smallImg {
+  width: 50%;
+  margin-left: 25%;
+}

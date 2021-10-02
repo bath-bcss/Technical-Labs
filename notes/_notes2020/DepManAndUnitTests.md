@@ -1,5 +1,8 @@
-
-# Dependency Management and Unit testing
+---
+layout: note
+title: Dependency Management and Unit Testing
+date: 2020-12-01
+---
 
 ## Table of Contents
 
@@ -224,7 +227,7 @@ make sure the algorithms work.
 Here you can see in IntelliJ that all tests passed, and that the tests only took 
 14ms, so I could run them as often as I wanted.
 
-![IntelliJ JUnit tests](assets/DMAUT/IntelliJUnitTests.png)
+![IntelliJ JUnit tests](/assets/DMAUT/IntelliJUnitTests.png)
 
 ## Credit
 
@@ -236,9 +239,6 @@ documentation](https://nodejs.org/en/docs/).
 Written by [Alfie Richards](https://www.alfierichards.com)
 
 Editing by [Joseph Cryer](mailto:jjc82@bath.ac.uk).
-
-Thanks to:
-
 
 For additional help
 

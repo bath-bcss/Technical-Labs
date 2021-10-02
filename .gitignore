@@ -1,5 +1,5 @@
-docs/Gemfile.lock/
-docs/Gemfile.lock
-docs/.jekyll-cache
-docs/_site
 **/node_modules/
+*/.jekyll-cache/
+*/_site/
+*/.DS_STORE
+.DS_STORE
