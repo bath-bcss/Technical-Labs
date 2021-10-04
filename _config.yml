@@ -1,0 +1,36 @@
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://www.technical-labs.link" # the base hostname & protocol for your site, e.g. http://example.com
+
+collections:
+  notes2020:
+    output: true
+    permalink: /notes/2020/:name
+    sort_by: date
+  notes2021:
+    output: true
+    permalink: /notes/2021/:name
+
+sass:
+  style: compact
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+
+
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - README.md
+
+plugins:
+  - jekyll-coffeescript
