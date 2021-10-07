@@ -1,0 +1,11 @@
+
+<ol>
+  {% assign sorted = site.notes2021 | sort: 'date' %}
+  {% for doc in sorted %}
+  <li>
+    <a href="{{doc.url}}"> 
+      {{doc.title}} 
+    </a>
+  </li>
+  {% endfor %}
+</ol>

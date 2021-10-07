@@ -1,7 +1,6 @@
 
 @import "typography";
 @import "nav_bar";
-@import "dark_mode_main";
 
 * {
   box-sizing: border-box;
@@ -51,3 +50,5 @@ body {
   width: 50%;
   margin-left: 25%;
 }
+
+@import "dark_mode_main";

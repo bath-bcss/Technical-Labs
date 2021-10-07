@@ -1,0 +1,287 @@
+I"�B<h2 id="table-of-contents">Table of Contents</h2>
+
+<ol>
+  <li><a href="#metaprogramming">Metaprogramming</a></li>
+  <li><a href="#build-automation-systems">Build automation systems</a>
+    <ol>
+      <li><a href="#example">Example</a></li>
+    </ol>
+  </li>
+  <li><a href="#continuous-integration-and-deployment">Continuous integration systems</a>
+    <ol>
+      <li><a href="#example-1">Example</a></li>
+    </ol>
+  </li>
+  <li><a href="#credit">Credit</a></li>
+</ol>
+
+<h2 id="metaprogramming">Metaprogramming</h2>
+
+<p>As a computer scientist you will be aware of the amazing power of computers to 
+automate tasks, making them quicker and easier. You may also be aware that a lot 
+of development time is taken up with repetitive manual tasks. For this reason 
+there are a whole bunch of tools that make up a category the <a href="https://missing.csail.mit.edu/">MIT Missing 
+semester series</a> call “metaprogramming” - essentially, software for the purpose of writing software.</p>
+
+<p>These tools may seem over the top for small projects, where setting up these 
+tools would take far longer than the time saved from doing the tasks manually. 
+However, as any project grows, that equation flips drastically and these tools become 
+absolutely essential.</p>
+
+<p>These tools can be loosely grouped into four categories, but there’s lots of 
+overlap, and many tools can be in many or none of the categories. It’s an 
+extremely broad topic. For this reason we’re going to give a brief introduction 
+to each category and an example for each, but you will need to find and do more 
+research on the correct tool for any project.</p>
+
+<p>One reason this topic is so broad is that a lot of languages and technologies have 
+their own suite of tools. There are then a selection of more general tools that 
+try to encapsulate all the features of the specialised tools. This leads to a 
+lot of competing tools and standards. For example, <a href="https://en.wikipedia.org/wiki/List_of_build_automation_software">Wikipedia’s list of build 
+automation tools</a>.</p>
+
+<p><strong>Side note:</strong> Please see <a href="https://xkcd.com/927/">xkcd #927</a>.</p>
+
+<p>I’m going to break down the topics as follows:</p>
+
+<ol>
+  <li>Build automation</li>
+  <li>Continuous Integration and Deployment</li>
+  <li>Dependency management</li>
+  <li>Unit testing</li>
+</ol>
+
+<p>We’re going to cover 1 &amp; 2 this week, and then 3 &amp; 4 next week.</p>
+
+<h2 id="build-automation-systems">Build automation systems</h2>
+
+<p>In this section, when I say “build” I mean it in the broadest sense: taking some 
+input you’ve made and turning it into an output. Building could be compiling a 
+large codebase into a binary, or generating a PDF from LaTeX code.</p>
+
+<p>For large projects that involve a variety of technologies, building the project 
+can involve many time consuming steps. In addition, if you want collaborators on 
+the project, working out how to build the project could be a big hurdle to 
+joining the project. To solve these issues, we have build automation software.</p>
+
+<p>As I said earlier, there are a lot of build automation systems. Which one is 
+best for a project depends on the technologies being used, the size of the 
+project, and personal taste. Regardless, most build systems work off a system of 
+<strong>dependencies</strong>, <strong>targets</strong> and <strong>rules</strong> dictating how to go from dependencies to 
+targets.</p>
+
+<p>When you tell the build system to you want to build a particular target, it will 
+find all the transitive dependencies of that target and apply the rules to 
+produce all the intermediate targets until the final target has been produced. 
+However, if any of the intermediate targets have been built previously and 
+haven’t changed, the build system will not needlessly rebuild them, which can 
+often lead to massive time saves in large projects.</p>
+
+<p>This is best shown through an example. Nice build automation examples are hard 
+to come by as they are most applicable to large projects. I’m going to use the 
+example from the <a href="https://missing.csail.mit.edu">Missing semester series</a>.</p>
+
+<h3 id="example">Example</h3>
+
+<p>Here we will use the <a href="https://en.wikipedia.org/wiki/Make_(software)"><code class="language-plaintext highlighter-rouge">make</code></a> 
+program that comes installed in most Unix-like operating systems. <code class="language-plaintext highlighter-rouge">make</code> is old, 
+and has some rough edges, but works well for small to intermediate sized 
+projects.</p>
+
+<p>In this example we’re making a report in LaTeX. This report needs a graph 
+produced from a set of data points. Thus, that graph is a <strong>dependency</strong> of the 
+report <strong>target</strong>. We can also define rules for how to make the report given the 
+graph, and how to make the graph given the set of data points.</p>
+
+<p>In <code class="language-plaintext highlighter-rouge">make</code> you configure the project in the <code class="language-plaintext highlighter-rouge">Makefile</code> in the root directory. 
+Here is how the <code class="language-plaintext highlighter-rouge">Makefile</code> looks for our report:</p>
+
+<div class="language-make highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">paper.pdf</span><span class="o">:</span> <span class="nf">paper.tex plot-data.png</span>
+	pdflatex paper.tex
+
+<span class="nl">plot-data.png</span><span class="o">:</span> <span class="nf">data.dat plot.py</span>
+	python plot.py <span class="nt">-i</span> data.dat <span class="nt">-o</span> plot-data.png
+</code></pre></div></div>
+
+<p>Each item in a <code class="language-plaintext highlighter-rouge">Makefile</code> is a <strong>rule</strong>, which is made up first of a <strong>target</strong>, 
+then after the colon a space-separated list of the dependencies for this target. 
+Lastly the lines below the item are the commands needed to create the target 
+from the dependencies.</p>
+
+<p>Here are how our <code class="language-plaintext highlighter-rouge">paper.tx</code>, <code class="language-plaintext highlighter-rouge">plot.py</code>, and <code class="language-plaintext highlighter-rouge">data.dat</code> files look:</p>
+
+<h3 id="papertex"><code class="language-plaintext highlighter-rouge">paper.tex</code></h3>
+
+<div class="language-tex highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">\documentclass</span><span class="p">{</span>article<span class="p">}</span>
+<span class="k">\usepackage</span><span class="p">{</span>graphicx<span class="p">}</span>
+<span class="nt">\begin{document}</span>
+<span class="k">\includegraphics</span><span class="na">[scale=0.65]</span><span class="p">{</span>plot-data.png<span class="p">}</span>
+<span class="nt">\end{document}</span>
+</code></pre></div></div>
+
+<h3 id="plotpy"><code class="language-plaintext highlighter-rouge">plot.py</code></h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">argparse</span>
+
+<span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="p">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
+<span class="n">parser</span><span class="p">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s">'-i'</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">argparse</span><span class="p">.</span><span class="n">FileType</span><span class="p">(</span><span class="s">'r'</span><span class="p">))</span>
+<span class="n">parser</span><span class="p">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s">'-o'</span><span class="p">)</span>
+<span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="p">.</span><span class="n">parse_args</span><span class="p">()</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">args</span><span class="p">.</span><span class="n">i</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">args</span><span class="p">.</span><span class="n">o</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="datadat"><code class="language-plaintext highlighter-rouge">data.dat</code></h3>
+
+<pre><code class="language-dat">1 1
+2 2
+3 3
+4 4
+5 8
+</code></pre>
+
+<p>You can find the files in the project <a href="https://github.com/bath-bcss/Technical-Labs/tree/main/docs/assets/BSACI/code">GitHub 
+repo</a></p>
+
+<p>When we run the <code class="language-plaintext highlighter-rouge">make paper.pdf</code> command for the first time it generates the 
+graph, and the document, as we wanted.</p>
+
+<p><img src="/assets/BSaCI/FirstBuild.png" alt="First build" /></p>
+
+<p>If we run <code class="language-plaintext highlighter-rouge">make</code> again then it will detect none of the files have changed and so 
+will skip all the steps.</p>
+
+<p>If we change <code class="language-plaintext highlighter-rouge">paper.tex</code> to add a title and then run the program again, we will 
+see that when we run <code class="language-plaintext highlighter-rouge">make paper.pdf</code> it will build the PDF but <em>not</em> the graph, 
+as it detects nothing has changed.</p>
+
+<p><img src="/assets/BSaCI/ReBuild.png" alt="Rebuild build" /></p>
+
+<p>See the output PDF <a href="/assets/BSaCI/code/paper.pdf">here</a>.</p>
+
+<p>For such a small project this doesn’t save a lot of time, but for a large 
+project with a ton of dependencies, building every dependency each time would add 
+up quickly. Hopefully you can see how this becomes valuable.</p>
+
+<h2 id="continuous-integration-and-deployment">Continuous integration and deployment</h2>
+
+<p>There are a lot of tasks that a computer scientist may want to do whenever they 
+make a change to a project. For instance, you may want to run a test suite, or 
+if you’re updating the code for a website, you may want to update the server to 
+host your new code.</p>
+
+<p>Continuous integration (CI) is a blanket term for tasks that run when you change your 
+project. Continuous deployment is a subset of those tasks which deploy the 
+project.</p>
+
+<h3 id="example-1">Example</h3>
+
+<p>Here we’re going to look at the 
+<a href="https://github.com/AlfGalf/jekyllWebsite">repository</a> for my website
+<a href="https://www.alfierichards.com">www.alfierichards.com</a>. We’ll use <a href="https://github.com/features/actions">GitHub 
+Actions</a> to set it up so that when anyone 
+pushes to the repo it will build the HTML and update the website on my server.</p>
+
+<p>GitHub Actions is GitHub’s own CI tool set. It allows you to set up a series of 
+commands and actions to perform whenever events happen in the repository. It does 
+this by creating a small virtual machine where you can run commands.</p>
+
+<p>Heres how the GitHub Actions workflow looks for my website repository.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">name</span><span class="pi">:</span> <span class="s">Continuous Deployment</span>
+
+<span class="c1"># Controls when the action will run. </span>
+<span class="na">on</span><span class="pi">:</span>
+  <span class="c1"># Triggers the workflow on push or pull request events but only for the main branch</span>
+  <span class="na">push</span><span class="pi">:</span>
+    <span class="na">branches</span><span class="pi">:</span> <span class="pi">[</span> <span class="nv">main</span> <span class="pi">]</span>
+  <span class="na">pull_request</span><span class="pi">:</span>
+    <span class="na">branches</span><span class="pi">:</span> <span class="pi">[</span> <span class="nv">main</span> <span class="pi">]</span>
+
+  <span class="c1"># Allows you to run this workflow manually from the Actions tab</span>
+  <span class="na">workflow_dispatch</span><span class="pi">:</span>
+
+<span class="na">jobs</span><span class="pi">:</span>
+
+  <span class="na">build</span><span class="pi">:</span>
+
+    <span class="c1"># Run on a linux virtual machine</span>
+    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
+
+    <span class="na">steps</span><span class="pi">:</span>
+      <span class="c1"># Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Checkout</span>
+        <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v2</span>
+    
+      <span class="c1"># Builds the website</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Jekyll Build</span>
+        <span class="na">uses</span><span class="pi">:</span> <span class="s">lemonarc/jekyll-action@1.0.0</span>
+      
+      <span class="c1"># Transfer the new website to the server</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">SCP to server</span>
+        <span class="na">uses</span><span class="pi">:</span> <span class="s">appleboy/scp-action@master</span>
+        <span class="na">with</span><span class="pi">:</span>
+          <span class="na">host</span><span class="pi">:</span> <span class="s">$</span>
+          <span class="na">username</span><span class="pi">:</span> <span class="s">$</span>
+          <span class="na">key</span><span class="pi">:</span> <span class="s">$</span>
+          <span class="na">passphrase</span><span class="pi">:</span> <span class="s">$</span>
+          <span class="na">source</span><span class="pi">:</span> <span class="s">_site/</span>
+          <span class="na">target</span><span class="pi">:</span> <span class="s">/var/www/alfierichards.com/</span>
+</code></pre></div></div>
+
+<p>This means that whenever I push or merge changes into the main branch on the 
+GitHub repository, GitHub will open up an Ubuntu virtual machine (VM) and run the 
+following steps:</p>
+
+<ol>
+  <li>Checkout the repository into the VM</li>
+  <li>Build my website using <a href="https://jekyllrb.com">Jekyll</a></li>
+  <li>Use <code class="language-plaintext highlighter-rouge">scp</code> to send the new files to the server.</li>
+</ol>
+
+<p>You can also see with the <strong>uses</strong> section that I am using actions other people 
+have written. You can get these from the <a href="https://github.com/marketplace?type=actions">GitHub Actions 
+marketplace</a>. There are a lot of 
+actions covering the majority of ways you could use CI.</p>
+
+<p>I am also using <a href="https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets">GitHub 
+Secrets</a>, 
+which allow you to store private information, like your server’s address and 
+passwords without them being available on a public repository for anyone to
+see. This is really important - many projects have been caught out for 
+having important security information in the codebase!</p>
+
+<p>Now, instead of having to connect to the server and update the files every time 
+manually, which can be time consuming and discourages me from updating the 
+website, I instead only have to push to the GitHub repo <code class="language-plaintext highlighter-rouge">main</code> branch and 
+everything else will be done for me.</p>
+
+<p>This is only an example of continuous deployment, but there are a massive variety 
+of tasks you can automate with GitHub Actions, or with the array of similar 
+tools.</p>
+
+<h2 id="credit">Credit</h2>
+
+<p>Example taken from <a href="https://missing.csail.mit.edu">Missing Semester</a> as well as 
+research and ideas. Other research from <a href="https://docs.github.com">GitHub Docs</a> 
+and <a href="http://www.gnu.org/software/make/manual/make.html">GNU <code class="language-plaintext highlighter-rouge">make</code> manual</a>.</p>
+
+<p>Written by <a href="https://www.alfierichards.com">Alfie Richards</a></p>
+
+<p>Editing by <a href="mailto:jjc82@bath.ac.uk">Joseph Cryer</a>.</p>
+
+<p>Thanks to:</p>
+
+<ul>
+  <li><a href="https://neros.dev">Søren Mortensen</a></li>
+</ul>
+
+<p>For additional help</p>
+
+<p>Please send any corrections <a href="mailto:alfierchrds@gmail.com">here</a>.</p>
+:ET

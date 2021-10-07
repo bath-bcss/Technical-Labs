@@ -1,0 +1,369 @@
+I"�K<p>Find the video accompanyment for these notes 
+<a href="https://www.youtube.com/watch?v=rMIogNFi-D8">here</a></p>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ol>
+  <li><a href="#introduction">Introduction</a>
+    <ol>
+      <li><a href="#installing-intellij">Installing IntelliJ</a></li>
+    </ol>
+  </li>
+  <li><a href="#intellij">IntelliJ</a></li>
+  <li><a href="#intellij-basics">IntelliJ Basics</a>
+    <ol>
+      <li><a href="#making-a-project-and-project-templates">Making a project and project templates</a></li>
+      <li><a href="#intellij-layout">IntelliJ Layout</a></li>
+      <li><a href="#navigation">Navigation</a></li>
+      <li><a href="#editing">Editing</a></li>
+      <li><a href="#file-management">File Management</a></li>
+      <li><a href="#building-compiling-and-running">Building, Compiling and running</a></li>
+      <li><a href="#java-docs">Java docs</a></li>
+    </ol>
+  </li>
+  <li><a href="#plugins">Plugins</a></li>
+  <li><a href="#debugging">Debugging</a></li>
+  <li><a href="#idea-folder"><code class="language-plaintext highlighter-rouge">.idea</code> folder</a></li>
+  <li><a href="#summary">Summary</a></li>
+  <li><a href="#exercises">Exercises</a></li>
+  <li><a href="#thanks-and-credit">Thanks and Credit</a></li>
+</ol>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>An IDE (or <strong>I</strong>ntegrated <strong>D</strong>evelopment <strong>E</strong>nvironment) is a GUI application 
+that provides a comprehensive suite of tools for programmers. This is very different to the alternative, which is using separate programs for each task. IDEs have a gentler learning curve and wide spread usage than the alternative, making them a easier choice for 
+less experienced programmers. In this lab we will aim to show the basics of the 
+Jetbrains IntelliJ IDE, and we will introduce more general IDE concepts and context. Hopefully this can then be transferred to both other Jetbrains IDEs and other 
+IDEs generally. Jetbrains has a large number of IDEs with support for the vast 
+majority of popular languages.</p>
+
+<p>IntelliJ is Jetbrains’ first and largest IDE, and it is one of the most popular 
+IDEs in the world. Initially it was only for Java development, but since then 
+has added support for a <a href="https://en.wikipedia.org/wiki/IntelliJ_IDEA#Supported_languages">large number of 
+languages</a> and 
+you can use modules to add support for even more.</p>
+
+<p>Additionally <a href="https://developer.android.com/studio/">Android Studio</a> is built 
+atop of IntelliJ. Most techniques learnt for IntelliJ can be used directly for 
+Android Studio.</p>
+
+<h3 id="installing-intellij">Installing IntelliJ</h3>
+
+<p>You can download IntelliJ from the Jetbrains website 
+<a href="https://www.jetbrains.com/idea/">here</a>, and as a student you can get the 
+“Ultimate Edition” for free 
+<a href="https://www.jetbrains.com/community/education/#students">here</a>.</p>
+
+<p>Installation varies from platform to platform but is normally straightforward. 
+Follow the instructions on IntelliJ’s site.</p>
+
+<p>When you first start IntelliJ you will be asked what theme you want to use and 
+which plugins you want to install. I recommend you keep the number of plugins 
+low, turning off some of the included ones. This reduces the number of features you’re presented with when starting. Don’t worry, you can add plugins back later.</p>
+
+<h2 id="intellij">IntelliJ</h2>
+
+<p>IntelliJ is massively configurable. Nearly all behaviours and keyboard 
+shortcuts can be configured. For this reason we’re going to be looking at 
+IntelliJ as it comes out the box, and we’ll be giving the default keyboard 
+shortcuts for Windows and macOS, but you can change these as you wish.</p>
+
+<p>IntelliJ is incredibly feature rich, which can be intimidating. But if you get 
+to know how to do the basics you can start using it and learn the rest of the 
+features as you need them.</p>
+
+<h2 id="intellij-basics">IntelliJ Basics</h2>
+
+<p>Lets run through some of the basics of IntelliJ before we start looking at some 
+more advanced features.</p>
+
+<h3 id="making-a-project-and-project-templates">Making a project and project templates</h3>
+
+<p>When you start up IntelliJ for the first time you will be presented with a 
+screen to create a new project or import a project. If you have already used 
+IntelliJ on some projects you will see a list of the projects IntelliJ knows 
+about on the left.</p>
+
+<p>In the <strong>Create Project</strong> screen you will be presented with the <strong>Templates</strong> 
+IntelliJ has installed. Templates are merely an initial set of project 
+configurations and files to get you started with specific platforms. But 
+projects are not set in stone by their template - you can add all the features 
+and platforms you like to your project by changing the settings and files. A lot 
+of developers avoid templates entirely.</p>
+
+<p>You then have to give the project a name and tell IntelliJ where to save the project. Then press <strong>Create</strong> and IntelliJ will make a project with the files 
+and settings from the template chosen.</p>
+
+<p>With only the plugins I need installed and with no template installed my 
+IntelliJ looks like this.</p>
+
+<p><img src="/assets/JetbrainsIDE/IntelliJ_blank.png" alt="Blank IntelliJ" /></p>
+
+<p>If you have more plugins installed your IntelliJ may look significantly busier.</p>
+
+<h3 id="intellij-layout">IntelliJ Layout</h3>
+
+<p>IntelliJ’s layout is made up of <strong>Tool Windows</strong> around a central editor. What 
+those windows contain and where they are is very flexible. You can add, remove, minimize, and move panes as you desire. Plugins can also provide 
+additional tool panes.</p>
+
+<p>The standard is to have navigation on the left with a central editor 
+and panes regarding running programs (such as logs and debugging) at the bottom. 
+By default IntelliJ uses this layout.</p>
+
+<h3 id="navigation">Navigation</h3>
+
+<p>There are many ways to get around in IntelliJ, but the most basic is the 
+<strong>Project</strong> pane on the far left. There is a drop down at the top to select which 
+view you want to use.</p>
+
+<ul>
+  <li>The <strong>Project</strong> view shows the structure of your program
+  by each file’s dependencies. However this won’t reflect the actual file 
+  structure of your project.</li>
+  <li>The <strong>File Structure</strong> view shows the actual file structure of your project.</li>
+  <li>The <strong>Problems</strong> view shows the problems IntelliJ has found in your project. 
+  For instance the errors and warnings generated when the project attempts to 
+  compile.</li>
+</ul>
+
+<p>Double clicking any item in the <strong>Project Navigation</strong> pane will open it in a tab in 
+the editor window.</p>
+
+<p>Another way to get around is search - to open the search press <code class="language-plaintext highlighter-rouge">Shift</code> twice, enter whatever file or item you’re searching for in 
+the search window and then press 
+enter to open a tab at that item.</p>
+
+<p>There are many other ways to get around in IntelliJ, but they’re outside the 
+scope of this lab.</p>
+
+<h3 id="editing">Editing</h3>
+
+<p>Editing text and code in IntelliJ can be much like any other text editor you’ve 
+used. But IntelliJ has lots of smart ways to make writing code a little easier.</p>
+
+<p>IntelliJ has syntax highlighting by default, which can make understanding code a 
+lot easier.</p>
+
+<p>Also, IntelliJ will constantly inspect your code while you write it and find 
+where your code doesn’t match the configured code style options or is unlikely 
+to compile. It will annotate with warnings and errors to show this.</p>
+
+<h4 id="some-simple-tricks">Some simple tricks</h4>
+
+<h5 id="live-templates">Live templates</h5>
+
+<p>IntelliJ has a bunch of shortcuts to avoid writing lines that you have to type over 
+and over again. These are called <strong>Live Templates</strong>. For example, when writing Java 
+you can type <code class="language-plaintext highlighter-rouge">sout</code> to make a <code class="language-plaintext highlighter-rouge">System.out.println();</code> statement. Other snippets 
+like this can be found and configured in <code class="language-plaintext highlighter-rouge">IntelliJ Preferences &gt; Editor &gt; Live 
+Templates</code></p>
+
+<h5 id="code-generation">Code generation</h5>
+
+<p>Often when writing Java you will find yourself writing code blocks like access 
+methods or interface implementations, which are fairly simple. IntelliJ can 
+write some code for you! Press <code class="language-plaintext highlighter-rouge">Alt+Insert</code> on Windows or <code class="language-plaintext highlighter-rouge">⌘N</code> on macOS to enter 
+the <strong>Code Generation</strong> window. Then you can select what code you want IntelliJ to 
+generate.</p>
+
+<h5 id="quick-fixes">Quick fixes</h5>
+
+<p>A lot of code problems, like typos, access modifier mismatches or
+missing imports can be fixed pretty easily. At any point when editing IntelliJ 
+you can open the <strong>Quick Fixes</strong> panel to display the solutions IntelliJ 
+thinks it can provide in the code where the cursor is. To open the panel use the 
+shortcut <code class="language-plaintext highlighter-rouge">Alt+Enter</code> on Windows or <code class="language-plaintext highlighter-rouge">⌥⏎</code> on macOS. Preview any fix with 
+<code class="language-plaintext highlighter-rouge">Ctrl+Shift+I</code> on Windows or <code class="language-plaintext highlighter-rouge">⌥Space</code> on macOS. Just press <code class="language-plaintext highlighter-rouge">Enter</code> to apply the 
+change.</p>
+
+<h5 id="code-formatting">Code formatting</h5>
+
+<p>A lot of Computer Scientists have strong opinions over how code should look. 
+IntelliJ can keep your code consistent to a set of rules. You can get IntelliJ 
+to reformat your code with <code class="language-plaintext highlighter-rouge">Ctrl+Alt+L</code> on Windows or <code class="language-plaintext highlighter-rouge">⌥⌘L</code> on macOS.</p>
+
+<p>You can set your code style preferences in the IntelliJ preferences menu.</p>
+
+<h5 id="renaming-and-refactoring">Renaming and refactoring</h5>
+
+<p>One of the most tiresome and error prone things to do when programming is to 
+rename something or (more generally) to refactor code. Fortunately,IntelliJ will 
+help you out with its extensive reformatting tools. You can find these in the 
+<strong>Refactor</strong> section in the menu bar.</p>
+
+<h5 id="generating-documentation">Generating documentation</h5>
+
+<p>IntelliJ can do some of the grunt work in writing JavaDocs - simply type <code class="language-plaintext highlighter-rouge">/**</code> in 
+front of a class or function and IntelliJ will add lines for all the public 
+fields or parameters.</p>
+
+<h3 id="file-management">File management</h3>
+
+<p>File management can be done in the Project pane. To move files simply drag and 
+drop them into place! As the result of a move you may be prompted to refactor 
+code. To make new files you can right click in the Project pane and select 
+<code class="language-plaintext highlighter-rouge">new</code>. It will then let you choose from a variety of supported file types.</p>
+
+<h3 id="building-compiling-and-running">Building, Compiling and Running</h3>
+
+<p>IntelliJ has a very flexible system for configuring build systems. Build systems 
+will be the topic of a future lab so we won’t cover them in depth here, but the gist is they can be used to automate the tasks required to 
+build and compile a project. This could include tasks like finding and compiling 
+dependencies, running tests on the code, compiling the code and running the 
+compiled output.</p>
+
+<p>The IntelliJ build configurations cover a large range. You can use build systems 
+like Maven or Ant, or simply compile and run your code. Either way, it all starts 
+in the <code class="language-plaintext highlighter-rouge">Run/Debug Configuration</code> window you get to from the configuration 
+button / drop down in the top right. From this screen you can add as many 
+configurations as you like.</p>
+
+<p>Here we will set up a simple configuration to run this command line application.</p>
+
+<p><img src="/assets/JetbrainsIDE/Project_example.png" alt="Simple command line application" /></p>
+
+<p>We want to make a configuration to compile and run this code. To do this go to 
+the configuration plane again, and click the <strong>Add</strong> button in the top left. Here we 
+can choose what template we want the run configuration to use - in this case the 
+“Application” template does everything we want. We give the config a name and we 
+specify the class we want the program to start with. We can specify options for 
+the Java Virtual Machine, specify parameters for our program, and even specify 
+environment variables. For this program we just need to specify the Main class 
+and add some program arguments.</p>
+
+<p><img src="/assets/JetbrainsIDE/Run_Config.png" alt="IntelliJ run config" /></p>
+
+<p>You could also select “Allow parallel run” if we need to run the same program 
+multiple times. For example, if you were testing multiple clients for a server.</p>
+
+<p>Now we have a configuration we can select it in the Run Config dropdown in the 
+top right, and the Run button will then appear. Upon pressing that button 
+IntelliJ will compile and run the program. You can also use <code class="language-plaintext highlighter-rouge">Shift+F10</code> on 
+Windows or <code class="language-plaintext highlighter-rouge">⌃R</code> on macOS.</p>
+
+<p>After pressing the Run button IntelliJ will open the Build and Run panes in the 
+bottom window. The Build pane shows the output of the build config, and the Run 
+pane shows the <code class="language-plaintext highlighter-rouge">stdout</code> of the program and allows input into <code class="language-plaintext highlighter-rouge">stdin</code>.</p>
+
+<h4 id="compiler-output">Compiler output</h4>
+
+<p>By default all your source code should go in a directory called <code class="language-plaintext highlighter-rouge">src</code> and 
+IntelliJ will output the compiled code into a folder called <code class="language-plaintext highlighter-rouge">out</code>. This keeps 
+your file structure clean of binaries. You shouldn’t include the 
+<code class="language-plaintext highlighter-rouge">out</code> directory in any Version Control.</p>
+
+<h3 id="java-docs">Java docs</h3>
+
+<p>IntelliJ comes with an easy way to generate JavaDocs, you can find the tool in 
+the menu bar:</p>
+
+<p><code class="language-plaintext highlighter-rouge">Tools &gt; Generate Java Doc</code></p>
+
+<h2 id="plugins">Plugins</h2>
+
+<p>IntelliJ and all Jetbrains IDEs have very flexible and powerful plugin systems. 
+Plugins can add an incredible amount including support for other languages, 
+different build tools, themes, version control, and even plugins to assist 
+with the development of plugins.</p>
+
+<h3 id="adding-and-removing-plugins">Adding and removing plugins</h3>
+
+<p>You can enable, disable and remove plugins through a page in the 
+preferences window:</p>
+
+<p><code class="language-plaintext highlighter-rouge">IntelliJ preferences &gt; Plugins &gt; Installed</code></p>
+
+<p>You can find new plugins and install them from the Marketplace tab.</p>
+
+<p>Plugins often add extra pages to the preferences window to let you alter the behaviour of 
+the plugin.</p>
+
+<h3 id="version-control">Version Control</h3>
+
+<p>One of the most popular category of plugins on Jetbrains IDEs are Version 
+Control plugins. Git was the subject of the 2nd and 3rd Technical Labs and so 
+won’t be covered here. However the Version Control plugin and the Git and GitHub 
+plugins allow you to run many Git commands directly from IntelliJ and present 
+information about your repository in a GUI.</p>
+
+<p>However, you do not need to use the plugins - if you are more comfortable with 
+using Git in the command line or with another Git interface you can.</p>
+
+<h3 id="deployment-plugins">Deployment plugins</h3>
+
+<p>There are lots of plugins to facilitate deployment and continuous integration. 
+Both of which will be the subjects of future labs.</p>
+
+<h3 id="ide-feature-trainer">IDE Feature Trainer</h3>
+
+<p>IntelliJ has a plugin available called IDE Feature Trainer that will walk you 
+through a lot of the features of IntelliJ.</p>
+
+<h2 id="debugging">Debugging</h2>
+
+<p>IntelliJ supports a powerful debugging and profiling suite. However debugging 
+will be the subject of a future Technical Labs so we will not cover it in this 
+lab.</p>
+
+<h2 id="idea-folder"><code class="language-plaintext highlighter-rouge">.idea</code> folder</h2>
+
+<p>IntelliJ stores all of its settings and information about a project in the <code class="language-plaintext highlighter-rouge">.idea</code> 
+folder within the project. For any project in which you are using Version 
+Control you should make the decision whether or not you will include it in the 
+repository.</p>
+
+<h2 id="summary">Summary</h2>
+
+<p>We’ve shown you how to get around in IntelliJ, and tried to break down 
+some of the scarier things IntelliJ will do. But more importantly we want to 
+communicate that IDEs are tools for you, and you are in control of them. You can 
+customise it to your liking and change its behaviour to match your tastes and 
+needs. You do not need to keep all the plugins you are not using if they just add bloat. 
+Equally, you can add plugins and tools for whatever you want, to make the IDE better 
+for you.</p>
+
+<p>We focused on IntelliJ a lot here, but all other Jetbrains IDEs 
+are built on the same platform, and cover a massive range of languages. For 
+instance you can use Pycharm for Python and CLion for C, and have a consistent and similar
+experience between all of them.</p>
+
+<p>There are also lots of other great tools and IDEs out there. They all have 
+differences but almost everything gone through here is applicable to the 
+majority of IDEs, just with different shortcuts and layouts.</p>
+
+<p>Also, all of these features can be found in separate tools - an IDE simply gathers all the tools together into one program. Use whatever you prefer and feel most comfortable with.</p>
+
+<h2 id="exercises">Exercises</h2>
+
+<ol>
+  <li>Get a Jetbrains student account and download the Ultimate Edition of 
+IntelliJ</li>
+  <li>Make an empty project in IntelliJ</li>
+  <li>Make a basic <code class="language-plaintext highlighter-rouge">main</code> function and configure IntelliJ to compile and run the 
+program</li>
+  <li>Find some plugins you like (try Rainbow brackets)</li>
+  <li>Look into the Version Control plugin for IntelliJ</li>
+  <li>Get a Jetbrains IDE for a different language you use</li>
+  <li>Change the appearance and behaviour of IntelliJ to your liking</li>
+  <li>Open other Java projects in IntelliJ and set them up to run properly</li>
+  <li>Install and use the IDE Feature Trainer plugin</li>
+</ol>
+
+<h2 id="thanks-and-credit">Thanks and credit</h2>
+
+<p>The vast majority of the information for these notes comes from the 
+<a href="https://www.jetbrains.com/help/idea/discover-intellij-idea.html#developer-tools">Jetbrains help 
+articles</a>.</p>
+
+<p>Written by <a href="https://www.alfierichards.com/">Alfie Richards</a>.</p>
+
+<p>Edited by <a href="mailto:jcryer1234@gmail.com">Joe Cryer</a></p>
+
+<p>Additional thanks to:</p>
+<ul>
+  <li><a href="https://neros.dev">Søren Mortensen</a></li>
+</ul>
+
+:ET

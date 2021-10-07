@@ -1,0 +1,52 @@
+I"Z<h1 id="technical-labs">Technical Labs</h1>
+
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+
+<p>Technical Labs is a series of labs being ran by Bath Computer Science Society 
+(BCSS) intended to introduce useful technical skills.</p>
+
+<p>These notes are intended to accompany in person labs covering the content in 
+these labs.</p>
+
+<p>Technical Labs is being led by <a href="mailto:ar2227@bath.ac.uk">Alfie Richards</a> and 
+<a href="mailto:jjc82@bath.ac.uk">Joseph Cryer</a>. Email us if you have any questions or 
+want to get involved!</p>
+
+<p>It was heavily inspired by the <a href="https://missing.csail.mit.edu">Missing Semester</a> 
+series ran by MIT. We highly recommend these for those wanting more in depth 
+content.</p>
+
+<h3 id="schedule">Schedule</h3>
+
+<ol>
+  <li>Command line basics (12/10/21)</li>
+  <li>Local version control (26/10/21)</li>
+  <li>Git remotes and GitHub (09/11/21)</li>
+  <li>Code Editors (23/11/21)</li>
+  <li>IDE’s and Jupyter Notebooks (07/12/21)</li>
+  <li>Debugging basics (15/02/02)</li>
+  <li>Plugins and library managers (01/03/22)</li>
+  <li>Backups and managing data (15/03/22)</li>
+  <li>Continuous integration and docker (29/03/22)</li>
+</ol>
+
+<h3 id="going-beyond-this-series">Going beyond this series</h3>
+
+<p>This series is meant as an introduction to these concepts. The goal is to give 
+an initial starting point, so that you can learn about them yourself and use 
+them for your work!</p>
+
+<p>Additionally, if you are a student at the University of Bath there are a lot of 
+very knowledgable people on the <a href="https://discord.gg/gDYbrpK">Bath Computer Science Discord 
+server</a> who are  nomally happy to help with any CS 
+questions you may have!</p>
+
+<p>Many of these tools have incredible communities who write very in-depth tutorials and manuals 
+which can normally be found easily.</p>
+
+<h3 id="trusting-this-series">Trusting this series</h3>
+
+<p>We want you to feel confident in the information we are teaching. To accomplish this, our notes for 
+these labs are being fact-checked by a variety of sources, including higher year 
+students and lecturers.</p>
+:ET

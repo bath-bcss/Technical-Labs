@@ -1,0 +1,355 @@
+I"�R<h2 id="table-of-contents">Table of Contents</h2>
+
+<ol>
+  <li><a href="#introduction">Introduction</a>
+    <ol>
+      <li><a href="#what-it-a-debugger">What is a debugger</a></li>
+      <li><a href="#installing-gdb">Installing GDB</a></li>
+    </ol>
+  </li>
+  <li><a href="#opening-gdb">Opening GDB</a>
+    <ol>
+      <li><a href="#run-command"><code class="language-plaintext highlighter-rouge">run</code> command</a></li>
+    </ol>
+  </li>
+  <li><a href="#breakpoints">Breakpoints</a></li>
+  <li><a href="#resuming-execution">Resuming execution</a></li>
+  <li><a href="#examining-the-stack">Examining the stack</a></li>
+  <li><a href="#altering-execution">Altering execution</a></li>
+  <li><a href="#checkpoints">Checkpoints</a></li>
+  <li><a href="#watchpoints">Watchpoints</a></li>
+  <li><a href="#exceptions-and-crashes">Exceptions and crashes</a></li>
+  <li><a href="#summary">Summary</a></li>
+  <li><a href="#sources">Sources</a></li>
+  <li><a href="#credit-and-thanks">Credit and thanks</a></li>
+</ol>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>Debugging is the process of finding and fixing bugs in software. It may sound 
+uninteresting but developers and computer scientists often spend just as much 
+time debugging as they do writing code, so getting proficient and comfortable 
+with debugging and the tools for doing it is important.</p>
+
+<p>Debugging techniques fall into two categories. The first and most common is 
+logging.</p>
+
+<p>Logging is a technique that, if you’ve written much code at all, you’re probably 
+already familiar with. It involves littering your code with print statements, 
+running the program over and over again, until eventually you track down your 
+issue.</p>
+
+<p>Logging is tried and tested, and nearly always works.</p>
+
+<p>“The most effective debugging tool is still careful thought, coupled with 
+judiciously placed print statements” — Brian Kernighan, Unix for Beginners.</p>
+
+<p>But when logging isn’t enough, you can turn to debuggers, which will be the 
+subject of this lab.</p>
+
+<h3 id="what-is-a-debugger">What is a debugger</h3>
+
+<p>A debugger is a program that gives you control over another program that you are 
+trying to test or debug, allowing you to:</p>
+
+<ul>
+  <li>Halt the execution of a program</li>
+  <li>Step through a program line by line</li>
+  <li>Inspect values of variables at any point</li>
+  <li>Alter the execution of a program</li>
+</ul>
+
+<p>As well as many more advanced features.</p>
+
+<p>There is a massive selection of debuggers, and many languages provide their own. 
+However, most debuggers have a similar command line interface. Most languages 
+supported by a Jetbrains IDE have an almost identical GUI within the IDE.</p>
+
+<p>To show you both the command line and the JetBrains interfaces, we are going to 
+cover the command line in the notes and the JetBrains interface in the recorded 
+live session.</p>
+
+<p>For this lab we’re going to be using <a href="https://www.gnu.org/software/gdb/">The GNU Project 
+Debugger</a> (<strong>GDB</strong> for short). GDB works with 
+a number of languages - C, C++, Pascal, and Rust being some of the most popular. 
+Here we will be using C as it is part of the Bath CS course.</p>
+
+<h3 id="installing-gdb">Installing GDB</h3>
+
+<p>Due to the privileges debuggers require in order to control another program, 
+installation can be complicated. For Python and Java, debuggers come with the 
+language development kits upon install, which no doubt you will have done 
+already. For C debuggers it’s more complicated. I recommend searching for 
+instructions for your OS and desired debugger. However, CLion (the JetBrains C 
+IDE) will come with one installed already.</p>
+
+<h2 id="opening-gdb">Opening GDB</h2>
+
+<p>Before you start up GDB you need to compile the C code of your program to be 
+debugged, and include the <code class="language-plaintext highlighter-rouge">symbols table</code>. In brief, the <code class="language-plaintext highlighter-rouge">symbols table</code> 
+correlates commands and addresses in a program’s compiled binary with lines of 
+source code and the names of variables in the source code. To do this specify 
+the <code class="language-plaintext highlighter-rouge">-g</code> flag in the compiler.</p>
+
+<p><img src="/assets/debugging/01Compiling_C_with_object_table.png" alt="Compiling C for debug" /></p>
+
+<p><strong>Note:</strong> If you compile without the symbols table you will get an error and gdb 
+won’t work correctly.</p>
+
+<p>To open a binary with GDB use the command <code class="language-plaintext highlighter-rouge">gdb [binary file]</code>. GDB will open and 
+present a prompt for your commands. The prompt will normally look like <code class="language-plaintext highlighter-rouge">(gdb)</code>.</p>
+
+<p><img src="/assets/debugging/02Starting_GDB.png" alt="Opening GDB" /></p>
+
+<p>In these examples I will be using this C file:</p>
+
+<p><code class="language-plaintext highlighter-rouge">detab.c</code>:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="cp">#define TAB_WIDTH 4
+</span>
+<span class="kt">char</span> <span class="n">currentCharacter</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">spacesBeforeChar</span><span class="p">();</span>
+<span class="kt">int</span> <span class="nf">processLine</span><span class="p">();</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+
+   <span class="k">while</span><span class="p">(</span><span class="n">processLine</span><span class="p">()</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+
+   <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">processLine</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">spacesNum</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">((</span><span class="n">spacesNum</span> <span class="o">=</span> <span class="n">spacesBeforeChar</span><span class="p">())</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">tabs</span> <span class="o">=</span> <span class="n">spacesNum</span> <span class="o">/</span> <span class="n">TAB_WIDTH</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">spaces</span> <span class="o">=</span> <span class="n">spacesNum</span> <span class="o">%</span> <span class="n">TAB_WIDTH</span><span class="p">;</span>
+
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">tabs</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\t</span><span class="s">"</span><span class="p">);</span>
+
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">spaces</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">printf</span><span class="p">(</span><span class="s">" "</span><span class="p">);</span>
+
+        <span class="k">do</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"%c"</span><span class="p">,</span> <span class="n">currentCharacter</span><span class="p">);</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">currentCharacter</span> <span class="o">==</span> <span class="sc">'\n'</span><span class="p">)</span>
+                <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">while</span> <span class="p">((</span><span class="n">currentCharacter</span> <span class="o">=</span> <span class="n">getchar</span><span class="p">())</span> <span class="o">!=</span> <span class="n">EOF</span><span class="p">);</span>
+
+        <span class="c1">// While loop exited, thus EOF recieved</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+        
+
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="c1">// Reached EOF while reading in spaces</span>
+        <span class="k">return</span>  <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">spacesBeforeChar</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span> <span class="p">(</span><span class="n">currentCharacter</span> <span class="o">=</span> <span class="n">getchar</span><span class="p">())</span> <span class="o">!=</span> <span class="n">EOF</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">currentCharacter</span> <span class="o">==</span> <span class="sc">' '</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">counter</span><span class="o">++</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">counter</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This program converts input with spaces for indentation to one that uses tabs. I 
+wrote it a long time ago while learning C. As a result it’s not very well 
+written, but it will work as an example here.</p>
+
+<p>You can download the file <a href="/assets/debugging/detab.c">here</a> if you wish to play 
+with it yourself.</p>
+
+<h3 id="run-command"><code class="language-plaintext highlighter-rouge">run</code> command</h3>
+
+<p>After loading a binary into GDB the <code class="language-plaintext highlighter-rouge">run [arguments]</code> command (or <code class="language-plaintext highlighter-rouge">r 
+[arguments]</code>) runs the program.</p>
+
+<p><img src="/assets/debugging/03Running_program.png" alt="Run command" /></p>
+
+<h2 id="breakpoints">Breakpoints</h2>
+
+<p>To get GDB to halt at a certain line you need to insert a <strong>breakpoint</strong>. A 
+breakpoint tells GDB to stop whenever it reaches a certain line. Once GDB has 
+halted, you can enter commands to inspect or alter the program.</p>
+
+<p>To insert a breakpoint use the command <code class="language-plaintext highlighter-rouge">break [line number]</code> 
+(or <code class="language-plaintext highlighter-rouge">b [linenumber]</code>).</p>
+
+<p>GDB will then print the name of the new breakpoint you’ve created. You can look 
+at the list of current break points with <code class="language-plaintext highlighter-rouge">info breakpoints</code>.</p>
+
+<p>You can also enable and disable the breakpoint with <code class="language-plaintext highlighter-rouge">enable [breakpoint number]</code> 
+and <code class="language-plaintext highlighter-rouge">disable [breakpoint number]</code> respectively.</p>
+
+<p>When you call <code class="language-plaintext highlighter-rouge">run</code> and the program gets to this line it will halt and the GDB 
+prompt will open up to let you know it has hit the breakpoint.</p>
+
+<p>You can look at the code around the breakpoint with the <code class="language-plaintext highlighter-rouge">list</code> command (or <code class="language-plaintext highlighter-rouge">l</code>), 
+which lists 11 lines of code centred on the current line.</p>
+
+<p><img src="/assets/debugging/04Breakpoints.png" alt="Breakpoints" /></p>
+
+<h2 id="resuming-execution">Resuming execution</h2>
+
+<p>Once in a breakpoint you may want to continue execution of the program. You have 
+a few ways to do this:</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">continue</code> (or <code class="language-plaintext highlighter-rouge">c</code>) command will resume execution until the next breakpoint 
+is hit.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">next</code> command (or <code class="language-plaintext highlighter-rouge">n</code>) will run until the line below the current line runs 
+in the code. Often called <strong>step over</strong>.</p>
+
+<p><img src="/assets/debugging/06Next.png" alt="Stepping over" /></p>
+
+<p>The <code class="language-plaintext highlighter-rouge">step</code> command (or <code class="language-plaintext highlighter-rouge">s</code>) will run until the next line of code is reached. If 
+the current line contains a function, this will then stop on the first line of 
+that function. That is why this is often called <strong>step into</strong> as it will go into 
+functions.</p>
+
+<p><img src="/assets/debugging/05Stepping.png" alt="Stepping in" /></p>
+
+<p>The <code class="language-plaintext highlighter-rouge">finish</code> (or <code class="language-plaintext highlighter-rouge">f</code>) command will run until the end of the current function, 
+then will break and print the result.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">until [line number]</code> command will run until execution reaches a certain 
+line.</p>
+
+<h2 id="examining-the-stack">Examining the stack</h2>
+
+<p>In C (and most programming languages) each time you perform a function call, 
+information about the call is stored. This includes the location of the call, 
+the arguments of the call, and the local variables of the function being called. 
+This data is stored in a block called a <strong>stack frame</strong>. Stack frames together 
+make up <strong>the stack</strong>.</p>
+
+<h3 id="bt-backtrace-command"><code class="language-plaintext highlighter-rouge">bt (backtrace)</code> command</h3>
+
+<p>After you’ve halted in GDB you probably want to know where you are and how you 
+got there. When you reach a breakpoint GDB will automatically select the 
+executing stack frame. The <code class="language-plaintext highlighter-rouge">backtrace</code> command (or <code class="language-plaintext highlighter-rouge">bt</code>) will then print all the 
+stack frames up until the main stack frame.</p>
+
+<p>You can specify a <code class="language-plaintext highlighter-rouge">-[number]</code> flag to only print <code class="language-plaintext highlighter-rouge">number</code> stack frames.</p>
+
+<h3 id="the-frame-command">The frame command</h3>
+
+<p>With the <code class="language-plaintext highlighter-rouge">frame [frame number]</code> command you can then select any frame you want.
+Or use <code class="language-plaintext highlighter-rouge">up</code> to go up one frame and <code class="language-plaintext highlighter-rouge">down</code> to go down one.</p>
+
+<h3 id="printing-the-contents-of-a-frame">Printing the contents of a frame</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">frame</code> command with no parameters prints a description of the frame.</p>
+
+<p><code class="language-plaintext highlighter-rouge">info frame</code> prints a more verbose description.</p>
+
+<p><img src="/assets/debugging/07Backtrace.png" alt="Examining the stack" /></p>
+
+<h3 id="finding-variable-values">Finding variable values</h3>
+
+<p>You can also inspect the contents of variables at any point with <code class="language-plaintext highlighter-rouge">print 
+[variable]</code>.</p>
+
+<h2 id="altering-execution">Altering execution</h2>
+
+<p>You can now run through a program in a controlled way. However, you may want to 
+change the course of execution. There are a couple of ways to alter the path of 
+execution in your program.</p>
+
+<h3 id="jump-command"><code class="language-plaintext highlighter-rouge">j(ump)</code> command</h3>
+
+<p>The first way is with the <code class="language-plaintext highlighter-rouge">jump [line number]</code> command (or <code class="language-plaintext highlighter-rouge">j</code>), which will jump 
+to another line and resume execution there.</p>
+
+<h3 id="return-command"><code class="language-plaintext highlighter-rouge">return</code> command</h3>
+
+<p>With the command <code class="language-plaintext highlighter-rouge">return [value]</code>, GDB will return from the current function 
+with <code class="language-plaintext highlighter-rouge">value</code>.</p>
+
+<p><img src="/assets/debugging/08Returning.png" alt="Return command" /></p>
+
+<p>Here you can see I returned <code class="language-plaintext highlighter-rouge">-1</code> from the function, indicating that the function 
+recieved an <code class="language-plaintext highlighter-rouge">EOF</code> character, resulting in the program exiting early.</p>
+
+<h3 id="assigning-values-to-variables">Assigning values to variables</h3>
+
+<p>You can alter execution by assigning different values to functions. To do this 
+use the command <code class="language-plaintext highlighter-rouge">call [expr]</code> where the expression is an assignment to a 
+variable. For instance, you could use the command <code class="language-plaintext highlighter-rouge">call foo=2</code> to set <code class="language-plaintext highlighter-rouge">foo</code> to 
+2.</p>
+
+<h2 id="checkpoints">Checkpoints</h2>
+
+<p>A more advanced feature that not all debuggers have is the ability to use 
+checkpoints. The concept of checkpoints may be familiar from video games. 
+Essentially, you can save the state of the program and can then later return to 
+that state at any point to re-run something. In this way if you have a specific 
+part of the program you wish to debug, you can save a checkpoint before it 
+occurs, try something - if it fails return to the checkpoint, change some state, 
+and try again.</p>
+
+<p>To save a checkpoint use the command <code class="language-plaintext highlighter-rouge">checkpoint</code>. You can see a list of 
+checkpoints with <code class="language-plaintext highlighter-rouge">info checkpoint</code> and restore to a checkpoint with <code class="language-plaintext highlighter-rouge">restart 
+[checkpoint number]</code>.</p>
+
+<h2 id="watchpoints">Watchpoints</h2>
+
+<p>Another more advanced feature some debuggers support is the concept of 
+<strong>watchpoints</strong>. Watchpoints are similar to breakpoints but instead of breaking 
+whenever a execution reaches a line of code, a watchpoint breaks every time a 
+variable is changed.</p>
+
+<p>To set a watchpoint use the command <code class="language-plaintext highlighter-rouge">watch [variable]</code>. Watchpoints can be 
+enabled, disabled and deleted in the same way as breakpoints.</p>
+
+<h2 id="exceptions-and-crashes">Exceptions and crashes</h2>
+
+<p>One of the main uses of GDB and other C debuggers more generally is to allow a 
+little more insight into C’s errors and crashes. If your program receives a 
+signal when running in GDB (for example, a <code class="language-plaintext highlighter-rouge">SIGSEGV</code>, or segmentation fault 
+signal), the program will halt execution allowing you to examine where execution 
+is at the point which your program is erroring.</p>
+
+<h2 id="summary">Summary</h2>
+
+<p>Hopefully, you’ve seen some features of GDB that would have been useful in your 
+debugging, or that you could imagine being useful in future debugging. On top of 
+that, GDB has a massive number of features we couldn’t cover here. I want to 
+emphasise that while this lab used GDB, most languages have a variety of 
+debuggers that work with them, and they will have a similar feature set - 
+normally with a similar interface and commands.</p>
+
+<p>Additionally, in the video for this week I have gone through the same feature 
+set using the Jetbrains GUI in CLion, which may be easier if this is your first 
+experience debugging.</p>
+
+<h2 id="sources">Sources</h2>
+
+<p>The bulk of the research for this lab was from the GDB manual which is open 
+source and can be found <a href="http://www.gnu.org/software/gdb/documentation/">here</a>.</p>
+
+<p>There will be good tutorials and introductions to any compiler you wish to learn 
+online. You will also learn a lot from use.</p>
+
+<h2 id="credit-and-thanks">Credit and thanks</h2>
+
+<p>Written by <a href="https://www.alfierichards.com">Alfie Richards</a></p>
+
+<p>Edited by <a href="mailto:jcryer1234@gmail.com">Joe Cryer</a></p>
+
+<p>Additional help from:</p>
+
+<ul>
+  <li><a href="https://neros.dev">Søren Mortensen</a></li>
+  <li>Dr Russell Bradford</li>
+</ul>
+
+:ET

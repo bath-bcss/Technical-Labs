@@ -1,0 +1,650 @@
+I"��<h2 id="table-of-contents">Table of Contents</h2>
+
+<ol>
+  <li><a href="#introduction">Introduction</a></li>
+  <li><a href="#the-theory">The Theory</a>
+    <ol>
+      <li><a href="#what-is-the-web">What is the Web</a>
+        <ol>
+          <li><a href="#history-of-the-web">History of the web</a></li>
+        </ol>
+      </li>
+      <li><a href="#what-is-a-web-page-and-a-website">What is a Web Page and a website</a>
+        <ol>
+          <li><a href="#html">HTML</a></li>
+          <li><a href="#css">CSS</a></li>
+          <li><a href="#javascript">JavaScript</a></li>
+          <li><a href="#summary">Summary</a></li>
+        </ol>
+      </li>
+      <li><a href="#what-is-a-server">What is a server?</a>
+        <ol>
+          <li><a href="#server-side-vs-client-side">Server side vs Client side</a></li>
+        </ol>
+      </li>
+      <li><a href="#what-is-a-browser">What is a browser</a></li>
+      <li><a href="#apis">APIs</a></li>
+      <li><a href="#http">HTTP</a></li>
+      <li><a href="#security">Security</a></li>
+      <li><a href="#urls">URLs</a></li>
+    </ol>
+  </li>
+  <li><a href="#getting-started">Getting Started</a>
+    <ol>
+      <li><a href="#dependencies">Dependencies</a>
+        <ol>
+          <li><a href="#nodejs">Node.js</a></li>
+          <li><a href="#npm">npm</a></li>
+          <li><a href="#code-editor">Code editor</a></li>
+        </ol>
+      </li>
+      <li><a href="#initial-nodejs-project">Initial Node.js Project</a></li>
+    </ol>
+  </li>
+</ol>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>Welcome to “A web stack in an hour”, where we are going to attempt to tech the 
+basics of a web stack in an hour.</p>
+
+<p>First things first, we’d like to start by saying this is a bad idea, the web as 
+a whole and a web stack are very complicated and you could devote your life to 
+learning about the web and not know half of what there is to know.</p>
+
+<p>In order to fit such a wide topic matter into one hour we’re going to move very 
+fast and miss a lot of important details that you will need to learn in order to 
+release a full project. We are going to teach the bare minimum for getting a web 
+app up and going.</p>
+
+<p>We’ve split this into two sections. In the first we’ll go through the theory of 
+the web and give valuable context for working with the web. After that we’ll 
+make a basic web app together as an example project and use this to explore some 
+of the ideas we’ve covered.</p>
+
+<h2 id="the-theory">The Theory</h2>
+
+<p>The way the web and the internet are presented in the world are unhelpful for 
+ developing so first we’re going to re-introduce the web and some history, which 
+ is useful context for understanding why the web is the way it is.</p>
+
+<h3 id="what-is-the-web">What is the Web</h3>
+
+<p>Ofter the “Web” and the “internet” are conflated but they are different things.</p>
+
+<p>The “Internet” is the global system of networks that connects together computers 
+around the world using the internet protocol suite.</p>
+
+<p>The “Web” refers to the World Wide Web, which is an information system that 
+works on top of the internet to share documents and other web resources.</p>
+
+<p>The internet is used for a vast array of purposes, of which the World Wide Web 
+is one.</p>
+
+<p>A “web stack” is a collection of technologies used to make a web app for the 
+World Wide Web.</p>
+
+<h4 id="history-of-the-web">History of the web</h4>
+
+<p>The world wide web was started in 1989 by Sir Timothy Berners-Lee at CERN. Over 
+the 1980’s the internet had spread across academic institutions in Europe and a 
+connection to America had been established. Burners-Lee started discussing a 
+system to share and ofganise documents and information. The first website was 
+published on 20th December 1990 as well as the first web server. Burners-Lee and 
+his team also made a language for describing the documents, <strong>H</strong>yper<strong>T</strong>ext 
+<strong>M</strong>arkup <strong>L</strong>anguage, (HTML) and a protocol for requesting the documents over 
+the internet, the <strong>H</strong>yper<strong>T</strong>ext <strong>T</strong>ransfer <strong>P</strong>rotocol (HTTP).</p>
+
+<p>This isn’t just history trivia, it’s important for understanding the modern web. 
+The web started as a system to retrieve simple text documents and data with a 
+way to link them together, everything else that makes up the modern web is a 
+combination of hacks and additions to this initial simple system.</p>
+
+<h3 id="what-is-a-web-page-and-a-website">What is a web page and a website</h3>
+
+<p>A webpage is simply an address which returns a HTML file when requested by a 
+browser. A website is simply a collection of these webpages that link to each 
+other, normally hosted on a single server under a single domain. Each HTML file 
+can also request other files it requires, such as images or other data.</p>
+
+<p>While technically all you need for a webpage is HTML, modern web pages need 
+additional styling with CSS and dynamic functionality from JavaScript files.</p>
+
+<h4 id="html">HTML</h4>
+
+<p>HTML files are the basis of any webpage. HTML contains the content and the 
+structure of the webpage along with any other files that need to be fetched. 
+While it can contain style information and JavaScript blocks this is cumbersome 
+and rarely done.</p>
+
+<p>Here is the HTML for the file for the website we’ll be building later:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span> <span class="c">&lt;!--1--&gt;</span>
+<span class="nt">&lt;html&gt;</span> <span class="c">&lt;!--2--&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span> <span class="c">&lt;!--3--&gt;</span>
+        <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">'https://fonts.googleapis.com/css?family=Exo 2'</span> <span class="na">rel=</span><span class="s">'stylesheet'</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"js/main.js"</span><span class="nt">&gt;&lt;/script&gt;</span> <span class="c">&lt;!--4--&gt;</span>
+        <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"css/main.css"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"mainBlock"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>Click the button!<span class="nt">&lt;/h1&gt;</span> <span class="c">&lt;!--5--&gt;</span>
+            <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"subtitle"</span><span class="nt">&gt;</span>A very small amount of CSS goes a long way :)<span class="nt">&lt;/p&gt;</span>
+            <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn draw-border"</span> <span class="na">id=</span><span class="s">"button1"</span><span class="nt">&gt;</span>Count: 0<span class="nt">&lt;/button&gt;</span><span class="c">&lt;!--6--&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+
+</code></pre></div></div>
+
+<p>Let’s run through what this does, every section like <code class="language-plaintext highlighter-rouge">&lt;!--Text--&gt;</code> is a comment 
+and only serves to annotate the file.</p>
+
+<ol>
+  <li>This line simply describes what the document is to the browser, it can be ignored</li>
+  <li>This is a “tag” which starts the web page</li>
+  <li>This is request to import another file, in this case from a completely 
+different website. This imports a section of code for a library called JQuery 
+and a CSS file for fonts</li>
+  <li>Here we import our JavaScript file and the CSS file we also need for this 
+webpage.</li>
+  <li>This line defines a title for the page.</li>
+  <li>This line defines a button on our page.</li>
+</ol>
+
+<h4 id="css">CSS</h4>
+
+<p>CSS (Cascading Style Sheets) is used to style our webpage, it can act on types 
+of element (like <code class="language-plaintext highlighter-rouge">h1</code> or <code class="language-plaintext highlighter-rouge">button</code>), classes of elements (like <code class="language-plaintext highlighter-rouge">"title"</code>) or 
+specific element id’s (like <code class="language-plaintext highlighter-rouge">"button1"</code>)</p>
+
+<p>Heres the CSS for our website</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">body</span> <span class="p">{</span> <span class="c">/* 1 */</span>
+    <span class="nl">font-family</span><span class="p">:</span> <span class="s2">'Exo 2'</span><span class="p">;</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="m">#F3F5F6</span><span class="p">;</span>
+<span class="p">}</span>
+  
+<span class="nc">.title</span> <span class="p">{</span> <span class="c">/* 2 */</span>
+    <span class="nl">font-weight</span><span class="p">:</span> <span class="nb">bold</span><span class="p">;</span>
+    <span class="nl">font-size</span><span class="p">:</span> <span class="m">50px</span><span class="p">;</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="m">#2C3E50</span><span class="p">;</span>
+    <span class="nl">text-transform</span><span class="p">:</span> <span class="nb">uppercase</span><span class="p">;</span>
+    <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+    <span class="nl">margin-top</span><span class="p">:</span> <span class="m">1%</span><span class="p">;</span>
+<span class="p">}</span>
+  
+<span class="nc">.subtitle</span> <span class="p">{</span>
+    <span class="nl">font-weight</span><span class="p">:</span> <span class="m">400</span><span class="p">;</span>
+    <span class="nl">font-size</span><span class="p">:</span> <span class="m">30px</span><span class="p">;</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="m">#2C3E50</span><span class="p">;</span>
+    <span class="nl">text-transform</span><span class="p">:</span> <span class="nb">uppercase</span><span class="p">;</span>
+    <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+    <span class="nl">margin</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nf">#mainBlock</span> <span class="p">{</span> <span class="c">/* 3 */</span>
+    <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">60%</span><span class="p">;</span>
+    <span class="nl">border</span><span class="p">:</span> <span class="no">black</span> <span class="m">1px</span><span class="p">;</span>
+    <span class="nl">margin</span><span class="p">:</span> <span class="nb">auto</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.btn</span> <span class="p">{</span>
+    <span class="nl">cursor</span><span class="p">:</span> <span class="nb">pointer</span><span class="p">;</span>
+    <span class="nl">line-height</span><span class="p">:</span> <span class="m">1.5</span><span class="p">;</span>
+    <span class="nl">font</span><span class="p">:</span> <span class="m">700</span> <span class="m">1.2rem</span> <span class="s1">"Exo 2"</span><span class="p">;</span>
+    <span class="nl">text-transform</span><span class="p">:</span> <span class="nb">uppercase</span><span class="p">;</span>
+    <span class="nl">padding</span><span class="p">:</span> <span class="m">1em</span> <span class="m">2em</span><span class="p">;</span>
+    <span class="nl">letter-spacing</span><span class="p">:</span> <span class="m">0.05rem</span><span class="p">;</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">20%</span><span class="p">;</span>
+    <span class="nl">margin</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<p>Here <code class="language-plaintext highlighter-rouge">/* Comment */</code> is purely to annotate the code.</p>
+
+<ol>
+  <li>This block applies to every element within the body tags, which is the entire 
+page, it sets the font and background of the page.</li>
+  <li>This block applies to all elements with the <code class="language-plaintext highlighter-rouge">title</code> class. It changes the 
+font size, colour and alignment.</li>
+  <li>This block applies to the element with the <code class="language-plaintext highlighter-rouge">mainBlock</code> id, it centers all the 
+child elements, sets a default width (60% of the parent element), and sets a 
+border.</li>
+</ol>
+
+<h4 id="javascript">JavaScript</h4>
+
+<p>Lastly heres the JavaScript for the website, JavaScript is the code that runs on 
+the website, often called the “client side” code, because it runs on the client 
+machine with in the web browser.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span> <span class="c1">// 1</span>
+    <span class="kd">var</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#button1</span><span class="dl">'</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="c1">// 2</span>
+        <span class="nx">count</span><span class="o">++</span><span class="p">;</span>
+        <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#button1</span><span class="dl">'</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="dl">"</span><span class="s2">Count: </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">count</span><span class="p">);</span> <span class="c1">// 3</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div></div>
+<p>Any code like <code class="language-plaintext highlighter-rouge">// comment</code> is purely annotation.</p>
+
+<p>Here we are using a JavaScript library called JQuery to make lots of this 
+simpler, we will go more into this later.</p>
+
+<ol>
+  <li>This line indicates we would like this code to be run as soon as the webpage 
+loads.</li>
+  <li>This line indicateas we’d like this code to be run the button <code class="language-plaintext highlighter-rouge">button1</code> is 
+clicked.</li>
+  <li>This line updates the text of the button.</li>
+</ol>
+
+<h4 id="summary">Summary</h4>
+
+<p>These 3 file types define and make up every webpage (with a few exceptions). So 
+clearly a lot can be achieved with only these elements! To learn more we 
+strongly recommend <a href="https://www.w3schools.com">W3 Schools</a>.</p>
+
+<p>Heres the website these files make:</p>
+
+<p><img src="/assets/Launchpad/basicWebsite.png" alt="Website Screenshot" /></p>
+
+<h3 id="what-is-a-server">What is a server</h3>
+
+<p>There is another, very important part of this story. The part that serves up the 
+web pages, and keeps track of any other data you need for your website. The 
+<em>server</em> sometimes also called the backend.</p>
+
+<p>Unfortunately “server” is an overloaded term, server can mean the system itself, 
+or the software running on the system. In this lab we will use “server” to mean 
+the software.</p>
+
+<p>One of the jobs a server does is simply serving the website files required. 
+Sometimes that is all the server does, for instance this website is a static 
+site, where the content doesn’t change. However for most websites of interest 
+the site will change and show different content at different times and for 
+different users. Additionally some websites want to store data between visits to 
+a site. All of this is the role of the server.</p>
+
+<p>In this lab we will write a server program to serve our website, as you will see 
+later. We will use a technology platform called node.</p>
+
+<h4 id="server-side-vs-client-side">Server side vs Client side</h4>
+
+<p>The client server distinction is often confusing at first. You can execute code 
+on both and often certain tasks can be done on either side. So we wanted to 
+explain in some more depth.</p>
+
+<p>Server side code runs on the server, this will be where you store user data and 
+any data relevant to the entire website. Often data is stored in databases that 
+run along side the server on the same machine, but we wont cover databases here.
+This means there is very little delay between the data and the server software 
+so any large data crunching should be done here.</p>
+
+<p>The client side code runs on the users machine, within the browser. Often code 
+will run quite slowly in the browser, and any data will have to be retrieved 
+from the server over the internet, so there may be a delay or the request might 
+fail.</p>
+
+<p>We will cover this more in the example.</p>
+
+<h3 id="what-is-a-browser">What is a browser?</h3>
+
+<p>Another point of confusion is what a browser is and what a browser does. To use 
+the web you must use a browser, like Google Chrome, Firefox, or Safari. The 
+metaphor for a browser is a your porthole into the web, to enable you to explore 
+the web, hence names like Safari and Internet Explorer.</p>
+
+<p>The basics of a browser are that a user inputs a URL into a browser and the 
+browser will establish a connection to the server at that address, it will make 
+a request for the file at the address and display the result to the user. 
+Normally that file is HTML, which will be displayed as a web page. Though you 
+can view other files.</p>
+
+<p>This is an oversimplification, browsers are incredibly complex pieces of 
+software, and have a full engine for running JavaScript, complex systems and 
+standards for displaying web pages correctly, and entire subsystems for 
+streaming video and audio, but, thankfully, the majority of this complexity is 
+abstracted away from a web developer.</p>
+
+<p>While browsers do differ in how they work and in functionality most modern 
+browsers are interoperable. This was a large issue not too long ago, before 
+internet Explorer lost the vast majority of its market share but is less of an 
+issue now, but still valuable to be aware of. You should check your website with 
+most popular browsers.</p>
+
+<h3 id="apis">APIs</h3>
+
+<p>Another important part of the story we’re missing is APIs, or <strong>A</strong>pplication 
+<strong>P</strong>rogramming <strong>I</strong>nterface, API is a very broad term, it simply means the 
+interface which defines interactions between different pieces of software. In 
+this case we mean a <strong>web API</strong>.</p>
+
+<p>Essentially an API is very similar to a traditional webserver, and is often part 
+of a web server, except instead of serving HTML webpages and other website 
+relevant files upon HTTP/HTTPS requests it returns or receives other data. For 
+instance, Wikipedia has a webserver where they serve up HTML pages for their 
+articles, however, if you wanted to make a mobile app to display wikipedia 
+articles you would rathed just the text then the HTML for the web page. For this 
+reason wikipedia has a <a href="https://commons.wikimedia.org/w/api.php">web API</a> to 
+where you can retrieve jsut the content of the article, or submit a request to 
+change and article.</p>
+
+<p>We will be making an extremely simple API in the example.</p>
+
+<h3 id="http">HTTP</h3>
+
+<p>We should very quickly discuss HTTP here, it is the language used to communicate 
+between the server and the client. Its a complicated topic, but all we need to 
+know for this tutorial is there are 9 types of HTTP request, of which we are 
+only concerned with 2 in this lab. A “GET” request simply requests the specified 
+resource. A “POST” sends a resource and requests it is updated or inserted.</p>
+
+<p>Another important note is that all requests are initiated by the client. A 
+server cannot notify the client of an update. For cases where you wish to do 
+this you need to use a “websocket” which aren’t covered in this lab. Websockets 
+do not use HTTP, and instead work across another connection and are therefore 
+more complicated.</p>
+
+<h3 id="security">Security</h3>
+
+<p>A massive consideration when talking about web development is security and, for 
+that purpose, encryption. The web started out very insecure with almost all 
+messages across the internet unencrypted. That has had to change, and nearly 
+all of the modern web uses more secure standards and technologies now.</p>
+
+<p>Most notibly is HTTPS, the encrypted and certificate based replacement for HTTP. 
+HTTPS is extremely important, however HTTPS is time consuming to setup and 
+presents much more complexity to the developer, so normally is done without, 
+especially when connecting to your server over a local network or over 
+localhost.</p>
+
+<h3 id="urls">URLs</h3>
+
+<p>We also wanted to very quickly touch on URLs (<strong>U</strong>niform <strong>R</strong>esource 
+<strong>L</strong>ocators) which are in themselves a subset of URIs (<strong>U</strong>niform <strong>R</strong>esource 
+<strong>I</strong>dentifiers). URLs are used to reference a web resource and specify its 
+location within a computer network.</p>
+
+<p>A URL is made up of 7 parts, most of which are irrelevant for this lab. We are 
+mostly concerned with the scheme, host, port and path. These can be combined in 
+the following way:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scheme://host:port/path
+</code></pre></div></div>
+
+<p>Or</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scheme://host/path
+</code></pre></div></div>
+<p>If no port is required. For our cases the scheme should be http (or https).</p>
+
+<p>The host would normally be a “domain name”, which is a complicated way of using 
+a string like “www.google.com” to point to an IP address your browser can 
+actually connect to to request the files. We will not cover domain names and DNS 
+here. However, what we do need to know, is that we can use an IP address, and if 
+we are running the server we want to connect to on the machine we want to access 
+it from, as you would when developing, you can use “127.0.0.1” or “localhost” to 
+specify the local machine. We will see this in the example.</p>
+
+<p>The path section communicates to the server what resource you want, how this is 
+communicated varies server to server.</p>
+
+<h2 id="getting-started">Getting Started</h2>
+
+<h3 id="dependencies">Dependencies</h3>
+
+<h4 id="nodejs"><strong>Node.js</strong></h4>
+<p><strong>Node.js</strong> is a JavaScript runtime environment. We’ll be using it as the ‘server’ for our web app. Head <a href="https://nodejs.org/en/download">here</a> to download the installer (unless on Linux, then you’re on your own). Follow the installer instructions and you should be good!</p>
+
+<p>To check that it is installed, run this command in your terminal:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>node -v
+</code></pre></div></div>
+
+<h4 id="npm"><strong>npm</strong></h4>
+<p><strong>npm</strong> (or ‘<strong>N</strong>ode <strong>P</strong>ackage <strong>M</strong>anager’) is the package manager for JavaScript. It is distributed with <strong>Node.js</strong>, meaning that when you download <strong>Node.js</strong>, <strong>npm</strong> is automatically installed.</p>
+
+<p>To check that it is installed, run this command in your terminal:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm -v
+</code></pre></div></div>
+
+<h4 id="code-editor">Code Editor</h4>
+<p>A good code editor is incredibly important, and helps you massively in the long run.
+Having said that, we don’t have time to cover this. <a href="https://code.visualstudio.com/download">Visual Studio Code</a>, <a href="https://www.jetbrains.com/webstorm/download/#section=windows">Jetbrains WebStorm</a> (you get this for free with a student license) or <a href="https://atom.io/">Atom</a> are all good choices for web development. We will be using VS Code.</p>
+
+<h3 id="initial-nodejs-project">Initial Node.js Project</h3>
+
+<p>In this project, Node.js will run on a ‘server’ computer and will host a webserver. Anybody that goes to the correct web address will be accessing the webserver and interacting with whatever we write.</p>
+
+<p>Let’s start by making an <strong>app.js</strong> file.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">express</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
+
+<span class="kd">const</span> <span class="nx">port</span> <span class="o">=</span> <span class="mi">3000</span><span class="p">;</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">port</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Example app listening at http://localhost:</span><span class="p">${</span><span class="nx">port</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>This is a bare-bones initial Node.js server. However, if we try to run this with the command <code class="language-plaintext highlighter-rouge">node app.js</code>, it will immediately fail, as we are using the <strong>express</strong> library. To install this, run the command <code class="language-plaintext highlighter-rouge">npm install express</code> in the folder. Once this has installed, we should be able to run the server with <code class="language-plaintext highlighter-rouge">node app.js</code>!</p>
+
+<p><img src="/assets/Launchpad/cmd-1.png" alt="CMD run Node" /></p>
+
+<p>If we go to the web address <a href="localhost:3000">localhost:3000</a>, we see an error message: <strong>Cannot GET /</strong>. This is fine, as we aren’t yet providing any content, but still shows that the server is functioning.</p>
+
+<p><img src="/assets/Launchpad/get-1.png" alt="GET Fail 1" /></p>
+
+<p><strong>Postman</strong> is an application that allows you to inspect HTTP web requests in detail. Let’s see what the Node server is sending to the client when we go to <a href="localhost:3000">localhost:3000</a>.</p>
+
+<p><img src="/assets/Launchpad/get-2.png" alt="GET Fail 2" /></p>
+
+<p>The top section defines the request being made, while the bottom section shows the data that has been returned from the server.</p>
+
+<p>This is a default HTML page being created by Node for endpoints that haven’t been specified. This is the same as the content being displayed in the browser.</p>
+
+<p>Now, let’s provide some content to display! We’re going to add a <strong>GET</strong> endpoint for <strong>/</strong>, which is the ‘root’ page - <a href="localhost:3000">localhost:3000</a>. To do this, we want to add a new code block in <strong>app.js</strong>:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="dl">"</span><span class="s2">Hello World! :)</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>Now, whenever we navigate to <a href="localhost:3000">localhost:3000</a>, we should be served the content “Hello World! :)”.</p>
+
+<p><img src="/assets/Launchpad/get-hello-1.png" alt="Printing Hello World" /></p>
+
+<p>All that is being sent by the server is the plain text. We can see this when checking the endpoint in Postman:</p>
+
+<p><img src="/assets/Launchpad/get-hello-2.png" alt="Printing Hello World 2" /></p>
+
+<p>Now, let’s start serving a HTML page. Below is a simple HTML example - the one that we went through earlier. I’m going to create a folder called <strong>public</strong> and save this inside as <strong>test.html</strong>.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+        <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">'https://fonts.googleapis.com/css?family=Exo 2'</span> <span class="na">rel=</span><span class="s">'stylesheet'</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"js/main.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+        <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"css/main.css"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"mainBlock"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>Click the button!<span class="nt">&lt;/h1&gt;</span>
+            <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"subtitle"</span><span class="nt">&gt;</span>A very small amount of CSS goes a long way :)<span class="nt">&lt;/p&gt;</span>
+            <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn draw-border"</span> <span class="na">id=</span><span class="s">"button1"</span><span class="nt">&gt;</span>Count: 0<span class="nt">&lt;/button&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>I’ve also defined <strong>main.js</strong> and <strong>main.css</strong> files within this file. Let’s create those too, inside subfolders <strong>js</strong> and <strong>css</strong> respectively.</p>
+
+<p><strong>main.js:</strong></p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="kd">var</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#button1</span><span class="dl">'</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">count</span><span class="o">++</span><span class="p">;</span>
+        <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#button1</span><span class="dl">'</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="dl">"</span><span class="s2">Count: </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">count</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p><strong>main.css:</strong></p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">body</span> <span class="p">{</span>
+    <span class="nl">font-family</span><span class="p">:</span> <span class="s2">'Exo 2'</span><span class="p">;</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="m">#F3F5F6</span><span class="p">;</span>
+<span class="p">}</span>
+  
+<span class="nc">.title</span> <span class="p">{</span>
+    <span class="nl">font-weight</span><span class="p">:</span> <span class="nb">bold</span><span class="p">;</span>
+    <span class="nl">font-size</span><span class="p">:</span> <span class="m">50px</span><span class="p">;</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="m">#2C3E50</span><span class="p">;</span>
+    <span class="nl">text-transform</span><span class="p">:</span> <span class="nb">uppercase</span><span class="p">;</span>
+    <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+    <span class="nl">margin-top</span><span class="p">:</span> <span class="m">1%</span><span class="p">;</span>
+<span class="p">}</span>
+  
+<span class="nc">.subtitle</span> <span class="p">{</span>
+    <span class="nl">font-weight</span><span class="p">:</span> <span class="m">400</span><span class="p">;</span>
+    <span class="nl">font-size</span><span class="p">:</span> <span class="m">30px</span><span class="p">;</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="m">#2C3E50</span><span class="p">;</span>
+    <span class="nl">text-transform</span><span class="p">:</span> <span class="nb">uppercase</span><span class="p">;</span>
+    <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+    <span class="nl">margin</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nf">#mainBlock</span> <span class="p">{</span>
+    <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">60%</span><span class="p">;</span>
+    <span class="nl">border</span><span class="p">:</span> <span class="no">black</span> <span class="m">1px</span><span class="p">;</span>
+    <span class="nl">margin</span><span class="p">:</span> <span class="nb">auto</span><span class="p">;</span>
+<span class="p">}</span>
+  <span class="nc">.btn</span> <span class="p">{</span>
+    <span class="nl">cursor</span><span class="p">:</span> <span class="nb">pointer</span><span class="p">;</span>
+    <span class="nl">line-height</span><span class="p">:</span> <span class="m">1.5</span><span class="p">;</span>
+    <span class="nl">font</span><span class="p">:</span> <span class="m">700</span> <span class="m">1.2rem</span> <span class="s1">"Exo 2"</span><span class="p">;</span>
+    <span class="nl">text-transform</span><span class="p">:</span> <span class="nb">uppercase</span><span class="p">;</span>
+    <span class="nl">padding</span><span class="p">:</span> <span class="m">1em</span> <span class="m">2em</span><span class="p">;</span>
+    <span class="nl">letter-spacing</span><span class="p">:</span> <span class="m">0.05rem</span><span class="p">;</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">50%</span><span class="p">;</span>
+    <span class="nl">margin</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nc">.btn</span><span class="nd">:focus</span> <span class="p">{</span>
+    <span class="nl">outline</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+  <span class="p">}</span>
+</code></pre></div></div>
+
+<p>Our file structure should now look something like this:</p>
+
+<p><img src="/assets/Launchpad/file-structure.png" alt="File Structure" /></p>
+
+<p>Now that we’ve created some content to serve, let’s serve it! We need to use the built-in <strong>Path</strong> library, so we need to import it at the top of <strong>app.js</strong>.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">path</span><span class="dl">'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>When someone goes to the <strong>/test</strong> endpoint, we want to show them <strong>test.html</strong>. To do this, we need to create a new endpoint, like we did before, but instead of serving plain text we need to serve the file itself.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/test</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">sendFile</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">/public/test.html</span><span class="dl">'</span><span class="p">));</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>If we go to the <a href="http://localhost:3000/test">http://localhost:3000/test</a> endpoint, we can see the page we created! However, upon a closer inspection, there is no CSS styling and the JavaScript isn’t functioning properly. Here, I opened up the Chrome Developer Tools (by clicking F12) and went to the Console tab, to see the errors in the page.</p>
+
+<p><img src="/assets/Launchpad/dev-tools-1.png" alt="Developer Tools" /></p>
+
+<p>We can see that <strong>main.js</strong> and <strong>main.css</strong> aren’t accessible by the page. That is because the <strong>public</strong> folder isn’t actually public yet - Node is protecting it! Let’s change that. Add this line to <strong>app.js</strong>:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="kd">static</span><span class="p">(</span><span class="dl">'</span><span class="s1">public</span><span class="dl">'</span><span class="p">));</span>
+</code></pre></div></div>
+
+<p>This line tells Node to allow direct access to any files within the <strong>public</strong> directory.</p>
+
+<p>Now that we’ve done that, we can see that the page has no more errors, and is correctly styled!</p>
+
+<p><img src="/assets/Launchpad/dev-tools-2.png" alt="Correct Test site" /></p>
+
+<p>Now that the <strong>public</strong> directory is directly available, we can access any of the files within it through the web browser, using relative URLs. For example, we can look at <strong>main.css</strong> with the URL <a href="http://localhost:3000/css/main.css">http://localhost:3000/css/main.css</a> and <strong>main.js</strong> with the URL <a href="http://localhost:3000/js/main.js">http://localhost:3000/js/main.js</a>.</p>
+
+<h4 id="state">State</h4>
+<p>The system we’ve created so far is a counter. Whenever we click on the button on the webpage, the number increases by 1. However, this is entirely implemented within the clientside JavaScript. Within the browser, it is difficult to retain <strong>state</strong>. By this, I mean that if we were to refresh the page, the current count value would be reset to 0, as the count value is lost and recreated on reload of the page.</p>
+
+<p>There are ways to retain state entirely within a browser (see <a href="https://www.w3schools.com/js/js_cookies.asp">cookies</a>), however we will not cover this. Instead, we will show you how to communicate between the client and the server to store and load data.</p>
+
+<p>Let’s first create a few new API endpoints on the server.</p>
+
+<p>In <strong>app.js</strong>, add the following code towards the top of the file (after <code class="language-plaintext highlighter-rouge">const app = express();</code>):</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">json</span><span class="p">());</span>
+
+<span class="kd">var</span> <span class="nx">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>This code defines a new variable called <strong>counter</strong>, which is an int set to 0. It also pulls in the <strong>Express JSON</strong> functions, allowing us to parse and understand the JSON objects being sent back and forth between the client and server as messages.</p>
+
+<p>Next, we will create a new GET endpoint: <strong>/api/getVal</strong></p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/getVal</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">retVal</span> <span class="o">=</span> <span class="p">{</span><span class="na">count</span><span class="p">:</span> <span class="nx">counter</span><span class="p">};</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">retVal</span><span class="p">));</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>Whenever we visit <a href="http://localhost:3000/api/getVal">http://localhost:3000/api/getVal</a>, this code will create a JSON object containing the current value of the <strong>counter</strong> variable we just defined.</p>
+
+<p><img src="/assets/Launchpad/getVal.png" alt="API GET" /></p>
+
+<p>Next, let’s create a simple POST endpoint: <strong>/api/increment</strong></p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/increment</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">counter</span> <span class="o">+=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">count</span><span class="p">);</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="na">count</span><span class="p">:</span> <span class="nx">counter</span><span class="p">}));</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>As this endpoint is a POST and not a GET, it requires that we send it data of some sort. Whenever a POST request is sent to it with a <strong>count</strong> value in its body, the <strong>counter</strong> value on the server is increased by that <strong>count</strong> amount and the server replies with the new value of <strong>counter</strong>.</p>
+
+<p>Here, I will simulate a POST request to the endpoint using Postman:</p>
+
+<p><img src="/assets/Launchpad/postVal-1.png" alt="API POST 1" /></p>
+
+<p>Here, I run the POST request and the <strong>count</strong> value is incremented from 3 to 4. If I run the call again, it will be incremented to 5:</p>
+
+<p><img src="/assets/Launchpad/postVal-2.png" alt="API POST 2" /></p>
+
+<p>With these two calls, we can now implement some sort of state for this variable that survives the refreshing of a web page. Let’s modify our JavaScript code in <strong>main.js</strong> to use these API calls.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">$</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">api/countVal</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">count</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">data</span><span class="p">).</span><span class="nx">count</span><span class="p">;</span>
+
+        <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#button1</span><span class="dl">'</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="dl">"</span><span class="s2">Count: </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">count</span><span class="p">);</span>
+    <span class="p">});</span>
+
+    <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#button1</span><span class="dl">'</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">$</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">api/increment</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span><span class="dl">'</span><span class="s1">count</span><span class="dl">'</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kd">let</span> <span class="nx">count</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">data</span><span class="p">).</span><span class="nx">count</span><span class="p">;</span>
+            <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#button1</span><span class="dl">'</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="dl">"</span><span class="s2">Count: </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">count</span><span class="p">);</span>
+        <span class="p">});</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>When the page loads, the code now makes a GET request to the API to get the <strong>count</strong> value from the server. When it gets this, it updates the HTML to display this value.</p>
+
+<p>Whenever the button is clicked, a POST request is made to the API, passing in a <strong>count</strong> value of 1 - the value on the server will be incremented by 1, the server will return the new value, and the client will update the HTML to display this value.</p>
+
+:ET

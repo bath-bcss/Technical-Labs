@@ -13,11 +13,9 @@ collections:
 sass:
   style: compact
 
-markdown: kramdown
 kramdown:
-  input: GFM
   hard_wrap: false
-
+  parse_block_html: true
 
 exclude:
   - .sass-cache/

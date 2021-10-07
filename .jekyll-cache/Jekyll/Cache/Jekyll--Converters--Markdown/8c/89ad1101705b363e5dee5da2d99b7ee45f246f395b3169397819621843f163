@@ -1,0 +1,386 @@
+I"4X<p>Watch the video that accompanies these notes 
+<a href="https://www.youtube.com/watch?v=KLWojfHJRYQ">here</a>.</p>
+
+<h2 id="table-of-contents">Table of contents</h2>
+
+<ol>
+  <li><a href="#what-is-unix">What is Unix</a></li>
+  <li><a href="#what-is-the-shell">What is the shell?</a></li>
+  <li><a href="#how-to-install-a-unix-like-command-line">How to install a Unix-like command line</a></li>
+  <li><a href="#how-to-use-the-unix-shell">How to use the Unix shell</a>
+    <ol>
+      <li><a href="#where">Where</a></li>
+      <li><a href="#who">Who</a></li>
+    </ol>
+  </li>
+  <li><a href="#basics-of-unix">Basics of Unix</a></li>
+  <li><a href="#man-pages">Man pages</a></li>
+  <li><a href="#file-management-in-unix">File management in Unix</a>
+    <ol>
+      <li><a href="#making-directories">Making directories</a></li>
+      <li><a href="#moving-and-renaming-files-and-directories">Moving and renaming files and directories</a></li>
+      <li><a href="#deleting-files-and-directories">Deleting files and directories</a></li>
+      <li><a href="#copying-files-and-directories">Copying files and directories</a></li>
+    </ol>
+  </li>
+  <li><a href="#environment-variables">Environment variables</a>
+    <ol>
+      <li><a href="#path-variables">Path variables</a></li>
+    </ol>
+  </li>
+  <li><a href="#connecting-programs-together">Connecting programs together</a></li>
+  <li><a href="#going-forwards">Going forwards</a></li>
+  <li><a href="#exercises">Exercises</a></li>
+  <li><a href="#credit">Credit</a></li>
+</ol>
+
+<h2 id="what-is-unix">What is Unix</h2>
+
+<p>When people say Unix they normally mean the family of Unix-like operating systems that derive from
+the original AT&amp;T Unix operating system. The original Unix was written (along with the C
+programming language) in the 1970s by Ken Thompson, Dennis Ritchie and others. There are many
+Unix-like operating systems - macOS and Linux being the two most popular for desktop, with iOS and
+Android dominating the mobile market.</p>
+
+<p>Unix-like systems are characterised by a modular design where functionality is made up of simple
+tools. Each tool performs a well-defined function, and can be combined with other tools to together
+become more complex. Unix-like operating systems consist of many libraries and utilities along with
+a master control program - the kernel. The kernel handles starting and stopping programs, the file
+system, and other low level tasks that programs share.</p>
+
+<p>Unix was instrumental in the development of the internet and still comprises the vast majority of
+the machines that make up the internet.</p>
+
+<h2 id="what-is-the-shell">What is the shell?</h2>
+
+<p>The shell is the command line interpreter for Unix-like operating systems, used to control the
+computer. The name “shell” refers both to the language you use to input commands and write scripts,
+and the program that runs those commands or scripts.</p>
+
+<p>Users tend to interact with the shell through a terminal emulator. As the name suggests, this
+emulates old style computer terminals. This is normally the “Terminal” app on your computer. When
+you enter commands into a terminal emulator, it passes those commands to the shell to run. Those
+commands might be requests to run built-in functionality of the shell, shell scripts, or installed
+programs. The output of the command is then sent back to the terminal emulator and displayed.</p>
+
+<p>The most common shell is the <strong>B</strong>ourne <strong>A</strong>gain <strong>Sh</strong>ell, or bash for short, but shells like the
+<strong>Z Sh</strong>ell (zsh) and the <strong>F</strong>riendly <strong>I</strong>nteractive <strong>Sh</strong>ell (fish) are gaining popularity.
+We’ll be using bash.</p>
+
+<h2 id="how-to-install-a-unix-like-command-line">How to install a Unix-like command line</h2>
+
+<p>For Mac and Linux users this answer is very simple. You are already running a Unix-like operating
+system! Install the terminal emulator of your choice (or use the preinstalled options) and you’re
+ready.</p>
+
+<p>For Windows the answer is more complicated. As Windows is not a Unix-like operating system it
+doesn’t use a Unix shell. Instead, it uses PowerShell, which isn’t very widely used and is
+incompatible with most Unix tools.</p>
+
+<p>However, all is not lost! With Windows 10, Microsoft added a feature called Windows Subsystem for
+Linux (WSL), which allows Windows users to use a Unix shell (like bash) and almost all of the GNU
+utilities that make up Linux, just without the Linux kernel (or, since WSL 2, through a Linux kernel 
+running in a virtual machine).</p>
+
+<p>To install go to <a href="https://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/">this
+page</a>,
+which gives instructions on installing a bash shell, then almost everything should be the same from
+there on out.</p>
+
+<h2 id="how-to-use-the-unix-shell">How to use the Unix shell</h2>
+
+<p>When you open the terminal you will be presented with a <strong>prompt</strong>, which will look something like:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>user:~$
+</code></pre></div></div>
+
+<p>This will be where you write commands. The dollar symbol tells you that you are not the root user,
+but we’ll get to that later.</p>
+
+<p>There are a few things to be aware of when using a Unix shell: where you are and who you are.</p>
+
+<h3 id="where">Where</h3>
+
+<p>The <strong>where</strong> is what directory you are in. In a Unix shell you always have a working directory. To
+find your current working directory use the command <code class="language-plaintext highlighter-rouge">pwd</code> (short for “print working directory”).</p>
+
+<p><img src="/assets/Unix_Shell/PWDCommand.png" alt="PWDImage" /></p>
+
+<p>You can see the shell prints out the current directory. If you’ve just started the shell you’ll be
+in your user’s <strong>home directory</strong>. In Unix, you can always find the home directory, as <code class="language-plaintext highlighter-rouge">~</code> represents
+the current user’s home directory - that’s why it’s in the prompt (<code class="language-plaintext highlighter-rouge">user:~$</code>).</p>
+
+<p>To change the working directory use the <code class="language-plaintext highlighter-rouge">cd</code> (“change directory”) command followed by where you want
+to go.</p>
+
+<p><img src="/assets/Unix_Shell/CDCommand.png" alt="CDCommandImage" /></p>
+
+<p>You can give <code class="language-plaintext highlighter-rouge">cd</code> either a relative or an absolute path. The difference is that absolute paths start
+with a leading <code class="language-plaintext highlighter-rouge">/</code>, pronounced “root”, which represents the absolute top-level folder on your hard
+drive. Any path that doesn’t start with <code class="language-plaintext highlighter-rouge">/</code> is a relative path, so instead of starting from <code class="language-plaintext highlighter-rouge">/</code> it
+starts from your current folder.</p>
+
+<p><img src="/assets/Unix_Shell/CDRelativeCommand.png" alt="CDRelativeCommandImage" /></p>
+
+<p>To list all the directories and files in the working directory use the <code class="language-plaintext highlighter-rouge">ls</code> command, short for
+“list”.</p>
+
+<p><img src="/assets/Unix_Shell/LSCommand.png" alt="LSCommandImage" /></p>
+
+<p>In Unix any directories starting with a <code class="language-plaintext highlighter-rouge">.</code> are hidden by default. To show these hidden files add
+the <code class="language-plaintext highlighter-rouge">-a</code> flag to the <code class="language-plaintext highlighter-rouge">ls</code> command.</p>
+
+<p><img src="/assets/Unix_Shell/LSACommand.png" alt="LSACommand" /></p>
+
+<p>There you can see some unexpected entries. What are <code class="language-plaintext highlighter-rouge">.</code> and <code class="language-plaintext highlighter-rouge">..</code>? In every directory in Unix there
+is <code class="language-plaintext highlighter-rouge">.</code> to represent the current directory, and <code class="language-plaintext highlighter-rouge">..</code> to represent the parent directory.</p>
+
+<p>Combining this with <code class="language-plaintext highlighter-rouge">cd</code> and relative paths we can use <code class="language-plaintext highlighter-rouge">cd ..</code> to navigate to the parent directory.</p>
+
+<p><img src="/assets/Unix_Shell/cdupCommand.png" alt="CDUPCommand" /></p>
+
+<h3 id="who">Who</h3>
+
+<p>All Unix-like systems have a user system, and different users can access different files and
+different commands.</p>
+
+<p>You can check what user you are with the <code class="language-plaintext highlighter-rouge">whoami</code> command.</p>
+
+<p><img src="/assets/Unix_Shell/whoCommand.png" alt="WhoCommand" /></p>
+
+<p>You can then change users by using the <code class="language-plaintext highlighter-rouge">su</code> command followed by the user you want to switch to.
+“root” is the super user in Unix and so has all privileges. You shouldn’t work as “root”, because
+you might do something destructive by accident. The shell makes it clear you’re root as the <code class="language-plaintext highlighter-rouge">$</code> is
+replaced by a <code class="language-plaintext highlighter-rouge">#</code>, and the prompt may change as well.</p>
+
+<p><img src="/assets/Unix_Shell/suCommand.png" alt="Su Command" /></p>
+
+<p>If you want to run just one command as the <code class="language-plaintext highlighter-rouge">root</code> user (a very common occurrence), you can use the
+<code class="language-plaintext highlighter-rouge">sudo</code> command (short for “super user do”) followed by the command you want to run. This will
+normally prompt you for an administrator’s password or the root user password.</p>
+
+<h2 id="basics-of-unix">Basics of Unix</h2>
+
+<p>Now you know the basics of getting around and how to change user, let’s start using some commands!</p>
+
+<p>In the Unix shell, a command is structured with the name of the command followed by some arguments.</p>
+
+<p><img src="/assets/Unix_Shell/CommandExample.png" alt="UnixCommandExample" /></p>
+
+<p>Here in red you can see the <strong>Command</strong>, in this case <code class="language-plaintext highlighter-rouge">git</code> (the subject of a future lab), followed
+by a list of arguments in blue.</p>
+
+<p>The command can fall into a few categories:</p>
+
+<ol>
+  <li><strong>Internal commands</strong> - Certain commands are build into the shell. The shell directly interacts 
+with the OS and no other executables are required.</li>
+  <li><strong>Included commands</strong> - Some executables come included with and are considered part of the
+operating system.</li>
+  <li><strong>External commands</strong> - Executables the user has installed.</li>
+</ol>
+
+<p>If the command comes in the first category then the shell hands the job straight off to the kernel
+to handle. Otherwise, the shell has to find the command you want to run. To do this, it goes and
+looks for executables with the name you specified in special directories. These directories are
+specified by the PATH variables, which will be covered later.</p>
+
+<p>You can find if any command is in the first category with the command <code class="language-plaintext highlighter-rouge">type &lt;command name&gt;</code>.</p>
+
+<p>Parameters are separated by spaces, unless multiple are surrounded in speech marks. In this case,
+they are treated as one parameter. One common style of parameter is a “flag”. Flags look like the
+<code class="language-plaintext highlighter-rouge">-a</code> and <code class="language-plaintext highlighter-rouge">-m</code> above and generally alter the command’s behaviour in some way.</p>
+
+<p>Different commands take different parameters in different orders. How are you meant to know these
+parameters? You can look at the <code class="language-plaintext highlighter-rouge">man</code> pages.</p>
+
+<h2 id="man-pages">Man pages</h2>
+
+<p>Man is short for manual, as the man pages are the manual for each command. Man pages contain
+information like how to use a command, what it does, what parameters it requires, along with the
+command’s optional parameters and flags.</p>
+
+<p>To look up the man page for a command use:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>man &lt;<span class="nb">command</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<p>Scroll through the manual with the arrow keys (or <code class="language-plaintext highlighter-rouge">d</code> and <code class="language-plaintext highlighter-rouge">u</code> for down and up), and press the <code class="language-plaintext highlighter-rouge">q</code>
+key to exit the man page.</p>
+
+<p>Man pages are an essential resource for learning Unix, and a great quick reference if you forget
+parameters or flags for a command.</p>
+
+<p>You can also use man pages to find commands, by using:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>man <span class="nt">-k</span> &lt;keyword&gt;
+</code></pre></div></div>
+
+<p>You will be presented with a list of commands that use that keyword in their description.</p>
+
+<p>Additionally, bash has <code class="language-plaintext highlighter-rouge">help</code> pages for built-in commands, for example <code class="language-plaintext highlighter-rouge">help pwd</code> gives you help on
+the <code class="language-plaintext highlighter-rouge">pwd</code> command.</p>
+
+<h2 id="file-management-in-unix">File management in Unix</h2>
+
+<p>One of the first things you may want to do is manage files and directories. This can be done with
+the Unix shell.</p>
+
+<h3 id="making-directories">Making directories</h3>
+
+<p>Making a directory is as simple as <code class="language-plaintext highlighter-rouge">mkdir &lt;directory name&gt;</code></p>
+
+<p><img src="/assets/Unix_Shell/mkdirExample.png" alt="mkdir example" /></p>
+
+<h3 id="moving-and-renaming-files-and-directories">Moving and renaming files and directories</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">mv</code> command has multiple uses. It allows you to move a file or directory from one file path to
+another.</p>
+
+<p>You can change the directory a file is in:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mv</span> &lt;current directory path&gt;/&lt;file name&gt; &lt;new directory path&gt;
+</code></pre></div></div>
+
+<p>You can also move a directory to another directory:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mv</span> &lt;current directory path&gt; &lt;path of directory to move it to&gt;
+</code></pre></div></div>
+
+<p>You can also use it to rename a file or directory:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mv</span> &lt;file name&gt; &lt;new file name&gt;
+</code></pre></div></div>
+
+<p><img src="/assets/Unix_Shell/mvExample.png" alt="mv example" /></p>
+
+<h3 id="deleting-files-and-directories">Deleting files and directories</h3>
+
+<p>To delete a file use the <code class="language-plaintext highlighter-rouge">rm &lt;file path&gt;</code> command.</p>
+
+<p>To delete a directory use the <code class="language-plaintext highlighter-rouge">rmdir &lt;file path&gt;</code> command. This can only be done on empty
+directories.</p>
+
+<p>To delete a directory and its contents use the <code class="language-plaintext highlighter-rouge">rm</code> command with the <code class="language-plaintext highlighter-rouge">-r</code> flag to delete
+recursively.</p>
+
+<p><strong><em>Warning:</em></strong> In Unix there is no “trash” directory where deleted files go. When you delete a file
+it is gone.</p>
+
+<p><img src="/assets/Unix_Shell/rmExample.png" alt="rm example" /></p>
+
+<h3 id="copying-files-and-directories">Copying files and directories</h3>
+
+<p>Copying is handled by the <code class="language-plaintext highlighter-rouge">cp</code> command, which is the same as the <code class="language-plaintext highlighter-rouge">mv</code> command but moves a copy of
+the file or directory to the new file path.</p>
+
+<h2 id="environment-variables">Environment variables</h2>
+
+<p>Earlier we said the shell was a scripting language, and like any other programming language it can
+make use of variables. The command <code class="language-plaintext highlighter-rouge">export &lt;variable name&gt;="&lt;data&gt;"</code> defines a variable.</p>
+
+<p>Then by writing <code class="language-plaintext highlighter-rouge">$&lt;variable name&gt;</code>, bash unpacks the variable to its string.</p>
+
+<p><img src="/assets/Unix_Shell/exportCommand.png" alt="ExportingVariables" /></p>
+
+<p>The <code class="language-plaintext highlighter-rouge">echo &lt;argument&gt;</code> command simply prints the parameter given to <code class="language-plaintext highlighter-rouge">stdout</code>, with variables expanded.</p>
+
+<p>All the variables together make up the “environment”. Programs can read the environment variables
+as well as any values passed into them. So, changing these environment variables can change the
+behaviour of programs.</p>
+
+<h3 id="path-variables">Path variables</h3>
+
+<p>The “PATH variable” is a special variable in the environment. We can get the value with <code class="language-plaintext highlighter-rouge">echo
+$PATH</code>.</p>
+
+<p><img src="/assets/Unix_Shell/PathVariables.png" alt="PATHVariables" /></p>
+
+<p>Here you can see a big list of file directories. This is where the shell goes looking for the
+executables you want to run. You can look in the directories themselves to find a path, but if you
+need to find one particular executable you can use the <code class="language-plaintext highlighter-rouge">which &lt;command&gt;</code> command.</p>
+
+<p><img src="/assets/Unix_Shell/whichCommand.png" alt="WhichCommand" /></p>
+
+<p>You can also run executables directly with their absolute path or local path - this is how you could
+run executables you make yourself without putting them in the path directories!</p>
+
+<p><img src="/assets/Unix_Shell/RunningBinaries.png" alt="RunningExecutablesWithPath" /></p>
+
+<h2 id="connecting-programs-together">Connecting programs together</h2>
+
+<p>Unix programs can take input and return output through two primary streams: the input stream
+(standard input, normally “stdin”) and the output stream (“stdout”). By default, stdin is what you
+type into the terminal emulator and stdout is printed to the terminal emulator.</p>
+
+<p>If you’ve ever written a Python program the <code class="language-plaintext highlighter-rouge">input()</code> statement reads from stdin and the <code class="language-plaintext highlighter-rouge">print()</code>
+statement writes to stdout.</p>
+
+<p>Stdout doesn’t have to simply be printed out, though, and stdin doesn’t always have to come from
+keyboard input. You can use the <code class="language-plaintext highlighter-rouge">&gt;</code> operator after a command to redirect stdout from that command
+somewhere else, like to a file.</p>
+
+<p><img src="/assets/Unix_Shell/SaveToFileOperator.png" alt="SaveToFileOperator" /></p>
+
+<p>The <code class="language-plaintext highlighter-rouge">cat &lt;file path&gt;</code> command reads a file and outputs it to stdout.</p>
+
+<p>Likewise, you can use the <code class="language-plaintext highlighter-rouge">&lt;</code> operator to read a file into stdin for a command.</p>
+
+<p><img src="/assets/Unix_Shell/ReadFromFileOperator.png" alt="ReadFromFileOperator" /></p>
+
+<p>The <code class="language-plaintext highlighter-rouge">tail -n1</code> command returns the last line of the stdout.</p>
+
+<p>Lastly, you can connect one program to another with a pipe: <code class="language-plaintext highlighter-rouge">|</code>. With a pipe you can take the
+output of one program and feed it into another.</p>
+
+<p><img src="/assets/Unix_Shell/pipeExample.png" alt="PipeExample" /></p>
+
+<p>Here the <code class="language-plaintext highlighter-rouge">ip a</code> command lists lots of networking information, but I only want the line about the IP
+address starting “127.”. So, I can use the <code class="language-plaintext highlighter-rouge">grep &lt;string&gt;</code> command that lets you search the standard
+stdin for strings and outputs the lines containing the strings to stdout.</p>
+
+<h2 id="going-forwards">Going forwards</h2>
+
+<p>Hopefully you now know how to move around the shell, change users, manage files, and accomplish
+basic tasks with the Unix shell. Hopefully this introduction allows you to learn more from other
+online resources, as you’ll understand what’s going on.</p>
+
+<p>There’s a lot more you can do with the shell - if we covered it all it would take the whole year!
+Some more will be covered in future Technical Labs but this should give you a good base to work
+from. Man pages are your friend - if you don’t understand a command never be afraid to use them.</p>
+
+<h2 id="exercises">Exercises</h2>
+
+<p>If you want to work on your Unix skills here are some good practice exercises:</p>
+
+<ol>
+  <li>Install and open a Unix shell!</li>
+  <li>Navigate to your home folder and then explore the file system. Use <code class="language-plaintext highlighter-rouge">cd</code>, <code class="language-plaintext highlighter-rouge">ls</code>, and <code class="language-plaintext highlighter-rouge">pwd</code> to get
+around.</li>
+  <li>Create a new directory.</li>
+  <li>Rename a directory.</li>
+  <li>Look up the <code class="language-plaintext highlighter-rouge">touch</code> command.</li>
+  <li>Make some files!</li>
+  <li>Look into Unix permission system and change some permissions!</li>
+  <li>Try playing around with <code class="language-plaintext highlighter-rouge">&lt;</code>, <code class="language-plaintext highlighter-rouge">&gt;</code>, and <code class="language-plaintext highlighter-rouge">|</code>.</li>
+  <li>Look at your PATH variables and try to find the executable of a command you know.</li>
+</ol>
+
+<h1 id="credit">Credit</h1>
+
+<p>Written by <a href="mailto:alfierchrds@gmail.com">Alfie Richards</a>.</p>
+
+<p>Editing by <a href="mailto:jjc82@bath.ac.uk">Joseph Cryer</a>.</p>
+
+<p>Thanks to:</p>
+
+<ul>
+  <li>Dr Russell Bradford</li>
+  <li>Bence Babrián</li>
+  <li><a href="https://neros.dev">Søren Mortensen</a></li>
+</ul>
+
+<p>For additional help</p>
+
+<p>Please send any corrections <a href="mailto:alfierchrds@gmail.com">here</a>.</p>
+:ET

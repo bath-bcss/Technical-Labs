@@ -1,12 +1,12 @@
 
 @media(prefers-color-scheme: dark) {
-  head ~ body {
+  body {
     background-color: #303030;
     color: #EEE;
   }
   
 
-  body a {
+  a {
     color: #7398d0;
   }
 }

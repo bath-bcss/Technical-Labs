@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- https://realfavicongenerator.net -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/assets/favicon/site.webmanifest">
+  <link rel="mask-icon" href="/assets/favicon/safari-pinned-tab.svg" color="#314cb3">
+  <link rel="shortcut icon" href="/assets/favicon/favicon.ico">
+  <meta name="msapplication-TileColor" content="#2d89ef">
+  <meta name="msapplication-config" content="/assets/favicon/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+  <title>
+    Technical Labs
+  </title>
+
+  <link rel="stylesheet" href="/assets/css/main.css" />
+</head>
+
+
+
+  <body>
+    <script src="/assets/js/navbar.js" ></script>
+
+<nav id="nav">
+  <div id="bar-nav">
+    <a href="/" id="logo">Technical Labs</a>
+    <div id="nav-spacer" ></div>
+    <span class="nav-link"><a href="/notes/2020/">2020 notes</a></span>
+    <span class="nav-link"><a href="/notes/2021/">2021 notes</a></span>
+  </div>
+
+  <div id="dropdown-nav">
+    <div id="dropdown-nav-bar">
+      <a href="/" id="logo">Technical Labs</a>
+      <div id="nav-spacer" ></div>
+      <input type="checkbox" id="menu-icon">
+      <label id="menu-label" for="menu-icon" onclick="handleDropdownToggle"></label>
+    </div>
+
+    <div id="dropdown-content">
+      <span class="nav-link"><a href="/notes/2020/">2020 notes</a></span>
+      <span class="nav-link"><a href="/notes/2021/">2021 notes</a></span>
+    </div>
+  </div>
+</nav>
+
+
+    <div id="content">
+      <div id="note_container">
+        <h1> Git part 1 </h1>
+<p> 13 October 2020 </p>
+
+<p>The video for these notes can be found 
+<a href="https://www.youtube.com/watch?v=3jW4zNRrZJA">here</a></p>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ol>
+  <li><a href="#introduction">Introduction</a>
+    <ol>
+      <li><a href="#version-control-generally">Version control generally</a></li>
+      <li><a href="#learning-git">Learning Git</a></li>
+      <li><a href="#installing-git">Installing Git</a></li>
+    </ol>
+  </li>
+  <li><a href="#the-git-data-model">The Git Data Model</a>
+    <ol>
+      <li><a href="#objects">Objects</a></li>
+      <li><a href="#data-model-as-pseudocode">Data model as pseudocode</a></li>
+      <li><a href="#data-model-diagram">Data model diagrammatically</a></li>
+      <li><a href="#storing-objects">Storing objects</a></li>
+      <li><a href="#commit-structure">Commit structure</a></li>
+      <li><a href="#repositories">Repositories</a></li>
+      <li><a href="#the-index">The Index</a></li>
+    </ol>
+  </li>
+  <li><a href="#how-to-use-git">How to use Git</a>
+    <ol>
+      <li><a href="#the-git-command-line-interface">The Git command line interface</a></li>
+      <li><a href="#making-a-git-repository">Making a Git repository</a></li>
+      <li><a href="#commands">Commands</a></li>
+    </ol>
+  </li>
+</ol>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>Git is the most popular version control tool for Computer Scientists and is extremely widely used. We’re going to run through the basics of how Git works and how to use it, so you can effectively use Git for your own projects!</p>
+
+<p>We will be covering Git’s data model and how to use Git locally on your machine in this lab. Using 
+remotes such as GitHub will be covered in the next lab. However, I recommend you don’t skip this session 
+as the Git remote session will not make sense without lots of the knowledge from this one.</p>
+
+<h3 id="version-control-generally">Version control generally</h3>
+
+<p>Version control systems are used to track changes in files as you work on them. These tools help you to maintain a history of your changes and keep your work organised.</p>
+
+<p>This is useful even when working on your own - it lets you look at different snapshots of projects and compare changes you made. For each change you make, you can submit an overview of the change - this gives you a great log to look back on different development decisions. Git also easily facilitates parallel branches of development to try out different ways of doing something.</p>
+
+<p>When working with other people, Git stops being useful and starts being vital. Git allows for multiple people to have access and submit changes to a shared repository in a controlled manner. It’s an invaluable tool that lets teams see what changes other people have made, to resolve development conflicts.</p>
+
+<h3 id="learning-git">Learning Git</h3>
+
+<p>Git can be very hard to learn properly, whether you’re using a GUI or the command line. Git is a ‘leaky abstraction’, so learning it top-down by using it doesn’t give you a great understanding of what is actually happening. These difficulties are magnified by the fact that misleading or incorrect information on Git is irritatingly common across the internet.</p>
+
+<p>In this lab we aim to introduce Git from the ground up. Git itself is based on a very elegant data structure, there is just a rather ugly interface sitting on top of it that can be very confusing.</p>
+
+<h3 id="installing-git">Installing Git</h3>
+
+<p>Follow the guides <a href="https://github.com/git-guides/install-git">here</a> to find how to install Git on 
+your machine.</p>
+
+<p>You can also install a GUI for Git, but for this tutorial we will be using the command line to demonstrate what the Git commands are doing.</p>
+
+<h2 id="the-git-data-model">The Git data model</h2>
+
+<h3 id="objects">Objects</h3>
+
+<p>There are 4 basic objects in the Git data model that everything revolves around:</p>
+
+<ul>
+  <li>Blobs</li>
+  <li>Trees</li>
+  <li>Commits</li>
+  <li>Tags</li>
+</ul>
+
+<h4 id="blob">Blob</h4>
+
+<p>A blob (or <strong>b</strong>inary <strong>l</strong>arge <strong>ob</strong>ject) is common Computer Science terminology for a collection 
+of binary data. Git uses blobs to store the data for each file in your repository, but not any of the 
+metadata (like file path, file name, file type) - that data is stored in trees.</p>
+
+<h4 id="tree">Tree</h4>
+
+<p>A tree represents one directory in your repository. It stores the metadata of the files in the directory (file path, file name, file type), as well as the addresses to the blobs that contain the data of each of these files. Trees can also contain other trees (subdirectories).</p>
+
+<h4 id="commit">Commit</h4>
+
+<p>A commit represents a snapshot of your repository. It stores the name of the author of the snapshot, 
+an array of parent commits that this commit inherits from (usually just one), and a message from the author 
+saying what changes have happened between this commit and the parent commits.</p>
+
+<h4 id="tags">Tags</h4>
+
+<p>Tags allow Git users to label specific commits of interest. For instance, you will have labels for 
+the different branches in the repository, and you may have one representing “V1.3.25” of the project 
+so that you can come back to it later. A tag simply stores its name, and the commit it refers to.</p>
+
+<h3 id="data-model-as-pseudocode">Data model as pseudocode</h3>
+
+<p>We can write some pseudocode to represent this structure. This code is not any 
+particular language.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//  A blob stores the data of an individual file</span>
+<span class="n">type</span> <span class="n">blob</span> <span class="o">=</span> <span class="n">array</span><span class="o">&lt;</span><span class="n">bytes</span><span class="o">&gt;</span>
+
+<span class="c1">//  A tree contains a dictionary with the file names for all the items in a directory linked to the </span>
+<span class="c1">//  Git object storing their data</span>
+<span class="n">type</span> <span class="n">tree</span> <span class="o">=</span> <span class="n">map</span><span class="o">&lt;</span><span class="n">string</span><span class="p">,</span> <span class="n">tree</span> <span class="o">|</span> <span class="n">blob</span> <span class="o">&gt;</span>
+
+<span class="n">type</span> <span class="n">commit</span> <span class="o">=</span> <span class="k">struct</span> <span class="p">{</span>
+    <span class="nl">parent:</span> <span class="n">array</span><span class="o">&lt;</span><span class="n">commit</span><span class="o">&gt;</span>
+    <span class="nl">author:</span> <span class="n">string</span>
+    <span class="nl">message:</span> <span class="n">string</span>
+    <span class="nl">snapshot:</span> <span class="n">tree</span>
+<span class="p">}</span>
+
+<span class="n">type</span> <span class="n">tag</span> <span class="o">=</span> <span class="k">struct</span> <span class="p">{</span>
+    <span class="nl">name:</span> <span class="n">string</span>
+    <span class="nl">commit:</span> <span class="n">commit</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="data-model-diagram">Data model diagram</h3>
+
+<p>We can also represent Git’s data model diagrammatically, and there is common syntax for this.</p>
+
+<ul>
+  <li>A blob is a rectangle</li>
+  <li>A tree is a triangle</li>
+  <li>A commit is a circle</li>
+  <li>A tag is a diamond</li>
+</ul>
+
+<p>Here is a diagram representing a commit of this file structure:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    /repository
+    |
+    |- /folder1
+    |  |
+    |  |- text1.txt
+    |
+    |- text2.txt
+</code></pre></div></div>
+
+<p><img src="/assets/Git/git_structure_draw.jpeg" alt="Git tree structure" class="smallImg" /></p>
+
+<h3 id="storing-objects">Storing objects</h3>
+
+<p>“But how are the objects stored?” I hear you ask. All four object categories are stored in a single large dictionary 
+creatively named the “object store”. The key to each object is the SHA1 hash of that object’s contents.</p>
+
+<p>If you aren’t familiar with hashing, here are the basics: you take some data, run it through an 
+algorithm that produces a semi-random value (in this case an 160 bit binary string) that is used to represent the 
+input data. Vitally, the hashing algorithm will always produce the same semi-random value when given the same data.</p>
+
+<p>Due to the number of possible 160 bit binary strings you can assume that a SHA1 hash of any data is unique.</p>
+
+<p>Git uses these hashes to identify each object. Objects then refer to other objects with the hash 
+string. For example, a commit doesn’t contain the tree, but instead contains the hash of the tree which 
+can then be looked up in the object store.</p>
+
+<h3 id="commit-structure">Commit structure</h3>
+
+<p>There is some extra structure to how the commits relate to each other. Commits have to form a “Directed Acyclic Graph”. This is a fancy way of saying all commits have parents they inherit from, and they can’t form a cycle (e.g. if A has parent B, B can’t have parent A).</p>
+
+<p><strong>Note:</strong> Each commit references its parents rather than the parent commits referencing their children. So, in a diagram representing a commit graph, all arrows should flow from the commits to 
+their parents. From the perspective of the development flow this is counterintuitive, but it makes sense once you understand how commits relate to each other in Git. If you 
+see a diagram with the arrows the other way around be wary of that source of information.</p>
+
+<p><img src="/assets/Git/git_dag_draw.jpeg" alt="A Git dag diagram" class="smallImg" /></p>
+
+<p><strong>Note:</strong> Commits do not store the changes that have been made since the parent commit. Rather, they store the entire contents of the repository at the time of the snapshot. When the differences between commits are displayed, they are generated by comparing the entire contents of the different commits. This is different to most other version control solutions, but allows Git to do many powerful things. Git also has some clever storage techniques that mean repeated data is only stored once, so don’t worry about the storage implications of this design decision.</p>
+
+<h3 id="repositories">Repositories</h3>
+
+<p>Finally we can define a “repository” in Git: it is the collection of objects and references.</p>
+
+<p>There is a single <code class="language-plaintext highlighter-rouge">.git</code> directory in each repository that stores the data for that repository. The rest of the directory is your “working directory” to view files and make changes. Git can be used to keep track of those changes within this working directory.</p>
+
+<h3 id="the-index">The Index</h3>
+
+<p>There is one more addition to our model - “staging”. In Git you stage files before committing them.</p>
+
+<p>The mechanism for this is the Index. The Index is simply a tree object that is not yet in the object store. As changes are being made (when you stage files), the Index is updated. When you commit these changes, the Index is hashed and stored in the object store.</p>
+
+<p>Files in a Git repository fall under 3 categories:</p>
+
+<ol>
+  <li>Ignored - If a file path is in the <code class="language-plaintext highlighter-rouge">.gitignore</code> file then Git will ignore it. A common use of this 
+is to ignore compiled files of your code.</li>
+  <li>Tracked - A tracked file is a file already in previous commits or currently staged in the Index.</li>
+  <li>Untracked - An untracked file falls into neither of the last two categories. Git will ignore 
+these files unless you add them, and will warn you about untracked files in the <code class="language-plaintext highlighter-rouge">git status</code> 
+response.</li>
+</ol>
+
+<h2 id="how-to-use-git">How to use Git</h2>
+
+<p>Now we’ve got the Git data structure, it’s time to start using it!</p>
+
+<p>We will be using the Git command line interface. There are GUI alternatives that often come with IDEs by default, but unfortunately they add another layer of abstraction to a program that already 
+bewilders lots of its users - I don’t recommend them for beginners.</p>
+
+<p><strong>Note:</strong> In this section all the examples will be performed one after the other on one repository, so the changes will move from 
+one example to the next. You can follow along with your own repository if you like.</p>
+
+<h3 id="the-git-command-line-interface">The Git command line interface</h3>
+
+<p>The Git command line interface works with a series of commands. Each command is structured as such:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git &lt;command&gt; [parameters...]
+</code></pre></div></div>
+
+<p>Git takes the first parameter to specify the command you want to run, then passes the rest of the 
+parameters to that command.</p>
+
+<h3 id="making-a-git-repository">Making a Git repository</h3>
+
+<p>To make a local repository make a folder for it then navigate to it in your
+terminal shell. Then run <code class="language-plaintext highlighter-rouge">git init</code>.</p>
+
+<p>This creates the <code class="language-plaintext highlighter-rouge">.git</code> folder to store all the information Git requires.</p>
+
+<p><img src="/assets/Git/git_init.png" alt="git init example" /></p>
+
+<p>Note the <code class="language-plaintext highlighter-rouge">.git</code> directory has now appeared.</p>
+
+<h3 id="commands">Commands</h3>
+
+<p>We will now run through some of the most common git commands, these commands make up a solid 
+workflow for working on a local repository.</p>
+
+<h4 id="git-status">git status</h4>
+
+<p><code class="language-plaintext highlighter-rouge">git status</code> is a very useful tool. It quickly shows you the state of your repository and has a bunch 
+of flags to display other useful information. I recommend you get comfortable with it.</p>
+
+<p><img src="/assets/Git/git_status.png" alt="git status example" /></p>
+
+<p>It’s not very useful without any files or commits yet.
+One of the many useful things <code class="language-plaintext highlighter-rouge">git status</code> will do is list all the files in the untracked state, and 
+all the staged changes in the Index ready to be committed.</p>
+
+<h4 id="git-add">git add</h4>
+
+<p>Before Git does anything to your files you need to “stage” them to make Git
+aware of them.</p>
+
+<p>To add a file to the Index run <code class="language-plaintext highlighter-rouge">git add &lt;file&gt;</code>.</p>
+
+<p><img src="/assets/Git/git_add.png" alt="git add example" /></p>
+
+<h4 id="git-commit">git commit</h4>
+
+<p>Once you’ve staged a file you can commit them.</p>
+
+<p>To commit the changes to the repository run <code class="language-plaintext highlighter-rouge">git commit</code>. You will then be prompted to write a 
+message describing the commit. Alternatively use <code class="language-plaintext highlighter-rouge">git commit -m "&lt;message&gt;"</code> to commit with a 
+message in one command.</p>
+
+<p><img src="/assets/Git/git_commit.png" alt="git commit example" /></p>
+
+<p>Git often prompts you for input and to do so it will use the text editor set in your configurations. 
+By default this is Vim, which is hard to use for beginners. To change the default text editor use 
+the command <code class="language-plaintext highlighter-rouge">git config --global core.editor &lt;editor-of-choice&gt;</code>. For beginners I suggest setting 
+<code class="language-plaintext highlighter-rouge">nano</code>.</p>
+
+<p><strong>Note:</strong> To exit Vim press the <code class="language-plaintext highlighter-rouge">:</code> key, then <code class="language-plaintext highlighter-rouge">q</code>, then enter.</p>
+
+<p>You may be wondering what the <code class="language-plaintext highlighter-rouge">4c391f8</code> in the <code class="language-plaintext highlighter-rouge">git status</code> is. That is the first 7 hexadecimal digits 
+of the SHA1 hash that represents the commit in the object store. You can use these 7 digits as an 
+identifier for the commit as they will almost always be unique and Git will automatically find the 
+matching commit.</p>
+
+<p>We can now think about how the commit structure will look.</p>
+
+<p><img src="/assets/Git/git_commit_structure_draw.jpeg" alt="git structure drawing" class="smallImg" /></p>
+
+<p>The “master” tag is the tag for the default branch - it’s increasingly called “main” instead. The 
+“HEAD” tag represents where you currently are, i.e. which commit is “checked out”.</p>
+
+<h4 id="git-log">git log</h4>
+
+<p>To see the commits in the repository use the <code class="language-plaintext highlighter-rouge">git log</code> command. You can also use the <code class="language-plaintext highlighter-rouge">--oneline</code> 
+flag to have one line per commit, and the <code class="language-plaintext highlighter-rouge">--graph</code> flag to get a graphical representation of the commits.</p>
+
+<p><strong>Note:</strong> By default the Git log opens in a pager, which you would press the <code class="language-plaintext highlighter-rouge">Q</code> key to exit. 
+I’m adding the 
+<code class="language-plaintext highlighter-rouge">--no-pager</code> flag to make it easier to show examples, but I wouldn’t recommend this in normal use, as logs can be very long.</p>
+
+<p><img src="/assets/Git/git_log.png" alt="git log screen" /></p>
+
+<p>Git logs are much more useful with more commits, so I’m going to add some more.</p>
+
+<p><img src="/assets/Git/git_log_multiple.png" alt="git log with multiple commits" /></p>
+
+<p>Here you can see I used the <code class="language-plaintext highlighter-rouge">--oneline</code> flag to make the output nice and compact.</p>
+
+<h4 id="git-diff">git diff</h4>
+
+<p>Git diff is very similar to the Unix command <code class="language-plaintext highlighter-rouge">diff</code> in that it finds and shows the differences 
+between files.</p>
+
+<p><code class="language-plaintext highlighter-rouge">git diff</code> can be used in multiple ways:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">git diff</code> compares between the current working directory and the Index, i.e. your current staged changes.</li>
+  <li><code class="language-plaintext highlighter-rouge">git diff &lt;commit&gt;</code> compares your current working directory and the specified commit.</li>
+  <li><code class="language-plaintext highlighter-rouge">git diff &lt;commit&gt; &lt;commit&gt;</code> compares two commits.</li>
+  <li><code class="language-plaintext highlighter-rouge">git diff --cached &lt;commit&gt;</code> compares the Index to a commit.</li>
+</ul>
+
+<p><img src="/assets/Git/git_diff.png" alt="git diff example" /></p>
+
+<h4 id="git-branch">git branch</h4>
+
+<p>Git branch lets you create a new branch head at the currently checked out commit.</p>
+
+<p>Use the command <code class="language-plaintext highlighter-rouge">git branch</code> to list all the branches, and <code class="language-plaintext highlighter-rouge">git branch &lt;name&gt;</code> to create a new 
+branch.</p>
+
+<p><img src="/assets/Git/git_branch.png" alt="git branch example" /></p>
+
+<p>Here the asterisk represents the current branch.</p>
+
+<p>The project structure now looks like this:</p>
+
+<p><img src="/assets/Git/git_structure_2_draw.jpeg" alt="git structure drawing 2" class="smallImg" /></p>
+
+<h4 id="git-checkout">git checkout</h4>
+
+<p>You may have noticed we’re still on the master branch! Before we add anything to the new branch we 
+need to check it out. To do this use the <code class="language-plaintext highlighter-rouge">git checkout &lt;branch&gt;</code>.</p>
+
+<p><img src="/assets/Git/git_checkout_branches.png" alt="git checkout to make commits on different branches" /></p>
+
+<p>Here you can see I checked out new_branch, made a change and committed it, then checked out master, 
+made a different change and committed it.</p>
+
+<p>To see these commits we can use <code class="language-plaintext highlighter-rouge">git log</code>.</p>
+
+<p><img src="/assets/Git/git_log_graph_multiple_branches.png" alt="git log multiple branches" /></p>
+
+<p>Here you can see I’ve used the <code class="language-plaintext highlighter-rouge">--graph</code>, <code class="language-plaintext highlighter-rouge">--oneline</code>, and <code class="language-plaintext highlighter-rouge">--all</code> flags, so that it displays in an 
+easily understandable way. You can look at the <code class="language-plaintext highlighter-rouge">git log</code> documentation to further understand what 
+these flags do.</p>
+
+<p>You can also see the different tags on each branch, representing the heads of each branch and <code class="language-plaintext highlighter-rouge">HEAD</code> 
+for where is currently checked out.</p>
+
+<p>You can also checkout specific commits with <code class="language-plaintext highlighter-rouge">git checkout &lt;commit&gt;</code> although making any changes 
+leads to confusion. It’s best to only checkout old branches to look at the content and make new 
+branches from there.</p>
+
+<h4 id="git-merge">git merge</h4>
+
+<p>What if we now want changes from both branches in one branch? This is where a merge happens! Any 
+commit that inherits from more than one other commit is a merge.</p>
+
+<p>To do a merge, first checkout the branch you want to merge <strong>into</strong>. Next, use the command
+<code class="language-plaintext highlighter-rouge">git merge &lt;branch&gt;</code>, where <code class="language-plaintext highlighter-rouge">&lt;branch&gt;</code> is the branch you want to merge into the branch you currently 
+have checked out. Git will prompt you for a name for the new commit. That new commit will inherit 
+from the two merging branches with the changes from both.</p>
+
+<p>If each branch has been working on different sections of the files being merged, 
+Git will automatically merge them. However, if changes have been made to the same sections you will have 
+a “merge conflict” which will have to be resolved manually. Resolving merge conflict is outside the 
+scope of this lab.</p>
+
+<p><img src="/assets/Git/git_merge.png" alt="git merge example" /></p>
+
+<h4 id="git-tag">git tag</h4>
+
+<p>You can also add your own tags to commits. Do this by using <code class="language-plaintext highlighter-rouge">git tag &lt;tagname&gt; &lt;commit&gt;</code> or use 
+<code class="language-plaintext highlighter-rouge">git tag &lt;tagname&gt;</code> to tag your current commit. Then use <code class="language-plaintext highlighter-rouge">git tag -d &lt;tagname&gt;</code> to delete a tag.</p>
+
+<p>You can checkout tags with <code class="language-plaintext highlighter-rouge">git checkout &lt;tagname&gt;</code>.</p>
+
+<p><img src="/assets/Git/git_tag.png" alt="git tag example" /></p>
+
+<h4 id="git-help">git help</h4>
+
+<p>To find out more about any command, its available flags or a description of the command, you can 
+always use the command <code class="language-plaintext highlighter-rouge">git help &lt;command&gt;</code>. This will display a manual page for that specific 
+command. Again exit the page with the <code class="language-plaintext highlighter-rouge">q</code> key.</p>
+
+<p>In addition <code class="language-plaintext highlighter-rouge">git help</code> will list all available commands.</p>
+
+<h2 id="learn-more">Learn More!</h2>
+
+<p>This was a very brief introduction to Git. If you want to learn more I recommend you read 
+<a href="https://learning.oreilly.com/library/view/version-control-with/9781449345037/">this book</a>. It’s an 
+O’Reilly book on Git and it covers everything we’ve covered in much more detail. All CS students at 
+the University of Bath get an O’Reilly subscription so you can access the book for free.</p>
+
+<p>There is also much more material online, but be careful - misleading or incorrect advice on Git is 
+widespread, so it’s better to learn formally from trusted literature. Trust me, you will save yourself 
+a lot of time and headaches by learning Git the right way!</p>
+
+<p>Other recommended learning resources:</p>
+
+<ul>
+  <li><a href="https://git-scm.com/book/en/v2">Pro Git</a> is an often recommended introduction to Git.</li>
+  <li><a href="https://neros.dev/blog/git-crash-course-part-1/">Git crash course by Søren Mortensen</a></li>
+  <li><a href="https://ohshitgit.com/">Oh shit, Git!?!</a> is a short guide on how to recover from some common Git</li>
+  <li>mistakes.</li>
+  <li><a href="https://eagain.net/articles/git-for-computer-scientists/">Git for Computer Scientists</a> is a short
+  explanation of Git’s data model.</li>
+  <li><a href="https://jwiegley.github.io/git-from-the-bottom-up/">Git from the bottom up</a> is a detailed 
+  explanation of Git’s implementation details beyond the data model, for those who are curious.</li>
+  <li><a href="https://missing.csail.mit.edu/2020/version-control/">Version Control (Git)</a> is the notes from the series this is based on.</li>
+</ul>
+
+<h3 id="exercises">Exercises</h3>
+
+<ol>
+  <li>Read through the first few chapters of Pro Git.</li>
+  <li>Make a repository and add some files and commits.</li>
+  <li>If you have any small projects, like a CV or coursework, try using Git for it. <strong>Warning:</strong> if you 
+aren’t comfortable with Git do make periodic backups somewhere else, just so you don’t lose your 
+work.</li>
+  <li>Play <a href="https://learngitbranching.js.org/">this game</a> intended to teach git branching.</li>
+</ol>
+
+<h2 id="credit-and-thanks">Credit and thanks</h2>
+
+<p>Written by <a href="mailto:alfierchrds@gmail.com">Alfie Richards</a></p>
+
+<p>Edited by <a href="mailto:jcryer1234@gmail.com">Joe Cryer</a></p>
+
+<p>Additional help from:</p>
+<ul>
+  <li>Dr Russell Bradford</li>
+  <li>Bence Babrián</li>
+  <li><a href="https://neros.dev">Søren Mortensen</a></li>
+</ul>
+
+
+      </div>
+    </div>
+
+    <div id="footer">
+  <div id="footer_content">
+    <p>Site made by <a href="mailto:main@alfierichards.com">Alfie Richards</a> for <a href="https://www.thesubath.com/bcss/">Bath Computer Science Society</a> and the Bath Computer Science Department.</p>
+    <p>View the <a href="https://github.com/bath-bcss/Technical-Labs">source code</a>.</p>
+    <p>Licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode">CC BY-NC-SA</a>.</p>
+  </div>
+  <img id="bcss_footer_logo" src="/assets/logo_full_no_bg.png"/>
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- https://realfavicongenerator.net -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/assets/favicon/site.webmanifest">
+  <link rel="mask-icon" href="/assets/favicon/safari-pinned-tab.svg" color="#314cb3">
+  <link rel="shortcut icon" href="/assets/favicon/favicon.ico">
+  <meta name="msapplication-TileColor" content="#2d89ef">
+  <meta name="msapplication-config" content="/assets/favicon/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+  <title>
+    Technical Labs
+  </title>
+
+  <link rel="stylesheet" href="/assets/css/main.css" />
+</head>
+
+
+
+  <body>
+    <script src="/assets/js/navbar.js" ></script>
+
+<nav id="nav">
+  <div id="bar-nav">
+    <a href="/" id="logo">Technical Labs</a>
+    <div id="nav-spacer" ></div>
+    <span class="nav-link"><a href="/notes/2020/">2020 notes</a></span>
+    <span class="nav-link"><a href="/notes/2021/">2021 notes</a></span>
+  </div>
+
+  <div id="dropdown-nav">
+    <div id="dropdown-nav-bar">
+      <a href="/" id="logo">Technical Labs</a>
+      <div id="nav-spacer" ></div>
+      <input type="checkbox" id="menu-icon">
+      <label id="menu-label" for="menu-icon" onclick="handleDropdownToggle"></label>
+    </div>
+
+    <div id="dropdown-content">
+      <span class="nav-link"><a href="/notes/2020/">2020 notes</a></span>
+      <span class="nav-link"><a href="/notes/2021/">2021 notes</a></span>
+    </div>
+  </div>
+</nav>
+
+
+    <div id="content">
+      <div id="note_container">
+        <h1> Command line basics </h1>
+<p> 12 October 2020 </p>
+
+
+<h2 class="no_toc" id="table-of-contents">Table of Contents</h2>
+
+<ol id="markdown-toc">
+  <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
+  <li><a href="#what-is-a-command-line" id="markdown-toc-what-is-a-command-line">What is a command line?</a>    <ol>
+      <li><a href="#what-is-the-shell" id="markdown-toc-what-is-the-shell">What is the shell?</a></li>
+      <li><a href="#getting-started-with-the-command-line" id="markdown-toc-getting-started-with-the-command-line">Getting started with the command line</a></li>
+    </ol>
+  </li>
+  <li><a href="#using-a-command-line" id="markdown-toc-using-a-command-line">Using a command line</a>    <ol>
+      <li><a href="#the-prompt" id="markdown-toc-the-prompt">The prompt</a></li>
+      <li><a href="#working-directory" id="markdown-toc-working-directory">Working directory</a></li>
+    </ol>
+  </li>
+</ol>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>Welcome to the notes for Technical Labs 2021. In this series we will aim to 
+introduce you to some tools and ideas that will be useful for any computer 
+scientist and anyone who uses computers regularly for complex tasks.</p>
+
+<p>This first lab will focus on <strong>Command Line Interfaces</strong> (CLI). We will start 
+here as the rest of this series will interact with tools through CLI’s.</p>
+
+<p>The vast majority of computing is done through graphical user interfaces. For 
+99% of tasks these are great. But often user interfaces are fundamentally 
+restricted. Sometimes you need to go old school and drop down to a command line 
+interface. By learning about tools through the command line interface you should 
+have a better fundamental understanding of the tool and how it works from seeing 
+how it works at a lower level. Then you can apply that knowledge to make better 
+use of graphical interfaces.</p>
+
+<h2 id="what-is-a-command-line">What is a command line?</h2>
+
+<p>While most of computing is dominated by graphical user interfaces, command line 
+tools stand apart by using a text based interface. In order to interact with the
+computer you type commands. Programs display results, not by altering complex 
+graphics, but by outputting lines of text.</p>
+
+<h3 id="what-is-the-shell">What is the shell?</h3>
+
+<p>The shell is the program that runs the interface, there are many shells but they 
+all share the fundamentals. They allow you to give them input, they run 
+programs, and they allow you to inspect the output.</p>
+
+<p>These labs will be using the <strong>b</strong>ourne <strong>a</strong>gain <strong>sh</strong>ell (bash) <sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>, which 
+is the most popular shell.</p>
+
+<h3 id="getting-started-with-the-command-line">Getting started with the command line</h3>
+
+<p>With Macs and linux machines getting started with bash is very simple. You will 
+need a “terminal emulator” which is the application that allows you to interact 
+with a shell.</p>
+
+<p>On windows machines its more complicated. Bash is a shell for Unix based 
+operating systems, which windows isn’t. You can use “Windows Powershell” which 
+is a different shell but it will be significantly different and use different 
+programs. We recommend, for following along with these labs, using the <a href="https://docs.microsoft.com/en-us/windows/wsl/install">Windows 
+Subsystem for Linux</a> (WSL) 
+which is a system made by Microsoft to use a Unix shell on Windows. WSL will 
+also be useful for the tools in the other labs and useful in general as most 
+development tools are primarily Unix based.</p>
+
+<h2 id="using-a-command-line">Using a command line</h2>
+
+<p>There are some basic concepts to be aware of when using any shell.</p>
+
+<h3 id="the-prompt">The prompt</h3>
+
+<p>Once you open the command line you will be presented with the “prompt”. Which 
+will look like this:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>technical-labs:~<span class="err">$</span>
+</code></pre></div></div>
+
+<p>The text in the prompt can be customised so may vary user to user. To break down 
+this prompt,</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">technical-labs</code> is the current user</li>
+  <li><code class="language-plaintext highlighter-rouge">~</code> is the “current working directory” or where you are, <code class="language-plaintext highlighter-rouge">~</code> means the “home” 
+  directory.</li>
+  <li><code class="language-plaintext highlighter-rouge">$</code> means you are not the root user, which will be covered more later</li>
+</ul>
+
+<h3 id="working-directory">Working directory</h3>
+
+<p>A shell is always at a position in your computers file</p>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+
+      <p>After this lab we will use the <strong>Z sh</strong>ell (zsh) which is backwards 
+compatible with bash with slightly more features. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+
+      </div>
+    </div>
+
+    <div id="footer">
+  <div id="footer_content">
+    <p>Site made by <a href="mailto:main@alfierichards.com">Alfie Richards</a> for <a href="https://www.thesubath.com/bcss/">Bath Computer Science Society</a> and the Bath Computer Science Department.</p>
+    <p>View the <a href="https://github.com/bath-bcss/Technical-Labs">source code</a>.</p>
+    <p>Licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode">CC BY-NC-SA</a>.</p>
+  </div>
+  <img id="bcss_footer_logo" src="/assets/logo_full_no_bg.png"/>
+</div>
+
+  </body>
+</html>
