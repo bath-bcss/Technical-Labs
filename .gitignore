@@ -3,3 +3,5 @@
 */_site/
 */.DS_STORE
 .DS_STORE
+.jekyll-cache
+_site
