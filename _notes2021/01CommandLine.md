@@ -445,6 +445,26 @@ be achieved. If you are interested in going beyond this lab and learning more we
 recommend [The Linux Command Line and Shell Scripting 
 Bible](https://www.wiley.com/en-gb/Linux+Command+Line+and+Shell+Scripting+Bible%2C+4th+Edition-p-9781119700937).
 
+## Super User
+
+Some commands will need access rights higher than your user has access to. This 
+is normally a sign that it could break things or be damaging so make sure you 
+know what you are doing when executing one of these commands.
+
+The command "super user do" or `sudo` takes a command and executes that command 
+as the root user. It will normally need an administrator password to do this 
+(often your own password).
+
+```
+alfierichards:~$ sudo systemctl restart nginx
+[sudo] password for alfierichards:
+```
+
+The password will always be hidden.
+
+In this example the nginx service is being restarted. Interacting with a 
+background service normally requires super user rights.
+
 [^1]:
     After this lab we will use the **Z sh**ell (zsh) which is backwards 
     compatible with bash with slightly more features. 
