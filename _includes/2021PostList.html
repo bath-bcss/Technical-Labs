@@ -1,11 +1,13 @@
 
 <ol>
-  {% assign sorted = site.notes2021 | sort: 'date' %}
+  {% assign sorted = site.notes2021 | sort: 'date'  %}
   {% for doc in sorted %}
-  <li>
-    <a href="{{doc.url}}"> 
-      {{doc.title}} 
-    </a>
-  </li>
+  {% if doc.unlisted != true %}
+    <li>
+      <a href="{{doc.url}}"> 
+        {{doc.title}} 
+      </a>
+    </li>
+    {% endif %}
   {% endfor %}
 </ol>

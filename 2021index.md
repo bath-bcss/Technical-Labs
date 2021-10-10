@@ -6,6 +6,6 @@ permalink: "/notes/2021/"
 
 # 2021 Notes
 
-These are the notes for 2020:
+These are the notes for 2021: 
 
 {% include 2021PostList.html %}

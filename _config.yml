@@ -5,7 +5,6 @@ collections:
   notes2020:
     output: true
     permalink: /notes/2020/:name
-    sort_by: date
   notes2021:
     output: true
     permalink: /notes/2021/:name

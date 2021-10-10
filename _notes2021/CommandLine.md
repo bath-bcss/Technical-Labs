@@ -2,6 +2,8 @@
 layout: note
 title: Command line basics
 date: 2021-10-12
+published: true
+unlisted: false
 ---
 
 {% include toc.md %}
