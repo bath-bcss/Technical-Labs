@@ -2,7 +2,9 @@
 <ol>
   {% assign sorted = site.notes2021 | sort: 'date'  %}
   {% for doc in sorted %}
-  {% if doc.unlisted != true %}
+  {% assign today_date = 'now' | date: '%s' %}
+  {% assign post_date = doc.date | date: '%s' %}
+  {% if today_date >= post_date %}
     <li>
       <a href="{{doc.url}}"> 
         {{doc.title}} 

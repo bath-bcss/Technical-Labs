@@ -9,6 +9,8 @@ collections:
     output: true
     permalink: /notes/2021/:name
 
+future: true
+
 sass:
   style: compact
 
