@@ -38,3 +38,4 @@ jobs:
           passphrase: ${{ secrets.SSH_PASSKEY }}
           source: _site/
           target: /var/www/technical-labs.link/
+          rm: true
