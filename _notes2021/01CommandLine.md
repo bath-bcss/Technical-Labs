@@ -39,9 +39,16 @@ With Mac and Linux machines, getting started with **bash** is very simple. You w
 need a **terminal emulator**, which is the application that allows you to interact
 with a shell.
 
-On Windows machines it can be more complicated. **Bash** is a shell designed for Unix-based operating systems, which Windows isn't. You can use **Windows Powershell** instead, however it will be significantly different to **bash** and will use different programs.. We recommend, for following along with these labs, using the [Windows
+On Windows machines it can be more complicated. **Bash** is a shell designed for 
+Unix-based operating systems, which Windows isn't. You can use **Windows 
+Powershell** instead, however it will be significantly different to **bash** and 
+will use different programs.. We recommend, for following along with these labs, 
+using the [Windows
 Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install) (WSL)
-which is a system made by Microsoft to use a Unix shell on Windows. WSL will be useful in general, as most mature and well-known development tools are primarily Unix-based. Using WSL will also allow you to follow along with future labs more easily.
+which is a system made by Microsoft to use a Unix shell on Windows. WSL will be 
+useful in general, as most mature and well-known development tools are primarily 
+Unix-based. Using WSL will also allow you to follow along with future labs more 
+easily.
 
 ## Using a command line
 
@@ -60,7 +67,8 @@ The text in the prompt can be customised so may vary from user to user. Let's br
 this prompt:
 
 - `technical-labs` is the current user
-- `~` means the **home** directory. This section displays the **current working directory** (cwd), or where you currently are within the file system.
+- `~` means the **home** directory. This section displays the **current working 
+    directory** (cwd), or where you currently are within the file system.
 - `$` means you are not the root user, which will be covered more later
 
 ### Command structure
@@ -91,8 +99,8 @@ There are some sections we can break down:
 
 ### Working with the file system
 
-A shell is always has a position within your computers file system, much like a
-your file browser has the current open directory. This is often displayed in
+A shell always has a position within your computer's file system, much like a
+file browser has a current open directory. This is often displayed in
 your prompt. To view the active working directory you can use the **p**rint
 **w**orking **d**irectory command, `pwd`[^2].
 
@@ -108,8 +116,8 @@ alfierichards:~/Desktop$ ls
 Compilers		Individual Project	Technical Labs		untitled text.txt
 ```
 
-You can include hidden files with the `-l` flag, and show hidden files with the
-`-a` flag.
+You can display your files in a list with the `-l` flag, and show hidden files 
+with the `-a` flag.
 
 ```
 alfierichards:~/Desktop$ ls -al
