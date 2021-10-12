@@ -206,6 +206,34 @@ The `cat` command outputs the contents of a file.
 The above command will then output the content of every file in the `_notes2020`
 directory.
 
+### Command History
+
+Bash stores the executed commands, to get the previous commands press the up 
+arrow.
+
+### Tab completion
+
+Program names and certain arguments can be automatically filled by bash. To use 
+this type the start of the word you need and press the tab key.
+
+### Exiting commands
+
+There are certain key combinations that mean certain things on the command line:
+
+- `Ctrl-C` - sends an `abort` signal to the operating system. This usually exits 
+    the current program
+- `Ctrl-D` - sends an end of file character. This often causes programs that 
+    expect a file to be piped to it (which we will cover later) to output the 
+    result.
+
+#### Exiting Vim
+
+Vim is a very common command line text editor, its famously unintuitive to exit 
+and many people have the experience of getting trapped in Vim.
+
+To exit vim you need to enter the key sequence `ESC` then `:q`.
+
+
 ## man pages
 
 Commands normally come with a manual, or **man page** as they are known. To view a
