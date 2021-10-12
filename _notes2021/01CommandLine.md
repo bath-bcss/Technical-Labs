@@ -154,9 +154,9 @@ directory.
 
 There are other commands such as:
 
-- `cp` to copy an entity
-- `mv` to move an entity
-- `rm` to delete an entity
+- `cp` to copy entities
+- `mv` to move entities
+- `rm` to delete entities
 - `mkdir` to make a directory
 - `chown` to change which user owns an entity
 - `chmod` to change the permissions on an entity
