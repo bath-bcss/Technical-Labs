@@ -486,6 +486,15 @@ The password will always be hidden.
 In this example the nginx service is being restarted. Interacting with a
 background service normally requires super user rights.
 
+## Thanks
+
+Written by: Alfie Richards
+Edited by: Joe Cryer
+
+Additions and fact checking by:
+- [Steven Borrie](https://backslash.build/)
+- Professor Russel Bradford
+
 [^1]:
     After this lab we will use the **Z sh**ell (zsh), which is backwards
     compatible with bash with slightly more features.
