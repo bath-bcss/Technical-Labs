@@ -30,7 +30,7 @@ jobs:
         uses: lemonarc/jekyll-action@1.0.0
       
       - name: SCP to server
-        uses: appleboy/scp-action@b476d5806f2a4c1ed5902a87fa91b0623cac7258
+        uses: appleboy/scp-action@8a54b394594637844fcf9ec5cab3eb97ce5dedae
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
