@@ -4,9 +4,6 @@ title: SSH and remote management
 date: 2021-10-26
 ---
 
-Find the video for these notes 
-[here](https://www.youtube.com/watch?v=RGatj96-ooc)
-
 {% include toc.md %}
 
 ## Introduction
