@@ -6,6 +6,9 @@ layout: default
 
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 
+**Technical Labs has been suspended for the 2021/22 year. The content from last 
+year is still available.**
+
 Technical Labs is a series of labs being ran by Bath Computer Science Society 
 (BCSS) intended to introduce useful technical skills.
 
@@ -19,18 +22,6 @@ want to get involved!
 It was heavily inspired by the [Missing Semester](https://missing.csail.mit.edu) 
 series ran by MIT. We highly recommend these for those wanting more in depth 
 content.
-
-### Schedule
-
-1. Command line basics (12/10/21)
-1. Local version control (26/10/21)
-1. Git remotes and GitHub (09/11/21)
-1. Code Editors (23/11/21)
-1. IDE's and Jupyter Notebooks (07/12/21)
-1. Debugging basics (15/02/02)
-1. Plugins and library managers (01/03/22)
-1. Backups and managing data (15/03/22)
-1. Continuous integration and docker (29/03/22)
 
 ### Going beyond this series
 
